@@ -13,6 +13,7 @@ namespace Bitgem.VFX.StylisedWater
         #region Public fields
 
         public WaterVolumeHelper WaterVolumeHelper = null;
+        public float buyancy = 0.5f;
 
         #endregion
 
@@ -26,7 +27,7 @@ namespace Bitgem.VFX.StylisedWater
                 return;
             }
 
-            transform.position = new Vector3(transform.position.x, instance.GetHeight(transform.position) ?? transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, instance.GetHeight(transform.position) + buyancy ?? transform.position.y, transform.position.z);
         }
 
         #endregion
