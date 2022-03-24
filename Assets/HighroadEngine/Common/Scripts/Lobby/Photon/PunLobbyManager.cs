@@ -45,6 +45,7 @@ namespace MoreMountains.HighroadEngine
         // Activate debug logs in console
 
         protected bool _destroyInstance = false;
+        static public PunLobbyManager Instance;
 
         /// <summary>
         /// Initializes the manager
@@ -54,6 +55,8 @@ namespace MoreMountains.HighroadEngine
             DontDestroyOnLoad(this.gameObject);
 
             OnlineLobbyProxy.Instance = this;
+
+            Instance = this;
 
             _onlineLobbyUI = GetComponentInChildren<OnlineLobbyUI>();
 

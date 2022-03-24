@@ -16,11 +16,11 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 1.09
+    m_Value: 1
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 2.44
+    m_Value: 4.18
     min: 0
   scatter:
     m_OverrideState: 0
@@ -123,15 +123,15 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 23.1
     min: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 6.94
+    m_Value: 65.5
     min: 0
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1.01
     min: 0.5
     max: 1.5
   highQualitySampling:

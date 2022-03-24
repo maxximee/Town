@@ -20,13 +20,9 @@ namespace MoreMountains.HighroadEngine
         /// the name of the aphex scene / online version
         public string OnlineGameAphexSceneName;
 
-        [Header("Pun")]
-        /// Pun Panel Reference
-        public GameObject GetPunPanel;
 
         public virtual void Start()
         {
-            GetPunPanel.SetActive(false);
         }
 
         public virtual void OnLocalGameClick()
@@ -48,8 +44,6 @@ namespace MoreMountains.HighroadEngine
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
 			    RemoveBackgroundGame();
                 LoadingSceneManager.LoadScene(OnlineGameSceneName);
-#else
-            this.GetPunPanel.SetActive(true);
 #endif
         }
 
@@ -72,25 +66,9 @@ namespace MoreMountains.HighroadEngine
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
                 RemoveBackgroundGame();
                 LoadingSceneManager.LoadScene(OnlineGameAphexSceneName);
-#else
-            this.GetPunPanel.SetActive(true);
 #endif
         }
 
-        public virtual void DismissGetPunPanel()
-        {
-            this.GetPunPanel.SetActive(false);
-        }
-
-        public virtual void OpenUnityAssetStorePun()
-        {
-            Application.OpenURL("https://doc.photonengine.com/en-us/pun/v2/getting-started/pun-intro");
-        }
-
-        public virtual void OpenPunWebsite()
-        {
-            Application.OpenURL("https://www.photonengine.com/en-US/PUN");
-        }
 
         protected virtual void RemoveBackgroundGame()
         {

@@ -83,22 +83,22 @@ namespace MoreMountains.HighroadEngine
 			MainCanvas.gameObject.SetActive(true);
 
 			MatchmakingButton.onClick.RemoveAllListeners();
-			MatchmakingButton.onClick.AddListener(OnlineLobbyManager.Instance.OnMatchmaking);
-			if(OnlineLobbyManager.Instance!=null)  MatchmakingButton.onClick.AddListener(OnlineLobbyManager.Instance.OnMatchmaking); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//MatchmakingButton.onClick.AddListener(OnlineLobbyManager.Instance.OnMatchmaking);
+			//if(PunLobbyManager.Instance!=null)  MatchmakingButton.onClick.AddListener(PunLobbyManager.Instance.OnMatchmaking); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) MatchmakingButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnMatchmaking); // JF: should become the generic way including uNet and more
 
 
 			DirectConnectionButton.onClick.RemoveAllListeners();
-			DirectConnectionButton.onClick.AddListener(OnlineLobbyManager.Instance.OnDirectConnection);
-			if(OnlineLobbyManager.Instance!=null) DirectConnectionButton.onClick.AddListener(OnlineLobbyManager.Instance.OnDirectConnection); // JF checking if OnlineLobbyManager instance is not null while merging
+			//DirectConnectionButton.onClick.AddListener(OnlineLobbyManager.Instance.OnDirectConnection);
+			//if(PunLobbyManager.Instance!=null) DirectConnectionButton.onClick.AddListener(PunLobbyManager.Instance.OnDirectConnection); // JF checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null){
 				DirectConnectionButton.interactable = OnlineLobbyProxy.Instance.IsDirectConnectionEnabled();
 				if (OnlineLobbyProxy.Instance.IsDirectConnectionEnabled()) DirectConnectionButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnDirectConnection); // JF: should become the generic way including uNet and more 
 			}
 
 			BackButton.onClick.RemoveAllListeners();
-			BackButton.onClick.AddListener(OnlineLobbyManager.Instance.ReturnToStartScreen);
-			if(OnlineLobbyManager.Instance!=null)   BackButton.onClick.AddListener(OnlineLobbyManager.Instance.ReturnToStartScreen); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//BackButton.onClick.AddListener(OnlineLobbyManager.Instance.ReturnToStartScreen);
+			//if(PunLobbyManager.Instance!=null)   BackButton.onClick.AddListener(PunLobbyManager.Instance.ReturnToStartScreen); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) BackButton.onClick.AddListener(OnlineLobbyProxy.Instance.ReturnToStartScreen); // JF: should become the generic way including uNet and more
 
 		}
@@ -134,18 +134,18 @@ namespace MoreMountains.HighroadEngine
 			ConnectedCanvas.gameObject.SetActive(false);
 
 			RefreshOnlineMatchesButton.onClick.RemoveAllListeners();
-			RefreshOnlineMatchesButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickRefreshServerList);
-			if(OnlineLobbyManager.Instance!=null) RefreshOnlineMatchesButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickRefreshServerList); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//RefreshOnlineMatchesButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickRefreshServerList);
+			//if(PunLobbyManager.Instance!=null) RefreshOnlineMatchesButton.onClick.AddListener(PunLobbyManager.Instance.OnClickRefreshServerList); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) RefreshOnlineMatchesButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnClickRefreshServerList); // JF: should become the generic way including uNet and more
 
 			CreateMatchButton.onClick.RemoveAllListeners();
-			CreateMatchButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickCreateMatchmakingGame);
-			if(OnlineLobbyManager.Instance!=null) CreateMatchButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickCreateMatchmakingGame); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//CreateMatchButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickCreateMatchmakingGame);
+			//if(PunLobbyManager.Instance!=null) CreateMatchButton.onClick.AddListener(PunLobbyManager.Instance.OnClickCreateMatchmakingGame); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) CreateMatchButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnClickCreateMatchmakingGame); // JF: should become the generic way including uNet and more
 
 			MMReturnToMainButton.onClick.RemoveAllListeners();
-			MMReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnReturnToMain);
-			if(OnlineLobbyManager.Instance!=null) MMReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnReturnToMain); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//MMReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnReturnToMain);
+			//if(PunLobbyManager.Instance!=null) MMReturnToMainButton.onClick.AddListener(PunLobbyManager.Instance.OnReturnToMain); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) MMReturnToMainButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnReturnToMain); // JF: should become the generic way including uNet and more
 
 		}
@@ -177,7 +177,7 @@ namespace MoreMountains.HighroadEngine
 			{
 				GameObject entry = Instantiate(OnlineLobbyMatchEntryPrefab);
 
-				entry.GetComponent<OnlineLobbyMatchEntry>().Init(matches[i], OnlineLobbyManager.Instance);
+				entry.GetComponent<OnlineLobbyMatchEntry>().Init(matches[i], PunLobbyManager.Instance);
 				entry.transform.SetParent(OnlineMatchesCanvas.transform, false);
 			}
 		}
@@ -213,15 +213,15 @@ namespace MoreMountains.HighroadEngine
 			ConnectedCanvas.gameObject.SetActive(false);
 
 			JoinServerButton.onClick.RemoveAllListeners();
-			JoinServerButton.onClick.AddListener(
-				delegate {OnlineLobbyManager.Instance.OnClickJoinServer(ServerAdressInput.text);}
-			);
+			//JoinServerButton.onClick.AddListener(
+			//	 delegate {OnlineLobbyManager.Instance.OnClickJoinServer(ServerAdressInput.text);}
+			//);
 
 			StartServerButton.onClick.RemoveAllListeners();
-			StartServerButton.onClick.AddListener(OnlineLobbyManager.Instance.OnClickStartHost);
+			//StartServerButton.onClick.AddListener(PunLobbyManager.Instance.OnClickStartHost);
 
 			DirectReturnToMainButton.onClick.RemoveAllListeners();
-			DirectReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnReturnToMain);
+			//DirectReturnToMainButton.onClick.AddListener(PunLobbyManager.Instance.OnReturnToMain);
 		}
 
 		#endregion
@@ -245,8 +245,8 @@ namespace MoreMountains.HighroadEngine
 			WaitPlayersText.text = "";
 
 			OnlineReturnToMainButton.onClick.RemoveAllListeners();
-			OnlineReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnConnectedReturnToMain);
-			if(OnlineLobbyManager.Instance!=null) OnlineReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnConnectedReturnToMain); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//OnlineReturnToMainButton.onClick.AddListener(OnlineLobbyManager.Instance.OnConnectedReturnToMain);
+			//if(PunLobbyManager.Instance!=null) OnlineReturnToMainButton.onClick.AddListener(PunLobbyManager.Instance.OnConnectedReturnToMain); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) OnlineReturnToMainButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnConnectedReturnToMain); // JF: should become the generic way including uNet and more
 
 		}
@@ -299,11 +299,11 @@ namespace MoreMountains.HighroadEngine
 		/// <param name="currentTrack">Current track.</param>
 		public virtual void UpdateTrackInfo(int currentTrack)
 		{
-			TrackImage.sprite = OnlineLobbyManager.Instance.AvailableTracksSprite[currentTrack];
-			TrackNameText.text = OnlineLobbyManager.Instance.AvailableTracksSceneName[currentTrack];	
+			TrackImage.sprite = PunLobbyManager.Instance.AvailableTracksSprite[currentTrack];
+			TrackNameText.text = PunLobbyManager.Instance.AvailableTracksSceneName[currentTrack];	
 
-			if (OnlineLobbyManager.Instance!=null) TrackImage.sprite = OnlineLobbyManager.Instance.AvailableTracksSprite[currentTrack]; // JF: checking if OnlineLobbyManager instance is not null while merging
-			if (OnlineLobbyManager.Instance!=null) TrackNameText.text = OnlineLobbyManager.Instance.AvailableTracksSceneName[currentTrack];	// JF: checking if OnlineLobbyManager instance is not null while merging
+			if (PunLobbyManager.Instance!=null) TrackImage.sprite = PunLobbyManager.Instance.AvailableTracksSprite[currentTrack]; // JF: checking if OnlineLobbyManager instance is not null while merging
+			if (PunLobbyManager.Instance!=null) TrackNameText.text = PunLobbyManager.Instance.AvailableTracksSceneName[currentTrack];	// JF: checking if OnlineLobbyManager instance is not null while merging
 
 			if (OnlineLobbyProxy.Instance!=null ) TrackImage.sprite = OnlineLobbyProxy.Instance.AvailableTracksSprite[currentTrack];  // JF: should become the generic way including uNet and more
 			if (OnlineLobbyProxy.Instance!=null) TrackNameText.text = OnlineLobbyProxy.Instance.AvailableTracksSceneName[currentTrack]; // JF: should become the generic way including uNet and more
@@ -316,8 +316,8 @@ namespace MoreMountains.HighroadEngine
 		{
 			StartGameButton.gameObject.SetActive(true);
 			StartGameButton.onClick.RemoveAllListeners();
-			StartGameButton.onClick.AddListener(OnlineLobbyManager.Instance.OnStartGame);
-			if(OnlineLobbyManager.Instance!=null) StartGameButton.onClick.AddListener(OnlineLobbyManager.Instance.OnStartGame); // JF: checking if OnlineLobbyManager instance is not null while merging
+			//StartGameButton.onClick.AddListener(OnlineLobbyManager.Instance.OnStartGame);
+			//if(PunLobbyManager.Instance!=null) StartGameButton.onClick.AddListener(PunLobbyManager.Instance.OnStartGame); // JF: checking if OnlineLobbyManager instance is not null while merging
 			if(OnlineLobbyProxy.Instance!=null ) StartGameButton.onClick.AddListener(OnlineLobbyProxy.Instance.OnStartGame); // JF: should become the generic way including uNet and more
 
 		}
