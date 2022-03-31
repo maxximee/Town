@@ -366,8 +366,6 @@ namespace MoreMountains.HighroadEngine
 
                     // we first instantiate car for this player. 
                     // the car name value is used to load the prefab from Resources/Vehicles folder.
-                    Debug.LogWarning("init player " + item.VehicleName);
-                    Debug.LogWarning("init: " + prefab + " - " + _currentStartPosition + " - " + StartAngleDegree);
                     GameObject newPlayer = Instantiate(
                                                prefab,
                                                StartPositions[_currentStartPosition],

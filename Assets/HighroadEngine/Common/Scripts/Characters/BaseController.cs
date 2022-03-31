@@ -231,12 +231,12 @@ namespace MoreMountains.HighroadEngine
 
 		public virtual void AltActionPressed()
 		{
-			CurrentGasPedalAmount = -1;
+			AltAction();
 		}
 
 		public virtual void AltActionDown()
 		{
-			CurrentGasPedalAmount = -1;
+			AltAction();
 		}
 
 		public virtual void AltActionReleased()
@@ -320,6 +320,14 @@ namespace MoreMountains.HighroadEngine
 		/// This method triggers the respawn of the vehicle to its last checkpoint
 		/// </summary>
 		public virtual void Respawn()
+		{
+			// Must be overriden in child classes
+		}
+
+		/// <summary>
+		/// This method triggers the action button
+		/// </summary>
+		public virtual void AltAction()
 		{
 			// Must be overriden in child classes
 		}

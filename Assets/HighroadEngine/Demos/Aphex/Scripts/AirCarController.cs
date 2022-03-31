@@ -11,6 +11,13 @@ namespace MoreMountains.HighroadEngine
 	/// </summary>
 	public class AirCarController : BaseController	
 	{
+		[Header("Alt Actions")]
+		public GameObject fireball;
+		public float speed = 1000f;
+		public float reach = 100f;
+		public Transform initPosition;
+		public bool canFire = false;
+
 		[Information("Engine Power force.\n", InformationAttribute.InformationType.Info, false)]
 		/// the engine's power
 		public int EnginePower = 100;
@@ -37,7 +44,9 @@ namespace MoreMountains.HighroadEngine
 
 		protected RaycastHit _groundRaycastHit;
 
-			
+		protected RaycastHit hit;
+
+
 		/// <summary>
 		/// Fixed Update : physics controls
 		/// </summary>
@@ -84,11 +93,43 @@ namespace MoreMountains.HighroadEngine
 			}
 		}
 
-
 		/// <summary>
-		/// Management of the hover and gravity of the vehicle
+		/// This method triggers the action button
 		/// </summary>
-		protected virtual void Hover()
+		public override void AltAction()
+		{
+			if (canFire) { 
+				Vector3 fwd = transform.TransformDirection(Vector3.forward);
+				if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+					{
+						GameObject projectile = Instantiate(fireball, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+						projectile.tag = "Projectile";
+						projectile.name = name+"-Projectile";
+						projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+						projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+					}
+			}
+		}
+
+		public void setCanFire(bool canFire)
+        {
+			this.canFire = canFire;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+			if (collision.gameObject.tag == "Projectile" &&  !collision.gameObject.name.StartsWith(name)) { 
+				_rigidbody.velocity = Vector3.zero;
+				_rigidbody.AddForce(Vector3.back);
+				Debug.Log("collision between Projectile and me " + name);
+			}
+		}
+
+
+        /// <summary>
+        /// Management of the hover and gravity of the vehicle
+        /// </summary>
+        protected virtual void Hover()
 		{
 			// we enforce isgrounded to false before calculations
 			IsGrounded = false;

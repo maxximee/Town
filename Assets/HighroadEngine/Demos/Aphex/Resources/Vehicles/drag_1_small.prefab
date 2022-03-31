@@ -24478,14 +24478,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e15be7e2fd9e4bd7b563fb243115d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoostForce: 200
+  BoostForce: 100
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 200
+  SteeringSpeed: 150
   AutoForward: 0
-  EnginePower: 60000
-  LateralSteeringForce: 6000
-  MaxSpeed: 100
-  HoverHeight: 1
+  fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
+  speed: 1000
+  reach: 50
+  initPosition: {fileID: 4332033017895851048}
+  canFire: 0
+  EnginePower: 32000
+  LateralSteeringForce: 100
+  MaxSpeed: 75
+  HoverHeight: 2.5
   HoverGravityForce: 1000
   HoverForce: 100
   OrientationGroundSpeed: 10
@@ -24502,12 +24507,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 1
-  TimeBeforeStuck: 3
-  MinimalDistanceToNextWaypoint: 5
-  FullThrottle: 0.8
+  TimeBeforeStuck: 0
+  MinimalDistanceToNextWaypoint: 6
+  FullThrottle: 0.7
   SmallThrottle: 0.4
   OverrideSteringSpeed: 1
-  SteeringSpeed: 400
+  SteeringSpeed: 200
 --- !u!114 &114000012370787582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24650,6 +24655,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1933227616768409073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4332033017895851048}
+  m_Layer: 0
+  m_Name: FireballInitPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4332033017895851048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933227616768409073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.636, z: 1.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3060821321875738975}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8578815384213482743
 PrefabInstance:
   m_ObjectHideFlags: 0

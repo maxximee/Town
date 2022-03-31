@@ -689,15 +689,17 @@ MonoBehaviour:
   LobbyScene: LocalLobby
   AvailableVehiclesPrefabs:
   - {fileID: 1000014190538214, guid: c69cf42fe19d1d94c988fa90d1e4633d, type: 3}
-  - {fileID: 123484, guid: 8cd0ae130571c54488f6abc5a840a58c, type: 3}
-  - {fileID: 174988, guid: 79c24688154e26242b2674bf418427e6, type: 3}
-  - {fileID: 146580, guid: 59dace135c966c644a3e87d8bbc33fb3, type: 3}
+  - {fileID: 1000014190538214, guid: 7a4d6b31630a1a84ea7197306cea8216, type: 3}
+  - {fileID: 1000014190538214, guid: 036f455973f92c545ab35656a1aa53b4, type: 3}
+  - {fileID: 1000014190538214, guid: 9c7a0d9d40e16ad40bdadc35afee5740, type: 3}
   AvailableTracksSceneName:
   - Town
   - Mini
+  - Demo
   AvailableTracksSprite:
   - {fileID: 21300000, guid: 62dd766d8ee2ed54c94c766382693f86, type: 3}
   - {fileID: 21300000, guid: 526f571fe0788b24c8b3fa03d5574b0b, type: 3}
+  - {fileID: 21300000, guid: 2911f575a7ffd16479a301ec64db3e97, type: 3}
 --- !u!4 &734957609
 Transform:
   m_ObjectHideFlags: 0

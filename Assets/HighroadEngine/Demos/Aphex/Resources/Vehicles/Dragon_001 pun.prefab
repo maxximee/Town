@@ -24480,10 +24480,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e15be7e2fd9e4bd7b563fb243115d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoostForce: 100
+  BoostForce: 150
   RigidBodyDragInLoop: 1
   SteeringSpeed: 110
   AutoForward: 0
+  fireball: {fileID: 0}
+  speed: 1000
+  reach: 100
+  initPosition: {fileID: 0}
   EnginePower: 200000
   LateralSteeringForce: 6000
   MaxSpeed: 100
