@@ -6,7 +6,7 @@ using UnityEngine;
 public class Manager : Singleton<Manager>
 {
     private static string selectedDragon = "0";
-
+    private static List<MarketItem> marketItems = new List<MarketItem>();
 
     void Awake()
     {
@@ -22,6 +22,16 @@ public class Manager : Singleton<Manager>
     public static string getSelectedDragon()
     {
         return selectedDragon;
+    }
+
+    public static void SetMarketItems(List<MarketItem> items)
+    {
+        marketItems = items;
+    }
+
+    public static List<MarketItem> GetMarketItems()
+    {
+        return marketItems;
     }
 }
 

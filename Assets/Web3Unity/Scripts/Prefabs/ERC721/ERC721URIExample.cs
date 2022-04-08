@@ -39,7 +39,7 @@ public class ERC721URIExample : MonoBehaviour
     private int currentIndex = 0;
     async void Start()
     {
-        // Load all tokenIds of current user
+        // TODO Load all tokenIds of current user. we should get the owned (where uri is current)
        if (testAccount)
         {
             PlayerPrefs.SetString("tokenIds", "0,1,2");

@@ -117,6 +117,7 @@
     <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\CustomCallExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\BloomComponent.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\OnlineLobbyProxy.cs" />
+    <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Shader\OutlinedFromPiggs\DepthNormalsFeature.cs" />
     <Compile Include="Assets\HighroadEngine\Demos\Aphex\Scripts\AirCarBehaviour.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchJoystick.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
     <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeyAddressExample.cs" />
+    <Compile Include="Assets\DragonManager.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMMovement.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchRepositionableJoystick.cs" />
@@ -321,8 +323,8 @@
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
     <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\NonceExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-    <Compile Include="Assets\Scripts\Manager.cs" />
-    <Compile Include="Assets\DragonManager.cs" />
+    <Compile Include="Assets\Scripts\MarketItem.cs" />
+    <Compile Include="Assets\LoadMarketPlace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
