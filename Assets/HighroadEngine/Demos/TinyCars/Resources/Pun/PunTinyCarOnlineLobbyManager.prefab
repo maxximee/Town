@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PunGameVersion: 1
-  GameType: 0
+  GameType: 1
   MaxPlayers: 4
   LobbyScene: OnlineLobby
   AvailableVehiclesPrefab:
@@ -54,11 +54,13 @@ MonoBehaviour:
   - {fileID: 174988, guid: e5377c90f1be74a5990fdc1eb820706f, type: 3}
   - {fileID: 146580, guid: ba7cd8d58f6744bb5a4159f820a27f48, type: 3}
   AvailableTracksSceneName:
-  - Town
+  - Demo
   - Mini
+  - Town
   AvailableTracksSprite:
-  - {fileID: 21300010, guid: af5bb0b69fb122a45afa566d267dec5b, type: 3}
-  - {fileID: 21300012, guid: af5bb0b69fb122a45afa566d267dec5b, type: 3}
+  - {fileID: 21300000, guid: 2911f575a7ffd16479a301ec64db3e97, type: 3}
+  - {fileID: 21300000, guid: 526f571fe0788b24c8b3fa03d5574b0b, type: 3}
+  - {fileID: 21300000, guid: 62dd766d8ee2ed54c94c766382693f86, type: 3}
   _onlineLobbyUI: {fileID: 0}
 --- !u!114 &114413120417304352
 MonoBehaviour:

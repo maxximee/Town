@@ -28,7 +28,7 @@ namespace MoreMountains.HighroadEngine
         // Max players value
         public int MaxPlayers = 4;
         /// Name of the lobby scene
-        public string LobbyScene = "OnlineLobby";
+        public string LobbyScene = "TinyCarsOnlineLobby";
 
         [Header("Vehicles configuration")]
         /// the list of vehicles prefabs the player can choose from.
@@ -45,7 +45,6 @@ namespace MoreMountains.HighroadEngine
         // Activate debug logs in console
 
         protected bool _destroyInstance = false;
-        static public PunLobbyManager Instance;
 
         /// <summary>
         /// Initializes the manager
@@ -55,8 +54,6 @@ namespace MoreMountains.HighroadEngine
             DontDestroyOnLoad(this.gameObject);
 
             OnlineLobbyProxy.Instance = this;
-
-            Instance = this;
 
             _onlineLobbyUI = GetComponentInChildren<OnlineLobbyUI>();
 
@@ -252,7 +249,6 @@ namespace MoreMountains.HighroadEngine
 #if PUN_2_OR_NEWER
             string _gameVersion = this.GameType.ToString() + "/" + PunGameVersion.ToString();
             // connect
-            Debug.LogWarning("using photon settings: " + _gameVersion);
             PhotonNetwork.GameVersion = _gameVersion;
             PhotonNetwork.ConnectUsingSettings();
 #endif

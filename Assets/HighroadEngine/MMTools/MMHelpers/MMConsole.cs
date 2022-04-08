@@ -51,12 +51,20 @@ namespace MoreMountains.Tools
 		/// <param name="fontSize">Font size.</param>
 		public virtual void SetFontSize(int fontSize)
 		{
-			Mathf.Clamp(fontSize,10,100);
-
 			_fontSize = fontSize;
 			_characterHeight = (int)Mathf.Round(1.6f * fontSize + 0.49f);
 			_characterWidth = (int)Mathf.Round(0.6f * fontSize + 0.49f);
+		}
 
+        /// <summary>
+        /// Sets the screen offset, from the top left corner
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="left"></param>
+		public virtual void SetScreenOffset(int top = 10, int left = 10)
+		{
+			_marginTop = top;
+			_marginLeft = left;
 		}
 
 		/// <summary>
@@ -85,7 +93,7 @@ namespace MoreMountains.Tools
 			}
 
 			// we add the specified message to the stack
-			_messageStack+=newMessage+"\n";
+			_messageStack += newMessage+"\n";
 			// if this new message is longer than our previous longer message, we store it (this will expand the box's width
 			if (newMessage.Length > _largestMessageLength)
 			{

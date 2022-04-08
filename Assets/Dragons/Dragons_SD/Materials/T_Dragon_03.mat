@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: T_Dragon_03
-  m_Shader: {fileID: -6465566751694194690, guid: 6c9f203466c8a7e48ac65949186a1ca2, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6c9f203466c8a7e48ac65949186a1ca2,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -119,13 +120,13 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeThickness: 1
-    - _FalloffAmount: 0.01
-    - _FresnelSize: 0.05
+    - _FalloffAmount: 0
+    - _FresnelSize: 0.04
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 1
-    - _LightingCutoff: 0
+    - _LightingCutoff: 0.001
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -133,7 +134,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 0
-    - _Smoothness: 1000
+    - _Smoothness: 10000
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
@@ -146,10 +147,10 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _FresnelColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+    - _FresnelColor: {r: 0.6415094, g: 0.5667615, b: 0.39136106, a: 1}
     - _ShadowColor: {r: 0.8, g: 0.8, b: 1, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    - _SpecularColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    - _SpecularColor: {r: 0.76470596, g: 0.7254902, b: 0.69411767, a: 1}
   m_BuildTextureStacks: []

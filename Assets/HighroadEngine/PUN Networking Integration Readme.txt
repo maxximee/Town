@@ -12,7 +12,7 @@ You can get PUN 2 from the Asset store: https://assetstore.unity.com/packages/to
 WHAT AM I SUPPOSED TO DO WITH IT ?
 ----------------------------------
 
-One you have installed PUN 2, you need to setup an APPID with Pun, on their online dashboard
+Once you have installed PUN 2, you need to setup an APPID with Pun, on their online dashboard
 
 
 I DON'T WANT TO USE PUN, HOW DO I CLEAN UP THE PROJECT

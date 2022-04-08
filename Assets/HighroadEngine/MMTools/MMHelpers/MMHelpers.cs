@@ -2,11 +2,12 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Reflection;
 
 namespace MoreMountains.Tools
 {	
 	/// <summary>
-	/// Various static methods used throughout the Infinite Runner Engine and the Corgi Engine.
+	/// Various helpers
 	/// </summary>
 
 	public static class MMHelpers 
@@ -14,18 +15,21 @@ namespace MoreMountains.Tools
 		public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 		{
 			System.Type type = original.GetType();
-	         var dst = destination.GetComponent(type) as T;
+	         T dst = destination.GetComponent(type) as T;
 	         if (!dst) dst = destination.AddComponent(type) as T;
-	         var fields = type.GetFields();
-	         foreach (var field in fields)
+             FieldInfo[] fields = type.GetFields();
+	         foreach (FieldInfo field in fields)
 	         {
 	             if (field.IsStatic) continue;
 	             field.SetValue(dst, field.GetValue(original));
 	         }
-	         var props = type.GetProperties();
-	         foreach (var prop in props)
+             PropertyInfo[] props = type.GetProperties();
+	         foreach (PropertyInfo prop in props)
 	         {
-	             if (!prop.CanWrite || !prop.CanWrite || prop.Name == "name") continue;
+                if (!prop.CanWrite || !prop.CanWrite || prop.Name == "name")
+                {
+                    continue;
+                }
 	             prop.SetValue(dst, prop.GetValue(original, null), null);
 	         }
 	         return dst as T;

@@ -206,6 +206,8 @@ namespace MoreMountains.HighroadEngine
 			else 
 			{
 				PlayerNameText.text = "Player #" + (Position + 1);
+				Debug.Log("retrieving selected dragon from manager: " + Manager.getSelectedDragon());
+				_currentVehicleIndex = int.Parse(Manager.getSelectedDragon());
 				CancelPlayer();
 			}
 		}
@@ -340,8 +342,8 @@ namespace MoreMountains.HighroadEngine
 		protected virtual void CancelPlayer()
 		{
 			// Player cancels ready state
-			LeftButton.gameObject.SetActive(true);
-			RightButton.gameObject.SetActive(true);
+			//LeftButton.gameObject.SetActive(true);
+			//RightButton.gameObject.SetActive(true);
 			RemovePlayerButton.gameObject.SetActive(true);
 			ReadyButton.gameObject.SetActive(true);
 

@@ -17,7 +17,7 @@ namespace MoreMountains.HighroadEngine
 	public class Waypoints : MonoBehaviour 
 	{
 		/// the points that make up the path the object will follow
-		[Information("Add points to the <b>Path</b> (set the size of the path first), then position the points using either the inspector or by moving the handles directly in scene view. The order of the points will be the order the object follows.\n", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("Add points to the <b>Path</b> (set the size of the path first), then position the points using either the inspector or by moving the handles directly in scene view. The order of the points will be the order the object follows.\n", MMInformationAttribute.InformationType.Info, false)]
 		[Header("Path")]
 		/// the list of items
 		public List<Vector3> items;
@@ -49,12 +49,12 @@ namespace MoreMountains.HighroadEngine
 				// we draw a line towards the next point in the path
 				if ((i + 1) < items.Count)
 				{
-					MMDebug.GizmosDrawArrow(items[i], items[i + 1] - items[i], Color.yellow);
+					MMDebug.DrawGizmoArrow(items[i], items[i + 1] - items[i], Color.yellow);
 				}
 				// we draw a line from the first to the last point if we're looping
 				if ( (i == items.Count - 1))
 				{
-					MMDebug.GizmosDrawArrow(items[0], items[i] - items[0], Color.yellow);
+					MMDebug.DrawGizmoArrow(items[0], items[i] - items[0], Color.yellow);
 				}
 			}
 			#endif

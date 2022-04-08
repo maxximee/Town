@@ -10,14 +10,14 @@ namespace MoreMountains.HighroadEngine
     public class IsometricCameraController : CameraController 
 	{
 		[Header("Targets")]
-		[Information("When human players are active, do you want the camera to also follow bots?",InformationAttribute.InformationType.Info,false)]
+		[MMInformation("When human players are active, do you want the camera to also follow bots?",MMInformationAttribute.InformationType.Info,false)]
 		/// If set to true, camera will follow humans and bot players on the track.
 		public bool FollowBotPlayers;
 
 		[Header("Camera Controls")]
 		/// the time (in seconds) before the camera starts to focus on the targets. Allows a smooth follow effect 
         public float DampTime = 0.2f; 
-		[Information("For a single fast velocity object, a low damp time value will make the screen moving too fast. Use this different value to have a smooth movement.", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("For a single fast velocity object, a low damp time value will make the screen moving too fast. Use this different value to have a smooth movement.", MMInformationAttribute.InformationType.Info, false)]
 		/// the time (in seconds) it takes the camera to focus when the target is a single vehicle
 		public float SingleDampTime = 1f;
 		/// the space added around the rectangle made by two most distant cars

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 
 #if PUN_2_OR_NEWER
+using MoreMountains.Tools;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
@@ -99,9 +100,11 @@ namespace MoreMountains.HighroadEngine
                 OnlineLobbyProxy.Instance.OnlineLobbyUIManager.HidePopup();
             }
 
-            int slot = this.photonView.Owner.GetPlayerNumber();
-
+            //int slot = this.photonView.Owner.GetPlayerNumber();
+            int slot = this.photonView.Owner.ActorNumber -  1;
             // we look for the associated player gui zone
+            
+            
             RectTransform slotZone = OnlineLobbyProxy.Instance.OnlineLobbyUIManager.PlayersSelection[slot];
 
             if (slotZone != null)
@@ -437,15 +440,6 @@ namespace MoreMountains.HighroadEngine
                 buttonText.text = "READY ?";
                 ReadyButton.image.sprite = ReadyButtonSprite;
             }
-        }
-
-        /// <summary>
-        /// Rpc Call used to show popup loading scren before race scene is loaded.
-        /// </summary>
-        /// <param name="scenename">Scenename.</param>
-        public virtual void RpcOnStartGame(string scenename)
-        {
-         //   OnlineLobbyManager.Instance._onlineLobbyUI.ShowPopup("Loading " + scenename + "...");
         }
     }
 }

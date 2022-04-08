@@ -18,37 +18,43 @@ namespace MoreMountains.Tools
 	/// </summary>
 	[RequireComponent(typeof(Rect))]
 	[RequireComponent(typeof(CanvasGroup))]
-	public class MMTouchJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
+    [AddComponentMenu("More Mountains/Tools/Controls/MMTouchJoystick")]
+    public class MMTouchJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
 	{
 		[Header("Camera")]
 		public Camera TargetCamera;
 
 		[Header("Pressed Behaviour")]
-		[Information("Here you can set the opacity of the joystick when it's pressed. Useful for visual feedback.",InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Here you can set the opacity of the joystick when it's pressed. Useful for visual feedback.", MMInformationAttribute.InformationType.Info,false)]
 		/// the new opacity to apply to the canvas group when the button is pressed
 		public float PressedOpacity = 0.5f;
 
 		[Header("Axis")]
-		[Information("Choose if you want a joystick limited to one axis or not, and define the MaxRange. The MaxRange is the maximum distance from its initial center position you can drag the joystick to.",InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Choose if you want a joystick limited to one axis or not, and define the MaxRange. The MaxRange is the maximum distance from its initial center position you can drag the joystick to.",MMInformationAttribute.InformationType.Info,false)]
 		/// Is horizontal axis allowed
 		public bool HorizontalAxisEnabled = true;
 		/// Is vertical axis allowed
 		public bool VerticalAxisEnabled = true;
 		/// The max range allowed
-		[Information("And finally you can bind a function to get your joystick's values. Your method has to have a Vector2 as a parameter. Drag your object here and select the method.",InformationAttribute.InformationType.Info,true)]
+		[MMInformation("And finally you can bind a function to get your joystick's values. Your method has to have a Vector2 as a parameter. Drag your object here and select the method.", MMInformationAttribute.InformationType.Info,false)]
 		public float MaxRange = 1.5f;
 
 		[Header("Binding")]
 		/// The method(s) to call when the button gets pressed down
 		public JoystickEvent JoystickValue;
 
+		[Header("Rotating Direction Indicator")] 
+		/// an object you can rotate to show the direction of the joystick. Will only be visible if the movement is above a threshold
+		public Transform RotatingIndicator;
+		/// the threshold above which the rotating indicator will appear
+		public float RotatingIndicatorThreshold = 0.1f;
 
 		public RenderMode ParentCanvasRenderMode { get; protected set; }
 
 		/// Store neutral position of the stick
 		protected Vector2 _neutralPosition;
 		/// Current horizontal and vertical values of the joystick (from -1 to 1)
-		protected Vector2 _joystickValue;
+		public Vector2 _joystickValue;
 		/// The canvas rect transform we're working with.
 		protected RectTransform _canvasRectTransform;
 		/// working vector
@@ -58,29 +64,48 @@ namespace MoreMountains.Tools
 
 	    protected CanvasGroup _canvasGroup;
 		protected float _initialOpacity;
+		protected Transform _knobTransform;
+		protected bool _rotatingIndicatorIsNotNull = false;
 
 
-		/// <summary>
-		/// On Start, we get our working canvas, and we set our neutral position
-		/// </summary>
-		protected virtual void Start()
-		{
-			Initialize();
-		}
+        /// <summary>
+        /// On Start, we get our working canvas, and we set our neutral position
+        /// </summary>
+        protected virtual void Awake()
+        {
+           // Initialize();
+        }
 
-		public virtual void Initialize()
+        protected virtual void Start()
+        {
+            Initialize();
+        }
+
+        public virtual void Initialize()
 		{
 			_canvasRectTransform = GetComponentInParent<Canvas>().transform as RectTransform;
 			_canvasGroup = GetComponent<CanvasGroup>();
+			_rotatingIndicatorIsNotNull = (RotatingIndicator != null);
 
-			SetNeutralPosition();
+			SetKnobTransform(this.transform);
+
+            SetNeutralPosition();
 			if (TargetCamera == null)
 			{
 				throw new Exception("MMTouchJoystick : you have to set a target camera");
 			}
 			ParentCanvasRenderMode = GetComponentInParent<Canvas>().renderMode;
-			_initialZPosition = transform.position.z;
-			_initialOpacity = _canvasGroup.alpha;
+			_initialZPosition = _knobTransform.position.z;
+			_initialOpacity = _canvasGroup.alpha;			
+		}
+
+        /// <summary>
+        /// Assigns a new transform as the joystick knob
+        /// </summary>
+        /// <param name="newTransform"></param>
+		public virtual void SetKnobTransform(Transform newTransform)
+		{
+			_knobTransform = newTransform;
 		}
 
 		/// <summary>
@@ -88,22 +113,36 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void Update()
 		{
-			if (JoystickValue != null)
+            if (JoystickValue != null)
 			{
 				if (HorizontalAxisEnabled || VerticalAxisEnabled)
 				{
 					JoystickValue.Invoke(_joystickValue);
 				}
 			}
+
+            RotateIndicator();
 		}
 
+		protected virtual void RotateIndicator()
+		{
+			if (!_rotatingIndicatorIsNotNull)
+			{
+				return;
+			}
+
+			RotatingIndicator.gameObject.SetActive(_joystickValue.magnitude > RotatingIndicatorThreshold);
+			float angle = Mathf.Atan2(_joystickValue.y, _joystickValue.x) * Mathf.Rad2Deg;
+			RotatingIndicator.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		}
+		
 		/// <summary>
 		/// Sets the neutral position of the joystick
 		/// </summary>
 		public virtual void SetNeutralPosition()
 		{
-			_neutralPosition = GetComponent<RectTransform>().transform.position;
-		}
+            _neutralPosition = _knobTransform.position;
+        }
 
 		public virtual void SetNeutralPosition(Vector3 newPosition)
 		{
@@ -115,12 +154,12 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual void OnDrag(PointerEventData eventData)
 		{
-			_canvasGroup.alpha=PressedOpacity;
+			_canvasGroup.alpha = PressedOpacity;
 
 			// if we're in "screen space - camera" render mode
 			if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
 			{
-					_newTargetPosition = TargetCamera.ScreenToWorldPoint(eventData.position);
+				_newTargetPosition = TargetCamera.ScreenToWorldPoint(eventData.position);
 			}
 			// otherwise
 			else
@@ -148,7 +187,7 @@ namespace MoreMountains.Tools
 			_newJoystickPosition.z = _initialZPosition;
 
 			// We move the joystick to its dragged position
-			transform.position = _newJoystickPosition;
+			_knobTransform.position = _newJoystickPosition;
 		}
 
 		/// <summary>
@@ -159,7 +198,7 @@ namespace MoreMountains.Tools
 			// we reset the stick's position
 			_newJoystickPosition = _neutralPosition;
 			_newJoystickPosition.z = _initialZPosition;
-			transform.position = _newJoystickPosition;
+			_knobTransform.position = _newJoystickPosition;
 			_joystickValue.x = 0f;
 			_joystickValue.y = 0f;
 

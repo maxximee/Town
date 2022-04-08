@@ -10,6 +10,7 @@ TagManager:
   - JumpBoost
   - LoopZone
   - Projectile
+  - IntroDragon
   layers:
   - Default
   - TransparentFX

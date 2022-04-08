@@ -25,7 +25,6 @@ namespace MoreMountains.Tools
 
 	/// <summary>
 	/// Public interface for the state machine.
-	/// This is used by the StateMachineProcessor.
 	/// </summary>
 	public interface MMIStateMachine
 	{
@@ -39,12 +38,11 @@ namespace MoreMountains.Tools
 	/// Initialize it like that : ConditionStateMachine = new StateMachine<CharacterConditions>();
 	/// Then from anywhere, all you need to do is update its state when needed, like that for example : ConditionStateMachine.ChangeState(CharacterConditions.Dead);
 	/// The state machine will store for you its current and previous state, accessible at all times, and will also optionnally trigger events on enter/exit of these states.
-	/// You can go further by using a StateMachineProcessor class, to trigger more events (see the list below).
 	/// </summary>
 	public class MMStateMachine<T> : MMIStateMachine where T : struct, IComparable, IConvertible, IFormattable
 	{
 		/// If you set TriggerEvents to true, the state machine will trigger events when entering and exiting a state. 
-		/// Additionnally, if you also use a StateMachineProcessor, it'll trigger events for the current state on FixedUpdate, LateUpdate, but also
+		/// Additionnally, it has options to trigger events for the current state on FixedUpdate, LateUpdate, but also
 		/// on Update (separated in EarlyUpdate, Update and EndOfUpdate, triggered in this order at Update()
 		/// To listen to these events, from any class, in its Start() method (or wherever you prefer), use MMEventManager.StartListening(gameObject.GetInstanceID().ToString()+"XXXEnter",OnXXXEnter);
 		/// where XXX is the name of the state you're listening to, and OnXXXEnter is the method you want to call when that event is triggered.
@@ -58,12 +56,29 @@ namespace MoreMountains.Tools
 		/// the character's movement state before entering the current one
 		public T PreviousState { get; protected set; }
 
-		/// <summary>
-		/// Creates a new StateMachine, with a targetName (used for events, usually use GetInstanceID()), and whether you want to use events with it or not
-		/// </summary>
-		/// <param name="targetName">Target name.</param>
-		/// <param name="triggerEvents">If set to <c>true</c> trigger events.</param>
-		public MMStateMachine(GameObject target, bool triggerEvents)
+        public delegate void OnStateChangeDelegate();
+        /// an event you can listen to to listen locally to changes on that state machine
+        /// to listen to them, from any class : 
+        /// void OnEnable()
+        /// {
+        ///    yourReferenceToTheStateMachine.OnStateChange += OnStateChange;
+        /// }
+        /// void OnDisable()
+        /// {
+        ///    yourReferenceToTheStateMachine.OnStateChange -= OnStateChange;
+        /// }
+        /// void OnStateChange()
+        /// {
+        ///    // Do something
+        /// }
+        public OnStateChangeDelegate OnStateChange;
+
+        /// <summary>
+        /// Creates a new StateMachine, with a targetName (used for events, usually use GetInstanceID()), and whether you want to use events with it or not
+        /// </summary>
+        /// <param name="targetName">Target name.</param>
+        /// <param name="triggerEvents">If set to <c>true</c> trigger events.</param>
+        public MMStateMachine(GameObject target, bool triggerEvents)
 		{
 			this.Target = target;
 			this.TriggerEvents = triggerEvents;
@@ -76,32 +91,18 @@ namespace MoreMountains.Tools
 		public virtual void ChangeState(T newState)
 		{
 			// if the "new state" is the current one, we do nothing and exit
-			if (newState.Equals(CurrentState))
+			if (EqualityComparer<T>.Default.Equals(newState, CurrentState))
 			{
 				return;
 			}
-
-
-			// if we've chosen to trigger events, we trigger our exit event
-			/*if (TriggerEvents)
-			{
-				MMEventManager.TriggerEvent(TargetName+CurrentState.ToString()+"Exit");
-			}*/
 
 			// we store our previous character movement state
 			PreviousState = CurrentState;
 			CurrentState = newState;
 
-			// uncomment this to debug state changes.
-			//MMDebug.DebugLogTime ("new state : " + newState);
+            OnStateChange?.Invoke();
 
-			// if we've chosen to trigger events, we trigger our enter event
-			/*if (TriggerEvents)
-			{
-				MMEventManager.TriggerEvent(TargetName+newState.ToString()+"Enter");
-			}*/
-
-			if (TriggerEvents)
+            if (TriggerEvents)
 			{
 				MMEventManager.TriggerEvent (new MMStateChangeEvent<T> (this));
 			}
@@ -112,22 +113,12 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual void RestorePreviousState()
 		{
-			// if we've chosen to trigger events, we trigger our exit event
-			/*if (TriggerEvents)
-			{
-				MMEventManager.TriggerEvent(TargetName+CurrentState.ToString()+"Exit");
-			}*/
-
 			// we restore our previous state
 			CurrentState = PreviousState;
 
-			// if we've chosen to trigger events, we trigger our enter event
-			/*if (TriggerEvents)
-			{
-				MMEventManager.TriggerEvent(TargetName+CurrentState.ToString()+"Enter");
-			}*/
+            OnStateChange?.Invoke();
 
-			if (TriggerEvents)
+            if (TriggerEvents)
 			{
 				MMEventManager.TriggerEvent (new MMStateChangeEvent<T> (this));
 			}

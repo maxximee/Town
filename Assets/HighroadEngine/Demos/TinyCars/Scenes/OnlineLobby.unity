@@ -124,85 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &147596549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 147596552}
-  - component: {fileID: 147596551}
-  - component: {fileID: 147596550}
-  m_Layer: 5
-  m_Name: WaitingText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &147596550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147596549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 09a4f75c89fc546289d9d468e1ce351b, type: 3}
-    m_FontSize: 32
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: WAITING FOR PLAYERS TO JOIN...
---- !u!222 &147596551
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147596549}
-  m_CullTransparentMesh: 1
---- !u!224 &147596552
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147596549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224000011675795991}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -28}
-  m_SizeDelta: {x: 698, y: 128}
-  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &365750441
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035f1981c81744daaaee5205c0c88167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnityNetwork: {fileID: 1059075504}
+  UnityNetwork: {fileID: 0}
   PhotonUnityNetworkPrefabResource: Pun/PunTinyCarOnlineLobbyManager
   OnlineUI: {fileID: 1000010283335763}
 --- !u!4 &1027192354
@@ -367,62 +288,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1059075504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1059075507}
-  - component: {fileID: 1059075506}
-  m_Layer: 0
-  m_Name: OnlineLobbyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1059075506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059075504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e56e8ddf50d6b4eec9b2db109fe94da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PunGameVersion: 1
-  GameType: 0
-  MaxPlayers: 4
-  LobbyScene: OnlineLobby
-  AvailableVehiclesPrefab:
-  - {fileID: 1000014190538214, guid: 40bd4d2152554ed45ab376d4fa9fcb42, type: 3}
-  AvailableTracksSceneName:
-  - Town
-  - Mini
-  AvailableTracksSprite:
-  - {fileID: 21300000, guid: 62dd766d8ee2ed54c94c766382693f86, type: 3}
-  - {fileID: 21300000, guid: 526f571fe0788b24c8b3fa03d5574b0b, type: 3}
-  _onlineLobbyUI: {fileID: 114000014175644699}
---- !u!4 &1059075507
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059075504}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434044544
 GameObject:
@@ -2254,7 +2119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059075506}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: ReturnToStartScreen
         m_Mode: 1
@@ -3862,8 +3727,12 @@ MonoBehaviour:
   TrackImage: {fileID: 114000011242222563}
   TrackNameText: {fileID: 114000012348336509}
   StartGameButton: {fileID: 114000012201632365}
-  PlayersSelection: []
-  WaitPlayersText: {fileID: 147596550}
+  PlayersSelection:
+  - {fileID: 224000012581703605}
+  - {fileID: 224000011198948135}
+  - {fileID: 224000010777157397}
+  - {fileID: 224000013326710649}
+  WaitPlayersText: {fileID: 114000011594758189}
   PopupCanvas: {fileID: 224000014045779557}
   PopupText: {fileID: 114000011881266507}
   PopupActionButton: {fileID: 114000011984679531}
@@ -4629,7 +4498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -105.7}
+  m_AnchoredPosition: {x: 0, y: -137}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000010533847467
@@ -4667,7 +4536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 15.9999695}
+  m_AnchoredPosition: {x: 0, y: 16}
   m_SizeDelta: {x: 698, y: 128}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224000010638550531
@@ -4926,7 +4795,6 @@ RectTransform:
   - {fileID: 224000011198948135}
   - {fileID: 224000010777157397}
   - {fileID: 224000013326710649}
-  - {fileID: 147596552}
   m_Father: {fileID: 224000012993549679}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5096,7 +4964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.00026, y: 174}
+  m_AnchoredPosition: {x: -18.00026, y: 132.4}
   m_SizeDelta: {x: 1110, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000012251683193

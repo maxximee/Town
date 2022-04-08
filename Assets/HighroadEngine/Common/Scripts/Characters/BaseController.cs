@@ -241,7 +241,7 @@ namespace MoreMountains.HighroadEngine
 
 		public virtual void AltActionReleased()
 		{
-			CurrentGasPedalAmount = 0;
+			
 		}
 
 		public virtual void RespawnActionPressed()
@@ -325,7 +325,7 @@ namespace MoreMountains.HighroadEngine
 		}
 
 		/// <summary>
-		/// This method triggers the action button
+		/// This method triggers the alternative action (B button)
 		/// </summary>
 		public virtual void AltAction()
 		{

@@ -7,7 +7,7 @@ namespace MoreMountains.Tools
 {	
 	public static class MMAchievementMenu 
 	{
-		[MenuItem("More Mountains/Reset all achievements",false,21)]
+		[MenuItem("Tools/More Mountains/Reset all achievements", false,21)]
 		/// <summary>
 		/// Adds a menu item to enable help
 		/// </summary>

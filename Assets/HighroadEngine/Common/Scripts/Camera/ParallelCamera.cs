@@ -12,7 +12,7 @@ namespace MoreMountains.HighroadEngine
 	public class ParallelCamera : CameraController
 	{
 		[Header("Mouse Control")]
-		[Information("If true, allow mouse to control camera position and movement with a left button drag.\n", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("If true, allow mouse to control camera position and movement with a left button drag.\n", MMInformationAttribute.InformationType.Info, false)]
 		/// Whether or not mouse mode is active
 		public bool MouseController;
 		/// the camera's movement speed

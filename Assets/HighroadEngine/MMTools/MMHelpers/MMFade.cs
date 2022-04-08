@@ -6,7 +6,7 @@ using System;
 namespace MoreMountains.Tools
 {
 	/// <summary>
-	/// Various static methods used throughout the Infinite Runner Engine and the Corgi Engine.
+	/// Fade helpers
 	/// </summary>
 
 	public static class MMFade
@@ -87,10 +87,13 @@ namespace MoreMountains.Tools
 
 			}
 			Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-			target.material.color=finalColor;
+			if (target != null)
+			{
+				target.material.color=finalColor;	
+			}
 		}
 
-		public static IEnumerator FadeCanvasGroup(CanvasGroup target, float duration, float targetAlpha)
+		public static IEnumerator FadeCanvasGroup(CanvasGroup target, float duration, float targetAlpha, bool unscaled = true)
 		{
 			if (target==null)
 				yield break;
@@ -103,14 +106,21 @@ namespace MoreMountains.Tools
 				if (target==null)
 					yield break;
 
-				float newAlpha =Mathf.SmoothStep(currentAlpha,targetAlpha,t);
+				float newAlpha = Mathf.SmoothStep(currentAlpha,targetAlpha,t);
 				target.alpha=newAlpha;
 
-				t += Time.deltaTime / duration;
+				if (unscaled)
+				{
+					t += Time.unscaledDeltaTime / duration;	
+				}
+				else
+				{
+					t += Time.deltaTime / duration;
+				}
 
 				yield return null;
-
 			}
+
 			target.alpha=targetAlpha;
 		}
 

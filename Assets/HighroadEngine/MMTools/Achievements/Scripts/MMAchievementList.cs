@@ -22,7 +22,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual void ResetAchievements()
 		{
-			MMDebug.DebugLogTime ("Reset Achievements");
+			Debug.LogFormat ("Reset Achievements");
 			MMAchievementManager.ResetAchievements (AchievementsListID);
 		}
 	}

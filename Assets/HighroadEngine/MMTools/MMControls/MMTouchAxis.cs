@@ -9,14 +9,15 @@ namespace MoreMountains.Tools
 	[System.Serializable]
 	public class AxisEvent : UnityEvent<float> {}
 
+    /// <summary>
+    /// Add this component to a GUI Image to have it act as an axis. 
+    /// Bind pressed down, pressed continually and released actions to it from the inspector
+    /// Handles mouse and multi touch
+    /// </summary>
 	[RequireComponent(typeof(Rect))]
-	[RequireComponent(typeof(CanvasGroup))]
-	/// <summary>
-	/// Add this component to a GUI Image to have it act as an axis. 
-	/// Bind pressed down, pressed continually and released actions to it from the inspector
-	/// Handles mouse and multi touch
-	/// </summary>
-	public class MMTouchAxis : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
+    [RequireComponent(typeof(CanvasGroup))]
+    [AddComponentMenu("More Mountains/Tools/Controls/MMTouchAxis")]
+    public class MMTouchAxis : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 	{
 		public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp }
 		[Header("Binding")]
@@ -28,14 +29,14 @@ namespace MoreMountains.Tools
 		public AxisEvent AxisPressed;
 
 		[Header("Pressed Behaviour")]
-		[Information("Here you can set the opacity of the button when it's pressed. Useful for visual feedback.",InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Here you can set the opacity of the button when it's pressed. Useful for visual feedback.",MMInformationAttribute.InformationType.Info,false)]
 		/// the new opacity to apply to the canvas group when the axis is pressed
 		public float PressedOpacity = 0.5f;
 		/// the value to send the bound method when the axis is pressed
 		public float AxisValue;
 
 		[Header("Mouse Mode")]
-		[Information("If you set this to true, you'll need to actually press the axis for it to be triggered, otherwise a simple hover will trigger it (better for touch input).",InformationAttribute.InformationType.Info,false)]
+		[MMInformation("If you set this to true, you'll need to actually press the axis for it to be triggered, otherwise a simple hover will trigger it (better for touch input).", MMInformationAttribute.InformationType.Info,false)]
 		/// If you set this to true, you'll need to actually press the axis for it to be triggered, otherwise a simple hover will trigger it (better for touch input).
 		public bool MouseMode = false;
 
@@ -150,7 +151,7 @@ namespace MoreMountains.Tools
 		/// <summary>
 		/// Triggers the bound pointer enter action when touch enters zone
 		/// </summary>
-		public void OnPointerEnter(PointerEventData data)
+		public virtual void OnPointerEnter(PointerEventData data)
 		{
 			if (!MouseMode)
 			{
@@ -161,7 +162,7 @@ namespace MoreMountains.Tools
 		/// <summary>
 		/// Triggers the bound pointer exit action when touch is out of zone
 		/// </summary>
-		public void OnPointerExit(PointerEventData data)
+		public virtual void OnPointerExit(PointerEventData data)
 		{
 			if (!MouseMode)
 			{

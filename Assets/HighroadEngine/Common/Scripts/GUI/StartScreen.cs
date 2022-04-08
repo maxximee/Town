@@ -23,6 +23,7 @@ namespace MoreMountains.HighroadEngine
 
         public virtual void Start()
         {
+           
         }
 
         public virtual void OnLocalGameClick()
@@ -40,11 +41,9 @@ namespace MoreMountains.HighroadEngine
 
         public virtual void OnPunOnlineGameClick()
         {
-#if PUN_2_OR_NEWER
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
 			    RemoveBackgroundGame();
                 LoadingSceneManager.LoadScene(OnlineGameSceneName);
-#endif
         }
 
         public virtual void OnLocalGameAphexClick()
@@ -62,13 +61,21 @@ namespace MoreMountains.HighroadEngine
 
         public virtual void OnPunOnlineGameAphexClick()
         {
-#if PUN_2_OR_NEWER
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
                 RemoveBackgroundGame();
                 LoadingSceneManager.LoadScene(OnlineGameAphexSceneName);
-#endif
         }
 
+
+        public virtual void OpenUnityAssetStorePun()
+        {
+            Application.OpenURL("https://doc.photonengine.com/en-us/pun/v2/getting-started/pun-intro");
+        }
+
+        public virtual void OpenPunWebsite()
+        {
+            Application.OpenURL("https://www.photonengine.com/en-US/PUN");
+        }
 
         protected virtual void RemoveBackgroundGame()
         {

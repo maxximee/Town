@@ -24482,18 +24482,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoostForce: 150
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 110
+  SteeringSpeed: 150
   AutoForward: 0
-  fireball: {fileID: 0}
+  fireball: {fileID: 128572, guid: 792500a3f4e9de047956b1bc26ab991e, type: 3}
   speed: 1000
-  reach: 100
-  initPosition: {fileID: 0}
-  EnginePower: 200000
-  LateralSteeringForce: 6000
-  MaxSpeed: 100
-  HoverHeight: 1
+  reach: 50
+  initPosition: {fileID: 2247875023062432803}
+  canFire: 0
+  EnginePower: 32000
+  LateralSteeringForce: 100
+  MaxSpeed: 75
+  HoverHeight: 2.5
   HoverGravityForce: 1000
-  HoverForce: 1000
+  HoverForce: 100
   OrientationGroundSpeed: 10
 --- !u!114 &114000011393672104
 MonoBehaviour:
@@ -24614,6 +24615,36 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
+--- !u!1 &3182351597053884108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2247875023062432803}
+  m_Layer: 0
+  m_Name: FireBallInitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2247875023062432803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182351597053884108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.617, z: 1.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3060821321875738975}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8578815384213482743
 PrefabInstance:
   m_ObjectHideFlags: 0

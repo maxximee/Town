@@ -18,7 +18,7 @@ namespace MoreMountains.HighroadEngine
     public class RaceManager : MonoBehaviour
     {
         [Header("Start positions")]
-        [Information("Set the size of the <b>Startpositions</b>, then position the Vector3 using either the inspector or by moving the handles directly in scene view. The order of the array will be the order the car positions.\n", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("Set the size of the <b>Startpositions</b>, then position the Vector3 using either the inspector or by moving the handles directly in scene view. The order of the array will be the order the car positions.\n", MMInformationAttribute.InformationType.Info, false)]
         /// the list of start positions
         public Vector3[] StartPositions;
         [Range(0, 359)]
@@ -27,7 +27,7 @@ namespace MoreMountains.HighroadEngine
         public bool BotsFirstInStartingLine = true;
 
         [Header("Camera")]
-        [Information("If checked, provide below the list of cameras (of type CameraController) the player can switch between.\n", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("If checked, provide below the list of cameras (of type CameraController) the player can switch between.\n", MMInformationAttribute.InformationType.Info, false)]
         public bool DynamicCameras;
         /// the list of cameras the player can use
         public CameraController[] CameraControllers;
@@ -59,15 +59,15 @@ namespace MoreMountains.HighroadEngine
         public bool FirstFinisherEndsRace = true;
         /// Number of laps for victory
         public int Laps = 3;
-        [Information("In network mode, Start Game Countdown must be at least 2 seconds to avoid incorrect synchronization.\n", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("In network mode, Start Game Countdown must be at least 2 seconds to avoid incorrect synchronization.\n", MMInformationAttribute.InformationType.Info, false)]
         /// Countdown timer before starting the race.
         public int StartGameCountDownTime = 3;
-        [Information("If set to true, cars won't collide themselves. Please note that this value is overrided in network mode by the NetworkRaceManager class.\n", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("If set to true, cars won't collide themselves. Please note that this value is overrided in network mode by the NetworkRaceManager class.\n", MMInformationAttribute.InformationType.Info, false)]
         /// Are collisions active in network play
         public bool NoCollisions = false;
 
         [Header("Track configuration")]
-        [Information("Add Gameobjects to the <b>Checkpoints</b> (set size first), then position the checkpoints objects using either the inspector or by moving the handles directly in scene view. The order of the array will be the order the checkpoints to go through.\n", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("Add Gameobjects to the <b>Checkpoints</b> (set size first), then position the checkpoints objects using either the inspector or by moving the handles directly in scene view. The order of the array will be the order the checkpoints to go through.\n", MMInformationAttribute.InformationType.Info, false)]
 
         public GameObject[] Checkpoints;
 
@@ -166,9 +166,25 @@ namespace MoreMountains.HighroadEngine
             }
 
             // Find proper lobby manager between online (UNET network) & local
-            // Find proper lobby manager between online (UNET network) & local
-           
-           
+            if (OnlineLobbyProxy.Instance != null)
+            {
+                _isNetworkMode = true;
+
+                if (OnlineLobbyProxy.Instance != null) _lobbyManager = OnlineLobbyProxy.Instance; 
+
+                // in network, all cameras can be used in single mode
+                _cameraControllersAvailable = CameraControllers;
+
+                if (DynamicCameras)
+                {
+                    // By default, we active first camera and disallow others
+                    ChangeActiveCameraController(0);
+                }
+
+                // In Network case, we don't do anything else. Callbacks are managed by the NetworkRaceManager class
+            }
+            else
+            {
                 // we initialize the local array of car players 
                 Players = new Dictionary<int, BaseController>();
 
@@ -202,7 +218,7 @@ namespace MoreMountains.HighroadEngine
                 }
 
                 ManagerStart();
-            
+            }
 
             // Independant to network or local start, we hide or show the camera change button
             if (_cameraControllersAvailable.Length <= 1)
@@ -825,7 +841,7 @@ namespace MoreMountains.HighroadEngine
                     {
                         if (Checkpoints[i + 1] != null)
                         {
-                            MMDebug.GizmosDrawArrow(Checkpoints[i].transform.position, Checkpoints[i + 1].transform.position - Checkpoints[i].transform.position, Color.blue);
+                            MMDebug.DrawGizmoArrow(Checkpoints[i].transform.position, Checkpoints[i + 1].transform.position - Checkpoints[i].transform.position, Color.blue);
                         }
                     }
 
@@ -834,7 +850,7 @@ namespace MoreMountains.HighroadEngine
                     {
                         if (ClosedLoopTrack)
                         {
-                            MMDebug.GizmosDrawArrow(Checkpoints[i].transform.position, Checkpoints[0].transform.position - Checkpoints[i].transform.position, Color.blue);
+                            MMDebug.DrawGizmoArrow(Checkpoints[i].transform.position, Checkpoints[0].transform.position - Checkpoints[i].transform.position, Color.blue);
                         }
                     }
                 }

@@ -60,8 +60,8 @@ namespace MoreMountains.Tools
 
 			UnlockedStatus = true;
 
-			MMEventManager.TriggerEvent(new MMGameEvent("Save"));
-			MMEventManager.TriggerEvent(new MMAchievementUnlockedEvent(this));
+			MMGameEvent.Trigger("Save");
+			MMAchievementUnlockedEvent.Trigger(this);
 		}
 
 		/// <summary>
@@ -97,6 +97,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void EvaluateProgress()
 		{
+			MMAchievementChangedEvent.Trigger(this);
 			if (ProgressCurrent >= ProgressTarget)
 			{
 				ProgressCurrent = ProgressTarget;

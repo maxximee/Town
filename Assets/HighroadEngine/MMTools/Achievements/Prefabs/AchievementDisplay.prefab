@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 224000011865885252}
   - component: {fileID: 222000014014719096}
   - component: {fileID: 114000014234426190}
-  - component: {fileID: 114000012929178306}
+  - component: {fileID: 114123889840356516}
   m_Layer: 5
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 224000010576291022}
   - component: {fileID: 222000010728672920}
   - component: {fileID: 114000011002272268}
-  - component: {fileID: 114000013911428832}
   m_Layer: 5
   m_Name: ProgressBarFront
   m_TagString: Untagged
@@ -165,7 +164,7 @@ MonoBehaviour:
   Icon: {fileID: 114000012046079386}
   Title: {fileID: 114000011025716940}
   Description: {fileID: 114000012127359052}
-  ProgressBarDisplay: {fileID: 114000012929178306}
+  ProgressBarDisplay: {fileID: 114123889840356516}
 --- !u!114 &114000011002272268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,19 +286,6 @@ MonoBehaviour:
     m_LineSpacing: 0.68
   m_Text: The achievement's description goes here ipsum dolor lorem sit amet ipsum
     dolor sit amet ipsum dolor sit amet
---- !u!114 &114000012929178306
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011678039142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de69b425c06ce749805fedd121b1356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ForegroundBar: {fileID: 224000010576291022}
-  PlayerID: 
 --- !u!114 &114000013121188064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,19 +313,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114000013911428832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014260414582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de69b425c06ce749805fedd121b1356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ForegroundBar: {fileID: 0}
-  PlayerID: 
 --- !u!114 &114000014023583406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,6 +367,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114123889840356516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011678039142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a42a23ce4f9ed24abde69beacbef2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForegroundBar: {fileID: 224000010576291022}
+  PlayerID: 
 --- !u!222 &222000010728672920
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -584,7 +570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -6.1451902, y: 20.653046}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225000012185432622

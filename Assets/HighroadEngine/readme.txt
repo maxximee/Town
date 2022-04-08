@@ -1,3 +1,6 @@
+HIGHROAD ENGINE v1.3
+--------------------
+
 The Highroad Engine is a complete Unity 2D/3D solution for arcade racing games.
 It comes complete with lots of assets, animations, particle effects, etc...
 
@@ -15,6 +18,8 @@ Everything is in the Assets folder, and in it you'll find the following folders 
 
 - /Common : a bunch of stuff (scenes, sprites, animations...) that don't belong to any particular demo, but may be used by any demo. Stuff like the startscreen, loading screen, etc, will go in there. /Common also contains the main /Scripts folder, which is the actual engine : all the scripts that make it work, grouped by theme. This includes camera scripts, character controllers, AI, racing management, etc... It's all sorted for you in the right folders.
 - /Demos : grouped by demo types, it contains everything from sprite to prefabs that make these demo work
+- /MMTools : a helpers library used by the engine
+- /Tutorials : resources used in the documentation's tutorial
 
 In the demos/common folders you'll usually find the following structure :
 - Animations : contains all the animations in the game
@@ -45,5 +50,3 @@ Underwaterbeats - Wonderland
 
 Odyssey - Stratosphere
 - https://www.youtube.com/watch?v=hUKTHxA5uqg
-
-v1.2.2

@@ -17,11 +17,11 @@ namespace MoreMountains.HighroadEngine
 		public Transform WheelPosition;
 		/// Reference to Wheel Model gameobject
 		public Transform WheelModel; 
-		[Information("Set this to true if this wheel rotates when turning the car's wheel.\n", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("Set this to true if this wheel rotates when turning the car's wheel.\n", MMInformationAttribute.InformationType.Info, false)]
 		public bool SteeringWheel;
 		/// Rotation direction of the wheel 
 		public enum RollingOrientationEnum { Normal, Inverse }
-		[Information("This boolean controls the rotation direction of the wheel.\n", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("This boolean controls the rotation direction of the wheel.\n", MMInformationAttribute.InformationType.Info, false)]
 		public RollingOrientationEnum RollingOrientation;
 
 		[Header("Wheel behaviour")]

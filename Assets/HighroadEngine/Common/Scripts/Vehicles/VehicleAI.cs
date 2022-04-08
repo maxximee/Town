@@ -20,26 +20,26 @@ namespace MoreMountains.HighroadEngine
 		public bool Active;
 
 		[Header("AI configuration")]
-		[Information("The time in seconds before the car is reset to the last checkpoint it's met. If the value is zero, the car will remain where it is.", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("The time in seconds before the car is reset to the last checkpoint it's met. If the value is zero, the car will remain where it is.", MMInformationAttribute.InformationType.Info, false)]
 		[Range(0,10)]
 		/// The time in seconds before the car is reset to the last checkpoint it's met. If the value is zero, the car will remain where it is.
 		public float TimeBeforeStuck = 5f;
-		[Information("Distance to consider waypoint reached", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("Distance to consider waypoint reached", MMInformationAttribute.InformationType.Info, false)]
 		[Range(5,30)]
 		/// when this distance is reached, AI goes to next waypoint
 		public int MinimalDistanceToNextWaypoint = 10; 
 
-		[Information("Throttle when waypoint is ahead", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("Throttle when waypoint is ahead", MMInformationAttribute.InformationType.Info, false)]
 		[Range(0f, 1f)]
 		/// the maximum Gas Pedal Amount 
 		public float FullThrottle = 1f; 
 
-		[Information("Throttle when vehicle must turn to reach waypoint.", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("Throttle when vehicle must turn to reach waypoint.", MMInformationAttribute.InformationType.Info, false)]
 		[Range(0f, 1f)]
 		/// the minimum Gas Pedal Amount
 		public float SmallThrottle = 0.3f; 
 
-		[Information("To help the AI, vehicles can have a better steering speed than usual.", InformationAttribute.InformationType.Info, false)]
+		[MMInformation("To help the AI, vehicles can have a better steering speed than usual.", MMInformationAttribute.InformationType.Info, false)]
 		public bool OverrideSteringSpeed = false;
 		public int SteeringSpeed = 300;
 

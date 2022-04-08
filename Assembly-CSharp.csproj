@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2020_3_30;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER;PUN_2_19_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2020_3_30;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER;PUN_2_19_OR_NEWER;UNITY_POST_PROCESSING_STACK_V2;MOREMOUNTAINS_TOOLS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -57,71 +57,97 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
-    <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\UNet\OnlineLobbyManager.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC721\ERC721URIExample.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLTransfer721.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC721\ERC721OwnerOfExample.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC1155\ERC1155BalanceOfExample.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMAnimator.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SkidmarksManager.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletTransfer721Example.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC20\ERC20DecimalsExample.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
+    <Compile Include="Assets\GetBalances.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMLayers.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLSendTransactionExample.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementDisplayer.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Scenes\WebLogin.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC721\ERC721BalanceOfExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidObstacleParticlesEmitter.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMSwipeZone.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC1155\ERC1155URIExample.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\GUI\GetFocusOnEnable.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeySignMessageExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMString.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\ParticleEffectsLibrary.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMImage.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchButton.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Extension\ExtensionMethods.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletSha3Example.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingProfile.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchDynamicJoystick.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\RaceManager.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\ObjectBounds\ObjectBounds.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLTransfer1155.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingContext.cs" />
     <Compile Include="Assets\HighroadEngine\Demos\TinyCars\Scripts\CarBehaviour.cs" />
-    <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\NetworkRaceManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\MotionBlurComponent.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\BlockNumberExample.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXTarget.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\Dragons\Scripts\Camera Scripts\MouseOrbitImproved.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\TxStatus.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Icons\SceneViewIcon.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\PoolableObject.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\RigidbodyInterface\RigidbodyInterface.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\LoadingSceneManager.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\CustomCallExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\BloomComponent.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\OnlineLobbyProxy.cs" />
     <Compile Include="Assets\Shader\OutlinedFromPiggs\DepthNormalsFeature.cs" />
     <Compile Include="Assets\HighroadEngine\Demos\Aphex\Scripts\AirCarBehaviour.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchJoystick.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyPlayer.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMArray.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMLists.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Characters\IActorInput.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMShufflebag.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMTime.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMScene.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyPlayerUI.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMConsole.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Camera\CameraAspectRatio.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\FPSCounter\FPSCounter.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeySend721Example.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\StateMachine\MMStateMachine.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMHelpers.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\EthBalanceOfExample.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletLogOut.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\AllErc721Example.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMBounds.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\ThirdPersonCameraController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\PunRaceManager.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Brokers\OnlineLobbySdkBroker.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\ERC1155.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMControlsTestInputManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DitheringComponent.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\ERC20.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\Web3Wallet.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingComponent.cs" />
@@ -129,31 +155,39 @@
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMDebug.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\VehicleInformation.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\GUI\ProgressBar.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBox.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBox.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\StartScreen.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\AutoDestroy\TimedAutoDestroy.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMGeometry.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\SimpleObjectPooler.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMFade.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\BloomModel.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Characters\INetworkVehicle.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC20\ERC20BalanceOfExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\TouchZone.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\PEButtonScript.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\DeathGround.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLSendContractExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidWheelSkidmarks.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3MintExample.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\CreateContractDataExample.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMCoroutine.cs" />
     <Compile Include="Assets\HighroadEngine\Demos\TinyCars\Scripts\CarController.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchControls.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC20\ERC20SymbolExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FxaaComponent.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\VehicleAI.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletSignMessageExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\HighroadEngine\Demos\Aphex\Scripts\AirCarController.cs" />
-    <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\NetworkVehicleController.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Particles\ChangeFogColor.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Scenes\WalletLogin.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\PunVehicleController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\BackgroundMusic.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
@@ -161,6 +195,9 @@
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\EVM.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\VerifyExample.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\AllErc1155Example.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\MultipleObjectPooler.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingBehaviour.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\EyeAdaptationModel.cs" />
@@ -169,17 +206,22 @@
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementDisplayItem.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLSignOut.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\VignetteComponent.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\FogModel.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\TaaComponent.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievement.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC20\ERC20TotalSupplyExample.cs" />
     <Compile Include="Assets\Scripts\CharacterHandler\CharacterHandler.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\VignetteModel.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\ObjectPooler.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\GrainModel.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Singletons\PersistentHumbleSingleton.cs" />
+    <Compile Include="Assets\Web3Unity\Prefabs\ERC1155\ImportNFTTextureExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyGameUI.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\TestMint.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\CustomRPCExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\MatchInfo.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingModel.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\ButtonNavigation.cs" />
@@ -188,10 +230,13 @@
     <Compile Include="Assets\HighroadEngine\MMTools\Singletons\Singleton.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementList.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\UNet\OnlineLobbyUI.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeySend20Example.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidWheelBehaviour.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\GrainComponent.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementManager.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectControllerPooled.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMColors.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeySendTransactionExample.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Automation\Wiggle.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\ILobbyPlayerInfo.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidBehaviourExtender.cs" />
@@ -206,18 +251,25 @@
     <Compile Include="Assets\HighroadEngine\MMTools\SaveLoad\SaveLoadManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\UNet\OnlineLobbyMatchEntry.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletTransfer20Example.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLTransfer20.cs" />
+    <Compile Include="Assets\Box.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\FaderManager.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletTransfer1155Example.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\UserLutComponent.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\IsometricCameraController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\DemonstratorManager.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Particles\MMTrailRendererSortingLayer.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\Wallet\Web3WalletSendTransactionExample.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMTilemap.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Particles\VisibleParticle.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\WebGL\WebGLSignMessageExample.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidSmokesBehaviour.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Events\MMEventManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
@@ -225,8 +277,12 @@
     <Compile Include="Assets\HighroadEngine\MMTools\Automation\PathMovement\PathMovement.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Automation\AutoRotate.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericLobbyManager.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC1155\ERC1155BalanceOfBatchExample.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Attributes\ReadOnlyAttribute.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC20\ERC20NameExample.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeySend1155Example.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\ERC721.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\ColorGradingModel.cs" />
@@ -234,10 +290,13 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\PrivateKey\Web3PrivateKeyAddressExample.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMMovement.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\InputManager.cs" />
+    <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchRepositionableJoystick.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementRules.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Photon\PunLobbyPlayer.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\Web3PrivateKey.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Particles\AutoDestroyParticleSystem.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchAxis.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Attributes\InformationAttribute.cs" />
@@ -245,10 +304,12 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\ParallelCamera.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidSoundBehaviour.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Library\WebGL\Web3GL.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FogComponent.cs" />
-    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
+    <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\GravityManager.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericLobbyPlayer.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\ERC721\ERC721OwnerOfBatchExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DepthOfFieldModel.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\Waypoints.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
@@ -258,14 +319,18 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Photon\PunLobbyManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
+    <Compile Include="Assets\Web3Unity\Scripts\Prefabs\EVM\NonceExample.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-    <Compile Include="Assets\Box.cs" />
+    <Compile Include="Assets\Scripts\Manager.cs" />
+    <Compile Include="Assets\DragonManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\GrainGen.shader" />
     <None Include="Assets\Epic Toon FX\Prefabs\Combat\Combat FX.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
@@ -275,6 +340,7 @@
     <None Include="Assets\HighroadEngine\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Epic Toon FX\Changelog.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\CharaOutline.cginc" />
@@ -285,12 +351,15 @@
     <None Include="Assets\Skyboxes\Readme.txt" />
     <None Include="Assets\HighroadEngine\Tutorials\readme.txt" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Shader\cellShader\Lighting.hlsl" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\TAA.cginc" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll" />
     <None Include="Assets\Skyboxes\ReleaseNotes.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
@@ -298,16 +367,24 @@
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\Dragons\README.txt" />
     <None Include="Assets\HighroadEngine\readme.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Epic Toon FX\Prefabs\Interactive\Interactive FX.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\FXAA.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\CharaMain.cginc" />
     <None Include="Assets\Epic Toon FX\Upgrade\URP Compatibility.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Photon\PhotonUnityNetworking\readme.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Fog.shader" />
@@ -318,6 +395,7 @@
     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.dll" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\readme.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\CharaSkin.cginc" />
     <None Include="Assets\Photon\PhotonLibs\Metro\Photon3Unity3D.dll" />
@@ -329,6 +407,7 @@
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Bloom.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\HighroadEngine\PUN Networking Integration Readme.txt" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\TAA.shader" />
     <None Include="Assets\Shader\OutlinedFromPiggs\Outline.hlsl" />
@@ -337,9 +416,15 @@
     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
     <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
     <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\link.xml" />
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -560,6 +645,15 @@
     </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>Assets\Plugins\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -909,17 +1003,19 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{771272DA-DE38-225A-0BC4-F37BD4E7D356}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonChat.csproj">
       <Project>{C3D57291-15F9-58B7-3EF6-79761D4F578B}</Project>
       <Name>PhotonChat</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Tools.Editor.csproj">
+      <Project>{EA36F9F7-3C6D-1159-477B-A7058ECDD34C}</Project>
+      <Name>MoreMountains.Tools.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{597CEAF2-F4E8-E55C-4B2B-CE339BE7D9C9}</Project>
@@ -928,6 +1024,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
       <Project>{E740B3AC-1367-2F1A-67CE-CD5140426DCF}</Project>
       <Name>Unity.RenderPipelines.Universal.Shaders</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.multiplayer-hlapi.Editor.csproj">
+      <Project>{603D5B69-F252-F5FE-0DB6-48DADACB424C}</Project>
+      <Name>com.unity.multiplayer-hlapi.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
       <Project>{E42EE314-CA41-FD2C-450C-F5055CFA1F9F}</Project>
@@ -953,6 +1053,10 @@
       <Project>{E075D7BC-C5C5-F39D-74A1-356D21CFBCA8}</Project>
       <Name>Unity.Searcher.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{9E3D651B-A0A6-10EE-AFC9-D8F702B9D28D}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
       <Project>{C69F24F3-312D-D6DB-49EA-61401B56A0FE}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
@@ -965,9 +1069,21 @@
       <Project>{0CFDBA74-C466-BA57-F511-B1D0F2F4C77F}</Project>
       <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
+      <Project>{F4C355F3-EF9A-08E9-630C-AAB930042FE2}</Project>
+      <Name>Unity.Postprocessing.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{18878F69-21AC-9EAA-EF86-E1E4E417B1DB}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{40AEB7AE-FDC8-9498-93AF-32B1D7FA7EEE}</Project>
       <Name>Unity.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{E6D6BF29-620A-94D3-35C2-DD9D728356C5}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
       <Project>{41013C0E-63E3-2987-331D-F10DA427F728}</Project>
@@ -977,6 +1093,10 @@
       <Project>{2955E63F-A908-CDA8-F51E-7B92C5165055}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{0E1F57AD-0DF7-9D4E-7805-431714C6C0DB}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
       <Project>{66AECDFB-26E9-07AB-E1F7-DB0F7302922E}</Project>
       <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
@@ -985,13 +1105,17 @@
       <Project>{DDA3F0EF-57F6-ABC9-33FE-5D86C8FD5822}</Project>
       <Name>PunDemos.DemoHubEditor</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{E6D6BF29-620A-94D3-35C2-DD9D728356C5}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
+    <ProjectReference Include="com.unity.multiplayer-weaver.Editor.csproj">
+      <Project>{BF6EB53D-1DE4-5E3F-81D3-8F9A7528B827}</Project>
+      <Name>com.unity.multiplayer-weaver.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{337072A5-EE35-3759-0C8F-210787D4BAAE}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.multiplayer-hlapi.Runtime.csproj">
+      <Project>{F73704D0-D5ED-D356-11A2-3CD909658CA4}</Project>
+      <Name>com.unity.multiplayer-hlapi.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{DA569518-5E84-9225-1EDF-9CE5DD4D091C}</Project>
@@ -1000,6 +1124,10 @@
     <ProjectReference Include="PhotonUnityNetworking.csproj">
       <Project>{7F011F96-D337-7A8A-4D68-714647330075}</Project>
       <Name>PhotonUnityNetworking</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Tools.TextMeshPro.csproj">
+      <Project>{D14A9659-8EAC-BF4F-FD21-16098C557913}</Project>
+      <Name>MoreMountains.Tools.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
       <Project>{D612F57A-A3F0-8DC2-DF89-D2DD1A25C907}</Project>
@@ -1012,6 +1140,10 @@
     <ProjectReference Include="com.unity.cinemachine.editor.csproj">
       <Project>{EF2E964D-06A9-F7DE-267B-BB522BB8E8A3}</Project>
       <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
+      <Project>{71F3AC9C-B31E-B177-9BD9-72DD8CE6968D}</Project>
+      <Name>Unity.Postprocessing.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
       <Project>{E4676687-6352-22FE-958E-A8E6A02B6EFC}</Project>
@@ -1037,6 +1169,10 @@
       <Project>{E47F4467-62D4-E578-AE54-187EC58E5E2B}</Project>
       <Name>Unity.Mathematics.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="MoreMountains.Tools.Cinemachine.csproj">
+      <Project>{741FB303-6336-3B09-7623-DA537F4C2E93}</Project>
+      <Name>MoreMountains.Tools.Cinemachine</Name>
+    </ProjectReference>
     <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
       <Project>{DFFD533B-D649-67D3-DFAD-21763F8B69E5}</Project>
       <Name>PunDemos.DemoSlotcarEditor</Name>
@@ -1044,6 +1180,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
       <Project>{39DD4722-6C73-11AB-BF73-4779E234509E}</Project>
       <Name>Unity.RenderPipelines.Core.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Tools.csproj">
+      <Project>{C48AB0CD-C713-3D8E-1054-F1A38A21939A}</Project>
+      <Name>MoreMountains.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{75BDBEAB-C9F0-A04C-6F3C-CBBA1F00F86A}</Project>

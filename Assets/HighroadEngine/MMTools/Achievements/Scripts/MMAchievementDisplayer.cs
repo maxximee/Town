@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to display the achievements on screen. 
-	/// The AchievementDisplayItems will be parented to it, so it's better if it has a LayoutGroup (Vertical or Horizontal) too.
-	/// </summary>
-	public class MMAchievementDisplayer : MonoBehaviour, MMEventListener<MMAchievementUnlockedEvent>
+    /// <summary>
+    /// A class used to display the achievements on screen. 
+    /// The AchievementDisplayItems will be parented to it, so it's better if it has a LayoutGroup (Vertical or Horizontal) too.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Achievements/MMAchievementDisplayer")]
+    public class MMAchievementDisplayer : MonoBehaviour, MMEventListener<MMAchievementUnlockedEvent>
 	{
 		[Header("Achievements")]
 		/// the prefab to use to display achievements
@@ -59,7 +61,7 @@ namespace MoreMountains.Tools
 			// we play a sound if set
 			if (achievement.UnlockedSound != null)
 			{
-				MMEventManager.TriggerEvent(new MMSfxEvent (achievement.UnlockedSound));
+				MMSfxEvent.Trigger (achievement.UnlockedSound);
 			}
 
 			// we fade it in and out

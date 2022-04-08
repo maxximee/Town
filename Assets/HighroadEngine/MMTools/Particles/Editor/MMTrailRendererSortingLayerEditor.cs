@@ -8,7 +8,7 @@ namespace MoreMountains.Tools
 {
 	[CanEditMultipleObjects()]
 	[CustomEditor(typeof(MMTrailRendererSortingLayer))]
-	public class RendererLayerEditor : Editor
+	public class MMTrailRendererLayerEditor : Editor
 	{
 		int popupMenuIndex;
 		string[] sortingLayerNames;

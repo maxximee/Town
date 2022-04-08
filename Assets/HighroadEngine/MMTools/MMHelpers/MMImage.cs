@@ -4,7 +4,7 @@ using System.Collections;
 namespace MoreMountains.Tools
 {	
 	/// <summary>
-	/// Various static methods used throughout the Infinite Runner Engine and the Corgi Engine.
+	/// Image helpers
 	/// </summary>
 
 	public class MMImage : MonoBehaviour 
@@ -34,9 +34,9 @@ namespace MoreMountains.Tools
 	        while (Time.time<flickerStop)
 			{
 				renderer.material.color = flickerColor;
-				yield return new WaitForSeconds(flickerSpeed);
+				yield return MMCoroutine.WaitFor(flickerSpeed);
 	            renderer.material.color = initialColor;
-	            yield return new WaitForSeconds(flickerSpeed);
+	            yield return MMCoroutine.WaitFor(flickerSpeed);
 	        }
 
 	        renderer.material.color = initialColor;        

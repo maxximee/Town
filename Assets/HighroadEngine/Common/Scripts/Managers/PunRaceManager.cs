@@ -43,9 +43,9 @@ namespace MoreMountains.HighroadEngine
         public RaceManager RaceManager;
 
         [Header("Playing Options")]
-        [Information("By Default, we set the game with no collisions in network. This is because Unity Physics Engine is non-deterministic. This will cause interference between server and each client and provoques a bad experience for the players." +
-            "\n\n" +
-            "Consider TrueSync Asset for true deterministic Physics", InformationAttribute.InformationType.Info, false)]
+        [MMInformation("By Default, we set the game with no collisions in network. This is because Unity Physics Engine is non-deterministic. This will cause interference between server and each client and provoques a bad experience for the players." +
+                       "\n\n" +
+                       "Consider TrueSync Asset for true deterministic Physics", MMInformationAttribute.InformationType.Info, false)]
         /// Determines if collisions are active in network play
         public bool NoCollisions = true;
 
@@ -302,7 +302,7 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
 		protected virtual void RaisedEvent_DisableControlForPlayers()
         {
-            foreach (PhotonView _pv in PhotonNetwork.PhotonViews)
+            foreach (PhotonView _pv in PhotonNetwork.PhotonViewCollection)
             {
                 PunVehicleController _pvc = _pv.GetComponent<PunVehicleController>();
                 if (_pvc != null) _pvc.DisableControls();
@@ -315,7 +315,7 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
         protected virtual void RaisedEvent_EnableControlForPlayers()
         {
-            foreach (PhotonView _pv in PhotonNetwork.PhotonViews)
+            foreach (PhotonView _pv in PhotonNetwork.PhotonViewCollection)
             {
                 PunVehicleController _pvc = _pv.GetComponent<PunVehicleController>();
                 if (_pvc != null) _pvc.EnableControls();
