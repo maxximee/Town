@@ -19,9 +19,9 @@ public class Box : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("box collected by " + other.gameObject.name);
-        if (other.gameObject.GetComponent<MoreMountains.HighroadEngine.AirCarController>() != null)
+        if (other.gameObject.TryGetComponent<MoreMountains.HighroadEngine.AirCarController>(out var controller))
         {
-            other.gameObject.GetComponent<MoreMountains.HighroadEngine.AirCarController>().setCanFire(true);
+            controller.setCanFire(true);
             Destroy(gameObject);
         }
         

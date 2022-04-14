@@ -3,33 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using static LoadMarketItems;
 
 public class LoadMarketPlace : MonoBehaviour
 {
 
     [SerializeField] private GameObject MarketItemPrefab;
-    [SerializeField] private string userAddress = "0x3d820337ed4041D4469A830B21A15FEB9C1ac9dC";
+    
+    
+    private string userAddress = Manager.PlayerAddress;
 
-    public CustomCallExample eventRaiseBehaviour;
+
 
     private float panelXPos = -380f;
 
-    private void Awake()
-    {
-        if (eventRaiseBehaviour.marketLoadedEvent == null)
-        {
-            eventRaiseBehaviour.marketLoadedEvent = new UnityEvent();
-        }
-
-        // subscribe to the event
-        eventRaiseBehaviour.marketLoadedEvent.AddListener(MarketLoadedEvent_Handler);
-    }
-
-    private void MarketLoadedEvent_Handler()
-    {
-        print("market place items loaded");
-        LoadUI();
-    }
 
     public void LoadUI()
     {
@@ -37,29 +24,36 @@ public class LoadMarketPlace : MonoBehaviour
         foreach (MarketItem item in Manager.GetMarketItems()) { 
             GameObject panel = Instantiate(MarketItemPrefab, transform);
             panel.transform.localPosition = new Vector2(panelXPos, panel.transform.localPosition.y);
-            panelXPos += 140;
+            panelXPos += 180;
             foreach (Transform child in panel.transform)
             {
                 switch (child.gameObject.name)
                 {
-                    case "dragonName":
-                        child.gameObject.GetComponent<TextMeshProUGUI>().text = "Dragon id: " + item.Id.ToString();
+                    case "dragonTokenId":
+                        child.gameObject.GetComponent<TextMeshProUGUI>().text = item.Id.ToString();
                         break;
                     case "priceValue":
                         child.gameObject.GetComponent<TextMeshProUGUI>().text = item.Price.ToString() + " MATIC";
                         break;
-                    case "BuyLabel":
-                        if (item.SellerAddress.Equals(userAddress))
+                    case "sellerAddress":
+                        child.gameObject.GetComponent<TextMeshProUGUI>().text = item.Seller.Substring(0,6) + "...";
+                        break;
+                    case "BUY":
+                        if (item.Seller.Equals(userAddress)) { 
+                            child.gameObject.SetActive(false);
+                        } else
                         {
-                            child.gameObject.GetComponent<TextMeshProUGUI>().text = "REMOVE";
-                        }
-                        else
-                        {
-                            child.gameObject.GetComponent<TextMeshProUGUI>().text = "BUY";
+                            child.gameObject.SetActive(true);
                         }
                         break;
-                    case "sellerAddress":
-                        child.gameObject.GetComponent<TextMeshProUGUI>().text = item.SellerAddress.Substring(0,6) + "...";
+                    case "REMOVE":
+                        if (item.Seller.Equals(userAddress))
+                        {
+                            child.gameObject.SetActive(true);
+                        } else
+                        {
+                            child.gameObject.SetActive(false);
+                        }
                         break;
                     default:
                         break;

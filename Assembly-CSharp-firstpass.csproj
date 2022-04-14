@@ -56,43 +56,41 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Nethereum\EthECDSASignature.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\KeccakDigest.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\Internal\SyncContextUtil.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\ConvertorForRLPEncodingExtensions.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\WaitForBackgroundThread.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\AddressUtil.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\EthECKeys.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\DeterministicDSAExtensions.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\TaskExtensions.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Tests\Util\TestButtonHandler.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\Sha3Keccack.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\ByteUtil.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\ECDSASignature.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\MessageSigner.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\EthereumMessageSigner.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\HexBigIntegerConvertorExtensions.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\EthECDSASignatureFactory.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\Internal\AsyncCoroutineRunner.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\ECDSASignatureFactory.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\DeterministicECDSA.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\AwaitExtensions.cs" />
     <Compile Include="Assets\Plugins\AsyncAwaitUtil\Tests\AsyncUtilTests.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\AddressExtensions.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\HexByteConvertorExtensions.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Tests\Util\TestButtonHandler.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\WaitForBackgroundThread.cs" />
     <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\Awaiters.cs" />
-    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\WaitForUpdate.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\AwaitExtensions.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\TaskExtensions.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\Internal\SyncContextUtil.cs" />
     <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\IEnumeratorAwaitExtensions.cs" />
-    <Compile Include="Assets\Plugins\Nethereum\ECKey.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\Internal\AsyncCoroutineRunner.cs" />
+    <Compile Include="Assets\Plugins\AsyncAwaitUtil\Source\WaitForUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Hex.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.JsonRpc.RpcClient.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.JsonRpc.Client.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.RPC.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.KeyStore.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Siwe.Core.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Contracts.dll" />
     <None Include="Assets\Plugins\Newtonsoft.Json Portable\Newtonsoft.Json.xml" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\Newtonsoft.Json AOT\Newtonsoft.Json.xml" />
     <None Include="Assets\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Util.dll" />
     <None Include="Assets\Plugins\Newtonsoft.Json Portable\Newtonsoft.Json.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Model.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Signer.EIP712.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.ABI.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Signer.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Accounts.dll" />
     <None Include="Assets\Plugins\Newtonsoft.Json AOT\Newtonsoft.Json.dll" />
     <None Include="Assets\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.RLP.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Common.Logging.Core.dll" />
+    <None Include="Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Unity.dll" />
     <None Include="Assets\Plugins\BouncyCastle.Crypto.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -309,20 +307,68 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Nethereum.Signer">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Signer.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Hex">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Hex.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Model">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Contracts">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
+    <Reference Include="Nethereum.Accounts">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Accounts.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.RpcClient">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.JsonRpc.RpcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.ABI">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.ABI.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.RLP">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.RLP.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>Assets\Plugins\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Util">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.RPC">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.RPC.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Unity">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Siwe.Core">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Siwe.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.Client">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.JsonRpc.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.KeyStore">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.KeyStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Signer.EIP712">
+      <HintPath>Assets\Plugins\netStandardAOTMinimalUnity\Nethereum.Signer.EIP712.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>Assets\Plugins\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

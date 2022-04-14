@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarketItem
+public class MarketItemDeprecated
 {
     private int id;
     private string contractAddress;

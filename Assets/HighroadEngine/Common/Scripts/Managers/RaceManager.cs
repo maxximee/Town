@@ -82,6 +82,9 @@ namespace MoreMountains.HighroadEngine
         /// a dictionary of the vehicle's gameobjects, using the player's number as index
         public Dictionary<int, BaseController> Players { get; protected set; }
 
+        [Header("Block chain")]
+        public Rewards rewards;
+
         /// The current race elapsed time. Used in the ranking
         protected float _currentGameTime;
         protected int _currentCamera;
@@ -640,6 +643,7 @@ namespace MoreMountains.HighroadEngine
             }
 
             EndGameRanking.text = text;
+            Debug.Log("game ended, positions: "+ text);
             EndGamePanel.gameObject.SetActive(true);
         }
 
@@ -653,7 +657,8 @@ namespace MoreMountains.HighroadEngine
                 Debug.LogWarning("In Test Mode, you can't quit current scene.");
                 return;
             }
-
+            Debug.Log("won, so we're giving rewards");
+            
             _lobbyManager.ReturnToLobby();
         }
 
