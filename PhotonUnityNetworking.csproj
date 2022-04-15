@@ -783,13 +783,13 @@
       <Project>{41013C0E-63E3-2987-331D-F10DA427F728}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{18878F69-21AC-9EAA-EF86-E1E4E417B1DB}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{0E1F57AD-0DF7-9D4E-7805-431714C6C0DB}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{18878F69-21AC-9EAA-EF86-E1E4E417B1DB}</Project>
+      <Name>UnityEditor.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

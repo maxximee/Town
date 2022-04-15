@@ -99,15 +99,47 @@ public class LoadMarketItems : MonoBehaviour
 
     }
 
+    public partial class CreateMarketItemFunction : CreateMarketItemFunctionBase { }
+
+    [Function("createMarketItem")]
+    public class CreateMarketItemFunctionBase : FunctionMessage
+    {
+        [Parameter("address", "nftContract", 1)]
+        public virtual string NftContract { get; set; }
+        [Parameter("uint256", "tokenId", 2)]
+        public virtual BigInteger TokenId { get; set; }
+        [Parameter("uint256", "price", 3)]
+        public virtual BigInteger Price { get; set; }
+    }
+
+    public partial class CreateMarketSaleFunction : CreateMarketSaleFunctionBase { }
+
+    [Function("createMarketSale")]
+    public class CreateMarketSaleFunctionBase : FunctionMessage
+    {
+        [Parameter("address", "nftContract", 1)]
+        public virtual string NftContract { get; set; }
+        [Parameter("uint256", "id", 2)]
+        public virtual BigInteger Id { get; set; }
+    }
+
+    public partial class DeleteMarketItemFunction : DeleteMarketItemFunctionBase { }
+
+    [Function("deleteMarketItem")]
+    public class DeleteMarketItemFunctionBase : FunctionMessage
+    {
+        [Parameter("uint256", "itemId", 1)]
+        public virtual BigInteger ItemId { get; set; }
+    }
+
+
     async void Start()
     {
 
         var url = Manager.infuraMumbaiEndpointUrl;
-        var privateKey = Manager.BankPK;
+        var privateKey = Manager.PlayerPK;
         var account = new Account(privateKey);
         var web3 = new Web3(account, url);
-        var contract = web3.Eth.GetContract(Manager.marketAbi, Manager.MarketplaceContractAddress);
-//        var function = contract.GetFunction("fetchActiveItems");
         var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
         var query = await contractHandler.QueryDeserializingToObjectAsync<FetchActiveItemsFunction, FetchActiveItemsOutputDTO>();
@@ -116,29 +148,55 @@ public class LoadMarketItems : MonoBehaviour
         Debug.Log("market data loaded, invoking event");
         marketLoadedEvent.Invoke();
 
-        //        var response = await function.CallAsync<List<List<string>>>();
-
-        //var result = JsonConvert.DeserializeObject<List<List<string>>>(response);
-        //List<MarketItem> marketItems = new List<MarketItem>();
-        //foreach (var currentMarketItem in response)
-        //{
-        //    Debug.Log("item " + currentMarketItem);
-        //    Debug.Log("item " + currentMarketItem[0]);
-
-        //    MarketItem item = new MarketItem();
-        //    item.Id = int.Parse(currentMarketItem[0]);
-        //    item.ContractAddress = currentMarketItem[1];
-        //    item.TokenId = int.Parse(currentMarketItem[2]);
-        //    item.SellerAddress = currentMarketItem[3];
-        //    item.BuyerAddress = currentMarketItem[4];
-        //    item.Price = int.Parse(currentMarketItem[5]);
-        //    item.State = int.Parse(currentMarketItem[6]);
-        //    marketItems.Add(item);
-        //}
-        //Manager.SetMarketItems(marketItems);
-        //Debug.Log("market data loaded, invoking event");
-        //marketLoadedEvent.Invoke();
     }
 
+    public async void buyItem(BigInteger id)
+    {
+        var url = Manager.infuraMumbaiEndpointUrl;
+        var privateKey = Manager.PlayerPK;
+        var account = new Account(privateKey);
+        var web3 = new Web3(account, url);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
+        var createMarketSaleFunction = new CreateMarketSaleFunction();
+        createMarketSaleFunction.NftContract = Manager.NftContractAddress;
+        createMarketSaleFunction.Id = id;
+        var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(createMarketSaleFunction);
+
+        Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt);
+    }
+
+    public async void removeItem(BigInteger itemId)
+    {
+        var url = Manager.infuraMumbaiEndpointUrl;
+        var privateKey = Manager.PlayerPK;
+        var account = new Account(privateKey);
+        var web3 = new Web3(account, url);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
+
+        var deleteMarketItemFunction = new DeleteMarketItemFunction();
+        deleteMarketItemFunction.ItemId = itemId;
+        var deleteMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(deleteMarketItemFunction);
+
+        Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt);
+    }
+
+    public async void listItemForSale(BigInteger tokenId, BigInteger price)
+    {
+        // TODO nft.approve first!
+
+        var url = Manager.infuraMumbaiEndpointUrl;
+        var privateKey = Manager.PlayerPK;
+        var account = new Account(privateKey);
+        var web3 = new Web3(account, url);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
+
+        var createMarketItemFunction = new CreateMarketItemFunction();
+        createMarketItemFunction.NftContract = Manager.NftContractAddress;
+        createMarketItemFunction.TokenId = tokenId;
+        createMarketItemFunction.Price = price;
+        var createMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(createMarketItemFunction);
+
+        Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt);
+    }
 }

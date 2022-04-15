@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using MoreMountains.Tools;
 using UnityEngine.Events;
+using TMPro;
 
 namespace MoreMountains.HighroadEngine
 {
@@ -51,6 +49,7 @@ namespace MoreMountains.HighroadEngine
         public Text ScoreText1;
         public Text ScoreText2;
         public Text ScoreText3;
+        public TextMeshProUGUI RewardValue;
 
         [Header("Playing options")]
         /// If false, last checkpoint is the end of the race like a rally
@@ -105,6 +104,8 @@ namespace MoreMountains.HighroadEngine
         public UnityAction<string> OnShowEndGameScreen;
         public delegate List<BaseController> OnUpdatePlayersListDelegate();
         public OnUpdatePlayersListDelegate OnUpdatePlayersList;
+
+        private string winner;
 
         /// <summary>
         /// We checks proper initialization of the RaceManager object
@@ -626,7 +627,7 @@ namespace MoreMountains.HighroadEngine
             {
                 finalRank += "\r\n" + playersRank[i].name;
             }
-
+            winner = playersRank[0].name;
             OnShowEndGameScreen(finalRank);
         }
 
@@ -644,6 +645,12 @@ namespace MoreMountains.HighroadEngine
 
             EndGameRanking.text = text;
             Debug.Log("game ended, positions: "+ text);
+            if (PlayerWon()) { 
+                RewardValue.text = "15";
+            } else
+            {
+                RewardValue.text = "0";
+            }
             EndGamePanel.gameObject.SetActive(true);
         }
 
@@ -657,9 +664,18 @@ namespace MoreMountains.HighroadEngine
                 Debug.LogWarning("In Test Mode, you can't quit current scene.");
                 return;
             }
-            Debug.Log("won, so we're giving rewards");
-            
+            if (PlayerWon()) {
+                Debug.Log("won, so we're giving rewards");
+                rewards.sendRewardsAsync("15000000000000000000");
+
+            }
             _lobbyManager.ReturnToLobby();
+        }
+
+        private bool PlayerWon()
+        {
+            // TODO find a better way
+            return (winner.Equals("Player #1"));
         }
 
         /// <summary>

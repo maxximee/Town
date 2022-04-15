@@ -68,6 +68,7 @@
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMLayers.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementDisplayer.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
+    <Compile Include="Assets\Scripts\LoadMarketItems.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidObstacleParticlesEmitter.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMSwipeZone.cs" />
     <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+    <Compile Include="Assets\Scripts\LoadBalances.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\Dragons\Scripts\Camera Scripts\MouseOrbitImproved.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Icons\SceneViewIcon.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\Core\FlagEnumAttribute.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMTilemap.cs" />
     <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeHelper.cs" />
+    <Compile Include="Assets\Scripts\LoadPlayerNfts.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Particles\VisibleParticle.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\CameraController.cs" />
@@ -272,11 +275,8 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Photon\PunLobbyManager.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
-    <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-    <Compile Include="Assets\Scripts\LoadBalances.cs" />
-    <Compile Include="Assets\Scripts\LoadPlayerNfts.cs" />
     <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
-    <Compile Include="Assets\Scripts\LoadMarketItems.cs" />
+    <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

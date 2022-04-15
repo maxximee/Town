@@ -782,13 +782,13 @@
       <Project>{E6D6BF29-620A-94D3-35C2-DD9D728356C5}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{18878F69-21AC-9EAA-EF86-E1E4E417B1DB}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{0E1F57AD-0DF7-9D4E-7805-431714C6C0DB}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{18878F69-21AC-9EAA-EF86-E1E4E417B1DB}</Project>
+      <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
       <Project>{E51CD5DC-3BBA-518D-F93B-688975F6587B}</Project>
