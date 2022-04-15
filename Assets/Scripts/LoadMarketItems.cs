@@ -121,6 +121,7 @@ public class LoadMarketItems : MonoBehaviour
         public virtual string NftContract { get; set; }
         [Parameter("uint256", "id", 2)]
         public virtual BigInteger Id { get; set; }
+
     }
 
     public partial class DeleteMarketItemFunction : DeleteMarketItemFunctionBase { }
@@ -150,20 +151,21 @@ public class LoadMarketItems : MonoBehaviour
 
     }
 
-    public async void buyItem(BigInteger id)
+    public async void buyItem(BigInteger id, BigInteger price)
     {
         var url = Manager.infuraMumbaiEndpointUrl;
         var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
+        var account = new Account(privateKey, Manager.ChainId);
         var web3 = new Web3(account, url);
-        var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
+        var contractHandler = web3.Eth.GetContractTransactionHandler<CreateMarketSaleFunction>();
+        var createMarketSaleFunction = new CreateMarketSaleFunction() {
+            NftContract = Manager.NftContractAddress,
+            Id = id
+        };
+        createMarketSaleFunction.AmountToSend = price;
+        var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(Manager.MarketplaceContractAddress, createMarketSaleFunction);
 
-        var createMarketSaleFunction = new CreateMarketSaleFunction();
-        createMarketSaleFunction.NftContract = Manager.NftContractAddress;
-        createMarketSaleFunction.Id = id;
-        var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(createMarketSaleFunction);
-
-        Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt);
+        Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash);
     }
 
     public async void removeItem(BigInteger itemId)

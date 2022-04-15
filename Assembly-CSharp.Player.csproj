@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -127,7 +127,6 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\PunRaceManager.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Brokers\OnlineLobbySdkBroker.cs" />
     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMControlsTestInputManager.cs" />
-    <Compile Include="Assets\Scripts\MarketplaceCalls.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DitheringComponent.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SoundManager.cs" />
@@ -167,7 +166,6 @@
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\PunVehicleController.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\BackgroundMusic.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
-    <Compile Include="Assets\Scripts\MarketItem.cs" />
     <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Brokers\OnlineSdkBroker.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
     <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
@@ -645,9 +643,6 @@
     <Reference Include="Nethereum.StandardTokenEIP20">
       <HintPath>Assets\Plugins\Nethereum.StandardTokenEIP20.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive">
-      <HintPath>Assets\Plugins\System.Reactive.dll</HintPath>
-    </Reference>
     <Reference Include="Nethereum.JsonRpc.WebSocketClient">
       <HintPath>Assets\Plugins\Nethereum.JsonRpc.WebSocketClient.dll</HintPath>
     </Reference>
@@ -710,9 +705,6 @@
     </Reference>
     <Reference Include="Nethereum.HdWallet">
       <HintPath>Assets\Plugins\Nethereum.HdWallet.dll</HintPath>
-    </Reference>
-    <Reference Include="Nethereum.RPC.Reactive">
-      <HintPath>Assets\Plugins\Nethereum.RPC.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Contracts">
       <HintPath>Assets\Plugins\Nethereum.Contracts.dll</HintPath>

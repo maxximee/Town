@@ -48,7 +48,7 @@ public class LoadMarketPlace : MonoBehaviour
                         {
                             child.gameObject.SetActive(true);
                             Button BuyButton = child.gameObject.GetComponent<Button>();
-                            BuyButton.onClick.AddListener(() => MarketCommands.buyItem(item.Id));
+                            BuyButton.onClick.AddListener(() => MarketCommands.buyItem(item.Id, item.Price));
                         }
                         break;
                     case "REMOVE":

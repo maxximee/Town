@@ -44,20 +44,58 @@ public class LoadPlayerNfts : MonoBehaviour
         public int TokenId { get; set; }
     }
 
+    public partial class OwnerOfFunction : OwnerOfFunctionBase { }
+
+    [Function("ownerOf", "address")]
+    public class OwnerOfFunctionBase : FunctionMessage
+    {
+        [Parameter("uint256", "tokenId", 1)]
+        public virtual System.Numerics.BigInteger TokenId { get; set; }
+    }
+
+    public partial class OwnerOfOutputDTO : OwnerOfOutputDTOBase { }
+
+    [FunctionOutput]
+    public class OwnerOfOutputDTOBase : IFunctionOutputDTO 
+    {
+        [Parameter("address", "", 1)]
+        public virtual string ReturnValue1 { get; set; }
+    }
+
     void Start()
     {
-        // TODO Load all tokenIds of current user. we should get the owned (where uri is current)
-        PlayerPrefs.SetString("tokenIds", "0,1,2");
-
-        if (PlayerPrefs.HasKey("tokenIds"))
+        if (!PlayerPrefs.HasKey("tokenIds"))
         {
-            allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
-            // Load first dragon
-            LoadDragon(int.Parse(allTokenIds[currentIndex]));
+            LoadInitially();
         }
-        else
-        {
-            // show a purchase your first dragon message
+
+        allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
+        if (allTokenIds.Length > 0) {
+            LoadDragon(int.Parse(allTokenIds[currentIndex]));
+        } else {
+            // show buy first dragon
+        }
+    }
+
+    async void LoadInitially() {
+        var url = Manager.infuraMumbaiEndpointUrl;
+        var privateKey = Manager.PlayerPK;
+        var account = new Account(privateKey);
+        var web3 = new Web3(account, url);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+        string myDragons = "";
+        // TODO only 4 dragons for now proto
+        for (int i = 0; i<4;i++) {
+            var ownerOfFunction = new OwnerOfFunction();
+            ownerOfFunction.TokenId = i;
+            var ownerOfFunctionReturn = await contractHandler.QueryAsync<OwnerOfFunction, string>(ownerOfFunction);
+            Debug.Log("owner of " + i + " is " + ownerOfFunctionReturn);
+            if (ownerOfFunctionReturn.Equals(Manager.PlayerAddress)) {
+                myDragons += i + ",";
+            }
+        }
+        if (myDragons.Length > 1) {
+            PlayerPrefs.SetString("tokenIds", myDragons.Remove(myDragons.Length - 1, 1));
         }
     }
 
