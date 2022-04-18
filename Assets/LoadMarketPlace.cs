@@ -71,4 +71,12 @@ public class LoadMarketPlace : MonoBehaviour
         }
     }
 
+    public void RefreshUI() {
+        foreach (Transform child in transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        panelXPos = -380f;
+        LoadUI();
+    }
+
 }

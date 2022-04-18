@@ -12,7 +12,7 @@ using Nethereum.Web3.Accounts;
 using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Contracts;
 using Nethereum.Contracts.Extensions;
-
+using System.Threading.Tasks;
 
 public class LoadPlayerNfts : MonoBehaviour
 {
@@ -28,6 +28,7 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private Sprite waterRace;
     [SerializeField] private Image dragonSprite;
     [SerializeField] private TextMeshProUGUI indexText;
+    [SerializeField] private TextMeshProUGUI dragTokenId;
 
     [Header("3D Elements")]
     [SerializeField] private GameObject[] dragonPrefabs;
@@ -62,6 +63,15 @@ public class LoadPlayerNfts : MonoBehaviour
         public virtual string ReturnValue1 { get; set; }
     }
 
+    public partial class BalanceOfFunction : BalanceOfFunctionBase { }
+
+    [Function("balanceOf", "uint256")]
+    public class BalanceOfFunctionBase : FunctionMessage
+    {
+        [Parameter("address", "owner", 1)]
+        public virtual string Owner { get; set; }
+    }
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("tokenIds"))
@@ -75,6 +85,21 @@ public class LoadPlayerNfts : MonoBehaviour
         } else {
             // show buy first dragon
         }
+
+        BalanceOfPlayer();
+    }
+
+    public async void BalanceOfPlayer() {
+        var url = Manager.infuraMumbaiEndpointUrl;
+        var privateKey = Manager.PlayerPK;
+        var account = new Account(privateKey);
+        var web3 = new Web3(account, url);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+        var balanceOfFunction = new BalanceOfFunction();
+        balanceOfFunction.Owner = Manager.PlayerAddress;
+        var balanceOfFunctionReturn = await contractHandler.QueryAsync<BalanceOfFunction, System.Numerics.BigInteger>(balanceOfFunction);
+        Debug.Log("user balance of dragons is: " + balanceOfFunctionReturn.ToString());
+        Manager.playerAmountOfDragons = balanceOfFunctionReturn;
     }
 
     async void LoadInitially() {
@@ -101,8 +126,6 @@ public class LoadPlayerNfts : MonoBehaviour
 
     async void LoadDragon(int tokenId)
     {
-
-
         var url = Manager.infuraMumbaiEndpointUrl;
         var privateKey = Manager.PlayerPK;
         var account = new Account(privateKey);
@@ -123,6 +146,8 @@ public class LoadPlayerNfts : MonoBehaviour
         // parse json to get image uri
         string imageUri = data.image;
         name.text = data.name;
+
+        dragTokenId.text = tokenId.ToString();
 
         topSpeedValue.text = data.topSpeed.ToString();
         topSpeedSlider.value = data.topSpeed;
@@ -184,7 +209,7 @@ public class LoadPlayerNfts : MonoBehaviour
             }
         }
         Manager.setSelectedDragon(allTokenIds[currentIndex]);
-        GameObject newDragon = Instantiate(dragonPrefabs[currentIndex]);
+        GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(allTokenIds[currentIndex])]);
         newDragon.transform.parent = dragonInitPost.transform;
         newDragon.transform.localPosition = new Vector3(0, 0, 0);
         newDragon.transform.localRotation = Quaternion.identity;

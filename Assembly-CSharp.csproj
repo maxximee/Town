@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -136,6 +136,7 @@
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FxaaComponent.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\VehicleAI.cs" />
      <Compile Include="Assets\Scripts\Rewards.cs" />
+     <Compile Include="Assets\listForSaleButton.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
      <Compile Include="Assets\LoadMarketPlace.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidController.cs" />
@@ -243,6 +244,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\GravityManager.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericLobbyPlayer.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DepthOfFieldModel.cs" />
+     <Compile Include="Assets\WalletManager.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\Waypoints.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Characters\BaseController.cs" />
@@ -253,6 +255,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
+     <Compile Include="Assets\LoginPanelEnabler.cs" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />

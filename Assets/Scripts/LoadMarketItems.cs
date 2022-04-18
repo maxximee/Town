@@ -133,6 +133,17 @@ public class LoadMarketItems : MonoBehaviour
         public virtual BigInteger ItemId { get; set; }
     }
 
+    public partial class ApproveFunction : ApproveFunctionBase { }
+
+    [Function("approve")]
+    public class ApproveFunctionBase : FunctionMessage
+    {
+        [Parameter("address", "to", 1)]
+        public virtual string To { get; set; }
+        [Parameter("uint256", "tokenId", 2)]
+        public virtual BigInteger TokenId { get; set; }
+    }
+
 
     async void Start()
     {
@@ -172,7 +183,7 @@ public class LoadMarketItems : MonoBehaviour
     {
         var url = Manager.infuraMumbaiEndpointUrl;
         var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
+        var account = new Account(privateKey, Manager.ChainId);
         var web3 = new Web3(account, url);
         var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
@@ -180,25 +191,35 @@ public class LoadMarketItems : MonoBehaviour
         deleteMarketItemFunction.ItemId = itemId;
         var deleteMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(deleteMarketItemFunction);
 
-        Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt);
+        Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash);
     }
 
     public async void listItemForSale(BigInteger tokenId, BigInteger price)
     {
-        // TODO nft.approve first!
-
         var url = Manager.infuraMumbaiEndpointUrl;
         var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
+        var account = new Account(privateKey, Manager.ChainId);
         var web3 = new Web3(account, url);
-        var contractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
+
+        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+
+        //  nft.approve first!
+        var approveFunction = new ApproveFunction();
+        approveFunction.To = Manager.MarketplaceContractAddress;
+        approveFunction.TokenId = tokenId;
+        var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
+
+        Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
+
+        var marketContractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
         var createMarketItemFunction = new CreateMarketItemFunction();
         createMarketItemFunction.NftContract = Manager.NftContractAddress;
         createMarketItemFunction.TokenId = tokenId;
         createMarketItemFunction.Price = price;
-        var createMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(createMarketItemFunction);
+        createMarketItemFunction.AmountToSend = Manager.ListingFee;
+        var createMarketItemFunctionTxnReceipt = await marketContractHandler.SendRequestAndWaitForReceiptAsync(createMarketItemFunction);
 
-        Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt);
+        Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash);
     }
 }
