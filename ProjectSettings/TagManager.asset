@@ -11,6 +11,8 @@ TagManager:
   - LoopZone
   - Projectile
   - IntroDragon
+  - Missile
+  - Power
   layers:
   - Default
   - TransparentFX

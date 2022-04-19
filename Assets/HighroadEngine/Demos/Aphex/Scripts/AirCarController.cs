@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
+using System.Threading.Tasks;
+using System;
 
 namespace MoreMountains.HighroadEngine
 {
@@ -121,10 +123,23 @@ namespace MoreMountains.HighroadEngine
 			if (collision.gameObject.tag == "Projectile" &&  !collision.gameObject.name.StartsWith(name)) { 
 				_rigidbody.velocity = Vector3.zero;
 				_rigidbody.AddForce(Vector3.back);
-				Debug.Log("collision between Projectile and me " + name);
+				changeSpeed();
 			}
 		}
 
+		private int currentMaxSpeed;
+		override protected void Start() {
+			base.Start();
+			currentMaxSpeed = MaxSpeed;
+		}
+
+		private async void changeSpeed() {
+			Debug.Log("I can't move, I've been hit");
+			MaxSpeed = 0;
+			await Task.Delay(TimeSpan.FromSeconds(2));
+			MaxSpeed = currentMaxSpeed;
+			Accelerate();
+		}
 
         /// <summary>
         /// Management of the hover and gravity of the vehicle
