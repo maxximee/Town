@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ using System.IO;
+ using System.Runtime.Serialization.Formatters.Binary;
 using NBitcoin;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts; 
@@ -81,9 +83,21 @@ public class WalletManager : MonoBehaviour
     }
 
     public void LoadAccountFromKeyStore(string password) {
-        // TODO get that json from the saveAccountToKeyStore
-        var keyStoreEncryptedJson =
-                    @"{""crypto"":{""cipher"":""aes-128-ctr"",""ciphertext"":""6b305a969ace3a8862373512bfcd084cca2dfe1ac2b9b23603a87b08ee45dec2"",""cipherparams"":{""iv"":""f90057eb50b5d90f17c3691ffebb9744""},""kdf"":""scrypt"",""mac"":""1b245be69d2995508eb8b0667e9e178dc06ea2776a437def0dca16652b9d0933"",""kdfparams"":{""n"":262144,""r"":1,""p"":8,""dklen"":32,""salt"":""55226bb014afd92ff45a790c08e5db135b788a773cb1918c44fda23415b6c64f""}},""id"":""996b13be-67cc-44a5-b253-bbcc8f02507c"",""address"":""0x1f646F69022b2aA84bBF1Ecfd41E2a7f9eFC568C"",""version"":3}";
+        string destination = Application.persistentDataPath + "/save.dat";
+         FileStream file;
+ 
+         if(File.Exists(destination)) file = File.OpenRead(destination);
+         else
+         {
+             Debug.LogError("File not found");
+             return;
+         }
+ 
+         BinaryFormatter bf = new BinaryFormatter();
+         KeystoreData data = (KeystoreData) bf.Deserialize(file);
+         file.Close();
+        var keyStoreEncryptedJson = data.contentAsJson;
+         // @"{""crypto"":{""cipher"":""aes-128-ctr"",""ciphertext"":""6b305a969ace3a8862373512bfcd084cca2dfe1ac2b9b23603a87b08ee45dec2"",""cipherparams"":{""iv"":""f90057eb50b5d90f17c3691ffebb9744""},""kdf"":""scrypt"",""mac"":""1b245be69d2995508eb8b0667e9e178dc06ea2776a437def0dca16652b9d0933"",""kdfparams"":{""n"":262144,""r"":1,""p"":8,""dklen"":32,""salt"":""55226bb014afd92ff45a790c08e5db135b788a773cb1918c44fda23415b6c64f""}},""id"":""996b13be-67cc-44a5-b253-bbcc8f02507c"",""address"":""0x1f646F69022b2aA84bBF1Ecfd41E2a7f9eFC568C"",""version"":3}";
         var account = Nethereum.Web3.Accounts.Account.LoadFromKeyStore(keyStoreEncryptedJson, password);
         Debug.Log("loaded account from keystore: " + account.Address);
         Manager.PlayerAddress = account.Address;
@@ -98,6 +112,16 @@ public class WalletManager : MonoBehaviour
         var json = keyStoreService.SerializeKeyStoreToJson(keyStore);
 
         Debug.Log("encrypted account: " + json.ToString());
+         string destination = Application.persistentDataPath + "/save.dat";
+         FileStream file;
+ 
+         if(File.Exists(destination)) file = File.OpenWrite(destination);
+         else file = File.Create(destination);
+ 
+         KeystoreData data = new KeystoreData("save", json.ToString());
+         BinaryFormatter bf = new BinaryFormatter();
+         bf.Serialize(file, data);
+         file.Close();
     }
 
     public void BackupMnemonic() {

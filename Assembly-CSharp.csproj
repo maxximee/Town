@@ -39,6 +39,7 @@
      <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
      <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
+     <Compile Include="Assets\cameraOverlaySetter.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMAnimator.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SkidmarksManager.cs" />
@@ -171,6 +172,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyGameUI.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\MatchInfo.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingModel.cs" />
+     <Compile Include="Assets\LoginPanelEnabler.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\ButtonNavigation.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\UICanvasManager.cs" />
@@ -255,7 +257,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\LoginPanelEnabler.cs" />
+     <Compile Include="Assets\Scripts\KeystoreData.cs" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />

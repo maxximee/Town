@@ -14,17 +14,7 @@ namespace MoreMountains.HighroadEngine
         /// the name of the basic racing game / online version
         public string OnlineGameSceneName;
 
-        [Header("Aphex")]
-        /// the name of the aphex scene
-        public string LocalGameAphexSceneName;
-        /// the name of the aphex scene / online version
-        public string OnlineGameAphexSceneName;
 
-
-        public virtual void Start()
-        {
-           
-        }
 
         public virtual void OnLocalGameClick()
         {
@@ -32,49 +22,11 @@ namespace MoreMountains.HighroadEngine
             LoadingSceneManager.LoadScene(LocalGameSceneName);
         }
 
-        public virtual void OnOnlineGameClick()
-        {
-            OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Unity;
-            RemoveBackgroundGame();
-            LoadingSceneManager.LoadScene(OnlineGameSceneName);
-        }
-
         public virtual void OnPunOnlineGameClick()
         {
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
 			    RemoveBackgroundGame();
                 LoadingSceneManager.LoadScene(OnlineGameSceneName);
-        }
-
-        public virtual void OnLocalGameAphexClick()
-        {
-            RemoveBackgroundGame();
-            LoadingSceneManager.LoadScene(LocalGameAphexSceneName);
-        }
-
-        public virtual void OnOnlineGameAphexClick()
-        {
-            OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Unity;
-            RemoveBackgroundGame();
-            LoadingSceneManager.LoadScene(OnlineGameAphexSceneName);
-        }
-
-        public virtual void OnPunOnlineGameAphexClick()
-        {
-                OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
-                RemoveBackgroundGame();
-                LoadingSceneManager.LoadScene(OnlineGameAphexSceneName);
-        }
-
-
-        public virtual void OpenUnityAssetStorePun()
-        {
-            Application.OpenURL("https://doc.photonengine.com/en-us/pun/v2/getting-started/pun-intro");
-        }
-
-        public virtual void OpenPunWebsite()
-        {
-            Application.OpenURL("https://www.photonengine.com/en-US/PUN");
         }
 
         protected virtual void RemoveBackgroundGame()

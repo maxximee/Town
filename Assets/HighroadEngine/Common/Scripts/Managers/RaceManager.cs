@@ -212,7 +212,7 @@ namespace MoreMountains.HighroadEngine
                 if (BackToMenuButton != null)
                 {
                     BackToMenuButton.onClick.RemoveAllListeners();
-                    BackToMenuButton.onClick.AddListener(ReturnToMenu);
+                    BackToMenuButton.onClick.AddListener(ReturnToMenuAfterGame);
                 }
 
                 // 	Test mode (lobby is empty)
@@ -664,13 +664,24 @@ namespace MoreMountains.HighroadEngine
                 Debug.LogWarning("In Test Mode, you can't quit current scene.");
                 return;
             }
+
+            _lobbyManager.ReturnToLobby();
+        }
+
+        public virtual void ReturnToMenuAfterGame()
+        {
+            if (_testMode)
+            {
+                Debug.LogWarning("In Test Mode, you can't quit current scene.");
+                return;
+            }
             if (PlayerWon()) {
                 Debug.Log("won, so we're giving rewards");
                 rewards.sendRewardsAsync("15000000000000000000");
-
             }
             _lobbyManager.ReturnToLobby();
         }
+
 
         private bool PlayerWon()
         {
