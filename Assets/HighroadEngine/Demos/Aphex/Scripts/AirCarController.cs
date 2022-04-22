@@ -138,7 +138,7 @@ namespace MoreMountains.HighroadEngine
 			MaxSpeed = 0;
 			await Task.Delay(TimeSpan.FromSeconds(2));
 			MaxSpeed = currentMaxSpeed;
-			Accelerate();
+			Accelerate(); 
 		}
 
         /// <summary>

@@ -5,21 +5,29 @@ using UnityEngine.Rendering.Universal;
 
 public class cameraOverlaySetter : MonoBehaviour
 {
+    private Camera camera;
+    private UniversalAdditionalCameraData cameraData;
 
     // Start is called before the first frame update
     void Start()
     {
-        var camera = GetComponent<Camera>();
-        var cameraData = camera.GetUniversalAdditionalCameraData();
-        cameraData.renderType = CameraRenderType.Overlay;
+        camera = GetComponent<Camera>();
+        cameraData = camera.GetUniversalAdditionalCameraData();
+        //cameraData.renderType = CameraRenderType.Overlay;
 
     }
 
-
+void Update()
+{
+    if (!cameraData.renderType.Equals(CameraRenderType.Overlay)) {
+        Debug.Log("camera set to: " + cameraData.renderType);
+        cameraData.renderType = CameraRenderType.Overlay;
+    }
+}
 
     void OnEnable() {
-        var camera = GetComponent<Camera>();
-        var cameraData = camera.GetUniversalAdditionalCameraData();
-        cameraData.renderType = CameraRenderType.Overlay;
+        camera = GetComponent<Camera>();
+        cameraData = camera.GetUniversalAdditionalCameraData();
+        //cameraData.renderType = CameraRenderType.Overlay;
     }
 }
