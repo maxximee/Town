@@ -18,7 +18,7 @@ namespace MoreMountains.Tools
 	}
 
 	/// <summary>
-	/// Add this class to a camera (or any object) and it will override fog settings when active
+	/// Add this class to a camera and it will override fog settings when active
 	/// </summary>
 	[ExecuteAlways]
 	public class MMCameraFog : MonoBehaviour

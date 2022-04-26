@@ -24414,7 +24414,8 @@ GameObject:
   - component: {fileID: 114000011393672104}
   - component: {fileID: 114000012370787582}
   - component: {fileID: 114000011939746042}
-  - component: {fileID: 6008665414394567589}
+  - component: {fileID: 7149857905138260327}
+  - component: {fileID: 3878212942481189743}
   m_Layer: 10
   m_Name: dragon_0
   m_TagString: Untagged
@@ -24483,7 +24484,7 @@ MonoBehaviour:
   SteeringSpeed: 150
   AutoForward: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
-  speed: 1000
+  speed: 1200
   reach: 50
   initPosition: {fileID: 4332033017895851048}
   canFire: 0
@@ -24559,7 +24560,7 @@ MonoBehaviour:
   RearParticlesLeft: {fileID: 198000013081009020}
   RearParticlesRight: {fileID: 198000010024833958}
   Tail: {fileID: 198000010866867530}
---- !u!82 &6008665414394567589
+--- !u!82 &7149857905138260327
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24568,12 +24569,13 @@ AudioSource:
   m_GameObject: {fileID: 1000014190538214}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ab9b5159736e66644a68ca945f1a05b1, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.421
-  m_Pitch: 1
-  Loop: 1
+  OutputAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.077
+  m_Pitch: 1.4
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -24655,6 +24657,101 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3878212942481189743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014190538214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks: []
+  InitializationMode: 2
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  FeedbacksList:
+  - id: 0
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: MMF_AudioSource, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 1
+        UniqueID: -1003184810
+        Label: AudioSource
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 3878212942481189743}
+        DebugActive: 0
+        TargetAudioSource: {fileID: 7149857905138260327}
+        Mode: 0
+        RandomSfx:
+        - {fileID: 8300000, guid: 905c25d8dad2498419e40dedb65975c9, type: 3}
+        - {fileID: 8300000, guid: ab9b5159736e66644a68ca945f1a05b1, type: 3}
+        MinVolume: 0.2
+        MaxVolume: 0.6
+        MinPitch: 0.7
+        MaxPitch: 1.4
+        SfxAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
+          type: 2}
 --- !u!1 &1933227616768409073
 GameObject:
   m_ObjectHideFlags: 0

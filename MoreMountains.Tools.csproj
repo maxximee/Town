@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_30;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER;PUN_2_19_OR_NEWER;UNITY_POST_PROCESSING_STACK_V2;MOREMOUNTAINS_TOOLS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_30;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER;PUN_2_19_OR_NEWER;UNITY_POST_PROCESSING_STACK_V2;MOREMOUNTAINS_TOOLS;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;MOREMOUNTAINS_FEEDBACKS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -36,7 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMInspectorButtonAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMArrayExtensions.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMProcedural\MMGridGenerators\MMGridGenerator.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAudio\MMSoundManager\Events\MMSoundManagerTrackFadeEvent.cs" />
@@ -108,7 +107,6 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMActivation\MMApplicationPlatformActivation.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMProcedural\MMGridGenerators\MMGridGeneratorRandom.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMVision\MMConeOfVision2D.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMSingleton.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAudio\MMSoundManager\Events\MMSoundManagerAllSoundsControlEvent.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\Tabs\MMDebug.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMGUI\MMEventListener.cs" />
@@ -121,7 +119,6 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMConditionAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMPhysics\MMRigidbodyInterface.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMUtilities\MMScreenshot.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMBoundsExtensions.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMGUI\MMProgressBarDemoAuto.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSprites\MMLineRendererCircle.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSaveLoad\MMSaveLoadManagerMethodJson.cs" />
@@ -143,11 +140,9 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMPropertyControllers\LightController.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMUtilities\MMSceneViewIcon.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMProcedural\MMTilemapGenerator\MMTilemapGeneratorLayer.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMPersistentSingleton.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMGUI\MMParallaxUI.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSprites\MMAutoOrderInLayer.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAudio\MMAudioListener\MMAudioListener.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMHiddenAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMVision\MMConeOfVision.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAnimation\MMAnimatorMirror.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMProcedural\MMGridGenerators\MMGridGeneratorPerlinNoise.cs" />
@@ -165,7 +160,6 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\MMDebugMenuItems\MMDebugMenuItemValue.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMExecutionOrderAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\Events\MMDebugMenuSliderEvent.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSaveLoad\MMSaveLoadManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMRectExtensions.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMRadio\MMProperty\MMPropertyPicker\MMPropertyReceiver.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMRadio\MMProperty\MMPropertyPicker\MMPropertyPicker.cs" />
@@ -199,13 +193,11 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\MMDebugMenuItems\MMDebugMenuItemChoices.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMObjectPool\MMPoolableObject.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMPerformance\MMFPSCounter.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMPersistentHumbleSingleton.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\Commands\MMDebugMenuCommands.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMVectorAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\MMDebugMenuItems\MMDebugMenuItemTitle.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMTilemaps\MMTilemapCleaner.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAnimation\MMAnimationParameter.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMCamera\MMCameraFog.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMMovement\MMPathMovement\MMPath.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMDropdownAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMDebugMenu\Scripts\MMDebugMenuItems\MMDebugMenuItemSlider.cs" />
@@ -253,7 +245,6 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMActivation\MMTimedDestruction.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSceneLoading\Scripts\Managers\MMAdditiveSceneLoadingManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMGUI\MMRadialProgressBar.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMInformationAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMPropertyControllers\MMMaths.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMGUI\MMFader.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMAnimatorExtensions.cs" />
@@ -299,9 +290,18 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSaveLoad\MMSaveLoadManagerMethods.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAI\AIState.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSceneLoading\Scripts\Managers\MMCoroutine.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMReadOnlyAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSceneLoading\Scripts\Helpers\MMSceneLoadingTextProgress.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMVector2Extensions.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMPersistentHumbleSingleton.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMReadOnlyAttribute.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMPersistentSingleton.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMInspectorButtonAttribute.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMInformationAttribute.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMExtensions\MMBoundsExtensions.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSaveLoad\MMSaveLoadManager.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMCamera\MMCameraFog.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMSingletons\MMSingleton.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\Tools\MMAttributes\MMHiddenAttribute.cs" />
      <None Include="Assets\HighroadEngine\MMTools\Tools\MMShaders\MMSkybox.shader" />
      <None Include="Assets\HighroadEngine\MMTools\Tools\MMShaders\MMZTestAlways.shader" />
      <None Include="Assets\HighroadEngine\MMTools\Tools\MMShaders\MMControlledEmission.shader" />

@@ -156,6 +156,8 @@ namespace MoreMountains.Tools
         public static readonly Color Yellow = new Color32(255, 255, 0, 255);
         public static readonly Color YellowGreen = new Color32(154, 205, 50, 255);
 
+        public static Dictionary<int, Color> ColorDictionary;
+
         public static Color RandomColor()
         {
             int random = Random.Range(0, 140);
@@ -164,150 +166,168 @@ namespace MoreMountains.Tools
 
         public static Color GetColorAt(int index)
         {
-            switch (index)
-            {
-                case 0: return AliceBlue;
-                case 1: return AntiqueWhite;
-                case 2: return Aqua;
-                case 3: return Aquamarine;
-                case 4: return Azure;
-                case 5: return Beige;
-                case 6: return Bisque;
-                case 7: return Black;
-                case 8: return BlanchedAlmond;
-                case 9: return Blue;
-                case 10: return BlueViolet;
-                case 11: return Brown;
-                case 12: return Burlywood;
-                case 13: return CadetBlue;
-                case 14: return Chartreuse;
-                case 15: return Chocolate;
-                case 16: return Coral;
-                case 17: return CornflowerBlue;
-                case 18: return Cornsilk;
-                case 19: return Crimson;
-                case 20: return Cyan;
-                case 21: return DarkBlue;
-                case 22: return DarkCyan;
-                case 23: return DarkGoldenrod;
-                case 24: return DarkGray;
-                case 25: return DarkGreen;
-                case 26: return DarkKhaki;
-                case 27: return DarkMagenta;
-                case 28: return DarkOliveGreen;
-                case 29: return DarkOrange;
-                case 30: return DarkOrchid;
-                case 31: return DarkRed;
-                case 32: return DarkSalmon;
-                case 33: return DarkSeaGreen;
-                case 34: return DarkSlateBlue;
-                case 35: return DarkSlateGray;
-                case 36: return DarkTurquoise;
-                case 37: return DarkViolet;
-                case 38: return DeepPink;
-                case 39: return DeepSkyBlue;
-                case 40: return DimGray;
-                case 41: return DodgerBlue;
-                case 42: return FireBrick;
-                case 43: return FloralWhite;
-                case 44: return ForestGreen;
-                case 45: return Fuchsia;
-                case 46: return Gainsboro;
-                case 47: return GhostWhite;
-                case 48: return Gold;
-                case 49: return Goldenrod;
-                case 50: return Gray;
-                case 51: return Green;
-                case 52: return GreenYellow;
-                case 53: return Honeydew;
-                case 54: return HotPink;
-                case 55: return IndianRed;
-                case 56: return Indigo;
-                case 57: return Ivory;
-                case 58: return Khaki;
-                case 59: return Lavender;
-                case 60: return Lavenderblush;
-                case 61: return LawnGreen;
-                case 62: return LemonChiffon;
-                case 63: return LightBlue;
-                case 64: return LightCoral;
-                case 65: return LightCyan;
-                case 66: return LightGoldenodYellow;
-                case 67: return LightGray;
-                case 68: return LightGreen;
-                case 69: return LightPink;
-                case 70: return LightSalmon;
-                case 71: return LightSeaGreen;
-                case 72: return LightSkyBlue;
-                case 73: return LightSlateGray;
-                case 74: return LightSteelBlue;
-                case 75: return LightYellow;
-                case 76: return Lime;
-                case 77: return LimeGreen;
-                case 78: return Linen;
-                case 79: return Magenta;
-                case 80: return Maroon;
-                case 81: return MediumAquamarine;
-                case 82: return MediumBlue;
-                case 83: return MediumOrchid;
-                case 84: return MediumPurple;
-                case 85: return MediumSeaGreen;
-                case 86: return MediumSlateBlue;
-                case 87: return MediumSpringGreen;
-                case 88: return MediumTurquoise;
-                case 89: return MediumVioletRed;
-                case 90: return MidnightBlue;
-                case 91: return Mintcream;
-                case 92: return MistyRose;
-                case 93: return Moccasin;
-                case 94: return NavajoWhite;
-                case 95: return Navy;
-                case 96: return OldLace;
-                case 97: return Olive;
-                case 98: return Olivedrab;
-                case 99: return Orange;
-                case 100: return Orangered;
-                case 101: return Orchid;
-                case 102: return PaleGoldenrod;
-                case 103: return PaleGreen;
-                case 104: return PaleTurquoise;
-                case 105: return PaleVioletred;
-                case 106: return PapayaWhip;
-                case 107: return PeachPuff;
-                case 108: return Peru;
-                case 109: return Pink;
-                case 110: return Plum;
-                case 111: return PowderBlue;
-                case 112: return Purple;
-                case 113: return Red;
-                case 114: return RosyBrown;
-                case 115: return RoyalBlue;
-                case 116: return SaddleBrown;
-                case 117: return Salmon;
-                case 118: return SandyBrown;
-                case 119: return SeaGreen;
-                case 120: return Seashell;
-                case 121: return Sienna;
-                case 122: return Silver;
-                case 123: return SkyBlue;
-                case 124: return SlateBlue;
-                case 125: return SlateGray;
-                case 126: return Snow;
-                case 127: return SpringGreen;
-                case 128: return SteelBlue;
-                case 129: return Tan;
-                case 130: return Teal;
-                case 131: return Thistle;
-                case 132: return Tomato;
-                case 133: return Turquoise;
-                case 134: return Violet;
-                case 135: return Wheat;
-                case 136: return White;
-                case 137: return WhiteSmoke;
-                case 138: return Yellow;
-                case 139: return YellowGreen;
-            }
-            return White;
+	        if (ColorDictionary == null)
+	        {
+		        InitializeDictionary();
+	        }
+	        
+            if (index < ColorDictionary.Count)
+			{
+				return ColorDictionary[index];
+			}
+			else
+			{
+				return Color.white;
+			}
+        }
+
+        public static void InitializeDictionary()
+        {
+			ColorDictionary = new Dictionary<int, Color>
+			{
+				{ 0, AliceBlue },
+				{ 1, AntiqueWhite },
+				{ 2, Aqua },
+				{ 3, Aquamarine },
+				{ 4, Azure },
+				{ 5, Beige },
+				{ 6, Bisque },
+				{ 7, Black },
+				{ 8, BlanchedAlmond },
+				{ 9, Blue },
+				{ 10, BlueViolet },
+				{ 11, Brown },
+				{ 12, Burlywood },
+				{ 13, CadetBlue },
+				{ 14, Chartreuse },
+				{ 15, Chocolate },
+				{ 16, Coral },
+				{ 17, CornflowerBlue },
+				{ 18, Cornsilk },
+				{ 19, Crimson },
+				{ 20, Cyan },
+				{ 21, DarkBlue },
+				{ 22, DarkCyan },
+				{ 23, DarkGoldenrod },
+				{ 24, DarkGray },
+				{ 25, DarkGreen },
+				{ 26, DarkKhaki },
+				{ 27, DarkMagenta },
+				{ 28, DarkOliveGreen },
+				{ 29, DarkOrange },
+				{ 30, DarkOrchid },
+				{ 31, DarkRed },
+				{ 32, DarkSalmon },
+				{ 33, DarkSeaGreen },
+				{ 34, DarkSlateBlue },
+				{ 35, DarkSlateGray },
+				{ 36, DarkTurquoise },
+				{ 37, DarkViolet },
+				{ 38, DeepPink },
+				{ 39, DeepSkyBlue },
+				{ 40, DimGray },
+				{ 41, DodgerBlue },
+				{ 42, FireBrick },
+				{ 43, FloralWhite },
+				{ 44, ForestGreen },
+				{ 45, Fuchsia },
+				{ 46, Gainsboro },
+				{ 47, GhostWhite },
+				{ 48, Gold },
+				{ 49, Goldenrod },
+				{ 50, Gray },
+				{ 51, Green },
+				{ 52, GreenYellow },
+				{ 53, Honeydew },
+				{ 54, HotPink },
+				{ 55, IndianRed },
+				{ 56, Indigo },
+				{ 57, Ivory },
+				{ 58, Khaki },
+				{ 59, Lavender },
+				{ 60, Lavenderblush },
+				{ 61, LawnGreen },
+				{ 62, LemonChiffon },
+				{ 63, LightBlue },
+				{ 64, LightCoral },
+				{ 65, LightCyan },
+				{ 66, LightGoldenodYellow },
+				{ 67, LightGray },
+				{ 68, LightGreen },
+				{ 69, LightPink },
+				{ 70, LightSalmon },
+				{ 71, LightSeaGreen },
+				{ 72, LightSkyBlue },
+				{ 73, LightSlateGray },
+				{ 74, LightSteelBlue },
+				{ 75, LightYellow },
+				{ 76, Lime },
+				{ 77, LimeGreen },
+				{ 78, Linen },
+				{ 79, Magenta },
+				{ 80, Maroon },
+				{ 81, MediumAquamarine },
+				{ 82, MediumBlue },
+				{ 83, MediumOrchid },
+				{ 84, MediumPurple },
+				{ 85, MediumSeaGreen },
+				{ 86, MediumSlateBlue },
+				{ 87, MediumSpringGreen },
+				{ 88, MediumTurquoise },
+				{ 89, MediumVioletRed },
+				{ 90, MidnightBlue },
+				{ 91, Mintcream },
+				{ 92, MistyRose },
+				{ 93, Moccasin },
+				{ 94, NavajoWhite },
+				{ 95, Navy },
+				{ 96, OldLace },
+				{ 97, Olive },
+				{ 98, Olivedrab },
+				{ 99, Orange },
+				{ 100, Orangered },
+				{ 101, Orchid },
+				{ 102, PaleGoldenrod },
+				{ 103, PaleGreen },
+				{ 104, PaleTurquoise },
+				{ 105, PaleVioletred },
+				{ 106, PapayaWhip },
+				{ 107, PeachPuff },
+				{ 108, Peru },
+				{ 109, Pink },
+				{ 110, Plum },
+				{ 111, PowderBlue },
+				{ 112, Purple },
+				{ 113, Red },
+				{ 114, RosyBrown },
+				{ 115, RoyalBlue },
+				{ 116, SaddleBrown },
+				{ 117, Salmon },
+				{ 118, SandyBrown },
+				{ 119, SeaGreen },
+				{ 120, Seashell },
+				{ 121, Sienna },
+				{ 122, Silver },
+				{ 123, SkyBlue },
+				{ 124, SlateBlue },
+				{ 125, SlateGray },
+				{ 126, Snow },
+				{ 127, SpringGreen },
+				{ 128, SteelBlue },
+				{ 129, Tan },
+				{ 130, Teal },
+				{ 131, Thistle },
+				{ 132, Tomato },
+				{ 133, Turquoise },
+				{ 134, Violet },
+				{ 135, Wheat },
+				{ 136, White },
+				{ 137, WhiteSmoke },
+				{ 138, Yellow },
+				{ 139, YellowGreen },
+				{ 140, ReunoYellow },
+				{ 141, BestRed }
+			};
         }
 
         /// <summary>

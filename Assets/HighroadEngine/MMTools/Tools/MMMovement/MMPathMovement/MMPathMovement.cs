@@ -87,6 +87,7 @@ namespace MoreMountains.Tools
 	    protected int _currentIndex;
 		protected float _distanceToNextPoint;
 		protected bool _endReached = false;
+		protected Vector3 _positionLastFrame;
 
 		/// <summary>
 	    /// Initialization
@@ -210,6 +211,8 @@ namespace MoreMountains.Tools
 			}
 
 			Move ();
+
+			_positionLastFrame = this.transform.position;
 		}
 
 		/// <summary>
@@ -249,7 +252,7 @@ namespace MoreMountains.Tools
 			_finalPosition = transform.position;
             if (Time.deltaTime != 0f)
             {
-                CurrentSpeed = (_finalPosition - _initialPosition) / Time.deltaTime;
+                CurrentSpeed = (this.transform.position - _positionLastFrame) / Time.deltaTime;
             }
 
             if (_endReached) 

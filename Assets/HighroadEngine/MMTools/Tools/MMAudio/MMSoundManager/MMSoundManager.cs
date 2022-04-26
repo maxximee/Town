@@ -31,8 +31,8 @@ namespace MoreMountains.Tools
     /// - MMSoundManagerEvents : mute track, control track, save, load, reset, stop persistent sounds 
     /// </summary>
     [AddComponentMenu("More Mountains/Tools/Audio/MMSoundManager")]
-    public class MMSoundManager : MMPersistentSingleton<MMSoundManager>,
-                                    MMEventListener<MMSoundManagerTrackEvent>,
+    public class MMSoundManager : MMPersistentSingleton<MMSoundManager>, 
+                                    MMEventListener<MMSoundManagerTrackEvent>, 
                                     MMEventListener<MMSoundManagerEvent>,
                                     MMEventListener<MMSoundManagerSoundControlEvent>,
                                     MMEventListener<MMSoundManagerSoundFadeEvent>,
@@ -40,8 +40,8 @@ namespace MoreMountains.Tools
                                     MMEventListener<MMSoundManagerTrackFadeEvent>
     {
         /// the possible ways to manage a track
-        public enum MMSoundManagerTracks { Sfx, Music, UI, Master, Other }
-
+        public enum MMSoundManagerTracks { Sfx, Music, UI, Master, Other}
+        
         [Header("Settings")]
         /// the current sound settings 
         [Tooltip("the current sound settings ")]
@@ -54,11 +54,11 @@ namespace MoreMountains.Tools
         /// whether or not the pool can expand (create new audiosources on demand). In a perfect world you'd want to avoid this, and have a sufficiently big pool, to avoid costly runtime creations.
         [Tooltip("whether or not the pool can expand (create new audiosources on demand). In a perfect world you'd want to avoid this, and have a sufficiently big pool, to avoid costly runtime creations.")]
         public bool PoolCanExpand = true;
-
+        
         protected MMSoundManagerAudioPool _pool;
         protected GameObject _tempAudioSourceGameObject;
         protected MMSoundManagerSound _sound;
-        protected List<MMSoundManagerSound> _sounds;
+        protected List<MMSoundManagerSound> _sounds; 
         protected AudioSource _tempAudioSource;
 
         #region Initialization
@@ -71,7 +71,7 @@ namespace MoreMountains.Tools
             base.Awake();
             InitializeSoundManager();
         }
-
+        
         /// <summary>
         /// On Start we load and apply our saved settings if needed.
         /// This is done on Start and not Awake because of a bug in Unity's AudioMixer API
@@ -80,7 +80,7 @@ namespace MoreMountains.Tools
         {
             if ((settingsSo != null) && (settingsSo.Settings.AutoLoad))
             {
-                settingsSo.LoadSoundSettings();
+                settingsSo.LoadSoundSettings();    
             }
         }
 
@@ -91,14 +91,14 @@ namespace MoreMountains.Tools
         {
             if (_pool == null)
             {
-                _pool = new MMSoundManagerAudioPool();
+                _pool = new MMSoundManagerAudioPool();    
             }
             _sounds = new List<MMSoundManagerSound>();
             _pool.FillAudioSourcePool(AudioSourcePoolSize, this.transform);
         }
-
+        
         #endregion
-
+        
         #region PlaySound
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace MoreMountains.Tools
                 options.SoloSingleTrack, options.SoloAllTracks, options.AutoUnSoloOnEnd,
                 options.BypassEffects, options.BypassListenerEffects, options.BypassReverbZones, options.Priority,
                 options.ReverbZoneMix,
-                options.DopplerLevel, options.Spread, options.RolloffMode, options.MinDistance, options.MaxDistance,
+                options.DopplerLevel, options.Spread, options.RolloffMode, options.MinDistance, options.MaxDistance, 
                 options.DoNotAutoRecycleIfNotDonePlaying, options.PlaybackTime
             );
         }
@@ -156,25 +156,25 @@ namespace MoreMountains.Tools
         /// <param name="minDistance"></param>
         /// <param name="maxDistance"></param>
         /// <returns></returns>
-        public virtual AudioSource PlaySound(AudioClip audioClip, MMSoundManagerTracks mmSoundManagerTrack, Vector3 location,
+        public virtual AudioSource PlaySound(AudioClip audioClip, MMSoundManagerTracks mmSoundManagerTrack, Vector3 location, 
                                         bool loop = false, float volume = 1.0f, int ID = 0,
                                         bool fade = false, float fadeInitialVolume = 0f, float fadeDuration = 1f, MMTweenType fadeTween = null,
                                         bool persistent = false,
                                         AudioSource recycleAudioSource = null, AudioMixerGroup audioGroup = null,
-                                        float pitch = 1f, float panStereo = 0f, float spatialBlend = 0.0f,
-                                        bool soloSingleTrack = false, bool soloAllTracks = false, bool autoUnSoloOnEnd = false,
+                                        float pitch = 1f, float panStereo = 0f, float spatialBlend = 0.0f,  
+                                        bool soloSingleTrack = false, bool soloAllTracks = false, bool autoUnSoloOnEnd = false,  
                                         bool bypassEffects = false, bool bypassListenerEffects = false, bool bypassReverbZones = false, int priority = 128, float reverbZoneMix = 1f,
                                         float dopplerLevel = 1f, int spread = 0, AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic, float minDistance = 1f, float maxDistance = 500f,
                                         bool doNotAutoRecycleIfNotDonePlaying = false, float playbackTime = 0f
                                         )
         {
             if (!audioClip) { return null; }
-
+            
             // audio source setup ---------------------------------------------------------------------------------
-
+            
             // we reuse an audiosource if one is passed in parameters
-            AudioSource audioSource = recycleAudioSource;
-
+            AudioSource audioSource = recycleAudioSource;   
+            
             if (audioSource == null)
             {
                 // we pick an idle audio source from the pool if possible
@@ -190,13 +190,13 @@ namespace MoreMountains.Tools
             // we create an audio source if needed
             if (audioSource == null)
             {
-                _tempAudioSourceGameObject = new GameObject("MMAudio_" + audioClip.name);
+                _tempAudioSourceGameObject = new GameObject("MMAudio_"+audioClip.name);
                 SceneManager.MoveGameObjectToScene(_tempAudioSourceGameObject, this.gameObject.scene);
                 audioSource = _tempAudioSourceGameObject.AddComponent<AudioSource>();
             }
-
+            
             // audio source settings ---------------------------------------------------------------------------------
-
+            
             audioSource.transform.position = location;
             audioSource.clip = audioClip;
             audioSource.pitch = pitch;
@@ -213,10 +213,10 @@ namespace MoreMountains.Tools
             audioSource.rolloffMode = rolloffMode;
             audioSource.minDistance = minDistance;
             audioSource.maxDistance = maxDistance;
-            audioSource.time = playbackTime;
-
+            audioSource.time = playbackTime; 
+            
             // track and volume ---------------------------------------------------------------------------------
-
+            
             if (settingsSo != null)
             {
                 audioSource.outputAudioMixerGroup = settingsSo.MasterAudioMixerGroup;
@@ -237,23 +237,23 @@ namespace MoreMountains.Tools
                 }
             }
             if (audioGroup) { audioSource.outputAudioMixerGroup = audioGroup; }
-            audioSource.volume = volume;
-
+            audioSource.volume = volume;  
+            
             // we start playing the sound
             audioSource.Play();
-
+            
             // we destroy the host after the clip has played if it was a one time AS.
             if (!loop && !recycleAudioSource)
             {
                 Destroy(_tempAudioSourceGameObject, audioClip.length);
             }
-
+            
             // we fade the sound in if needed
             if (fade)
             {
                 FadeSound(audioSource, fadeDuration, fadeInitialVolume, volume, fadeTween);
             }
-
+            
             // we handle soloing
             if (soloSingleTrack)
             {
@@ -273,7 +273,7 @@ namespace MoreMountains.Tools
                     StartCoroutine(MuteAllSoundsCoroutine(audioClip.length - playbackTime, false));
                 }
             }
-
+            
             // we prepare for storage
             _sound.ID = ID;
             _sound.Track = mmSoundManagerTrack;
@@ -293,13 +293,13 @@ namespace MoreMountains.Tools
 
             if (!alreadyIn)
             {
-                _sounds.Add(_sound);
+                _sounds.Add(_sound);    
             }
 
             // we return the audiosource reference
             return audioSource;
         }
-
+        
         #endregion
 
         #region SoundControls
@@ -321,7 +321,7 @@ namespace MoreMountains.Tools
         {
             source.Play();
         }
-
+        
         /// <summary>
         /// Stops the specified audio source
         /// </summary>
@@ -330,7 +330,7 @@ namespace MoreMountains.Tools
         {
             source.Stop();
         }
-
+        
         /// <summary>
         /// Frees a specific sound, stopping it and returning it to the pool
         /// </summary>
@@ -340,14 +340,14 @@ namespace MoreMountains.Tools
             source.Stop();
             if (!_pool.FreeSound(source))
             {
-                Destroy(source.gameObject);
+                Destroy(source.gameObject);    
             }
         }
 
         #endregion
-
+        
         #region TrackControls
-
+        
         /// <summary>
         /// Mutes an entire track
         /// </summary>
@@ -425,7 +425,7 @@ namespace MoreMountains.Tools
 
             return 1f;
         }
-
+        
         /// <summary>
         /// Pauses all sounds on a track
         /// </summary>
@@ -438,7 +438,7 @@ namespace MoreMountains.Tools
                 {
                     sound.Source.Pause();
                 }
-            }
+            }    
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace MoreMountains.Tools
                 {
                     sound.Source.Play();
                 }
-            }
+            }    
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace MoreMountains.Tools
             }
             return false;
         }
-
+        
         /// <summary>
         /// Stops all sounds on a track, and returns them to the pool
         /// </summary>
@@ -502,65 +502,65 @@ namespace MoreMountains.Tools
                 }
             }
         }
-
+        
         /// <summary>
         /// Mutes the music track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void MuteMusic() { MuteTrack(MMSoundManagerTracks.Music); }
-
+        
         /// <summary>
         /// Unmutes the music track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void UnmuteMusic() { UnmuteTrack(MMSoundManagerTracks.Music); }
-
+        
         /// <summary>
         /// Mutes the sfx track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void MuteSfx() { MuteTrack(MMSoundManagerTracks.Sfx); }
-
-
+        
+        
         /// <summary>
         /// Unmutes the sfx track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void UnmuteSfx() { UnmuteTrack(MMSoundManagerTracks.Sfx); }
-
+        
         /// <summary>
         /// Mutes the UI track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void MuteUI() { MuteTrack(MMSoundManagerTracks.UI); }
-
+        
         /// <summary>
         /// Unmutes the UI track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void UnmuteUI() { UnmuteTrack(MMSoundManagerTracks.UI); }
-
+        
         /// <summary>
         /// Mutes the master track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void MuteMaster() { MuteTrack(MMSoundManagerTracks.Master); }
-
+        
         /// <summary>
         /// Unmutes the master track, QoL method ready to bind to a UnityEvent
         /// </summary>
         public virtual void UnmuteMaster() { UnmuteTrack(MMSoundManagerTracks.Master); }
-
-
+        
+        
         /// <summary>
         /// Sets the volume of the Music track to the specified value, QoL method, ready to bind to a UnityEvent
         /// </summary>
-        public virtual void SetVolumeMusic(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Music, newVolume); }
+        public virtual void SetVolumeMusic(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Music, newVolume);}
         /// <summary>
         /// Sets the volume of the SFX track to the specified value, QoL method, ready to bind to a UnityEvent
         /// </summary>
-        public virtual void SetVolumeSfx(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Sfx, newVolume); }
+        public virtual void SetVolumeSfx(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Sfx, newVolume);}
         /// <summary>
         /// Sets the volume of the UI track to the specified value, QoL method, ready to bind to a UnityEvent
         /// </summary>
-        public virtual void SetVolumeUI(float newVolume) { SetTrackVolume(MMSoundManagerTracks.UI, newVolume); }
+        public virtual void SetVolumeUI(float newVolume) { SetTrackVolume(MMSoundManagerTracks.UI, newVolume);}
         /// <summary>
         /// Sets the volume of the Master track to the specified value, QoL method, ready to bind to a UnityEvent
         /// </summary>
-        public virtual void SetVolumeMaster(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Master, newVolume); }
+        public virtual void SetVolumeMaster(float newVolume) { SetTrackVolume(MMSoundManagerTracks.Master, newVolume);}
 
         /// <summary>
         /// Returns true if the specified track is muted, false otherwise
@@ -569,20 +569,20 @@ namespace MoreMountains.Tools
         /// <returns></returns>
         public virtual bool IsMuted(MMSoundManagerTracks track)
         {
-            switch (track)
+			switch (track)
             {
                 case MMSoundManagerTracks.Master:
-                    return settingsSo.Settings.MasterOn;
+                    return settingsSo.Settings.MasterOn; 
                 case MMSoundManagerTracks.Music:
-                    return settingsSo.Settings.MusicOn;
+	                return settingsSo.Settings.MusicOn;
                 case MMSoundManagerTracks.Sfx:
-                    return settingsSo.Settings.SfxOn;
+	                return settingsSo.Settings.SfxOn;
                 case MMSoundManagerTracks.UI:
-                    return settingsSo.Settings.UIOn;
+	                return settingsSo.Settings.UIOn;
             }
-            return false;
+			return false;
         }
-
+        
         /// <summary>
         /// A method that will let you mute/unmute a track, or set it to a specified volume
         /// </summary>
@@ -590,8 +590,8 @@ namespace MoreMountains.Tools
         protected virtual void ControlTrack(MMSoundManagerTracks track, ControlTrackModes trackMode, float volume = 0.5f)
         {
             string target = "";
-            float savedVolume = 0f;
-
+            float savedVolume = 0f; 
+            
             switch (track)
             {
                 case MMSoundManagerTracks.Master:
@@ -601,18 +601,18 @@ namespace MoreMountains.Tools
                     break;
                 case MMSoundManagerTracks.Music:
                     target = settingsSo.Settings.MusicVolumeParameter;
-                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedMusicVolume); settingsSo.Settings.MusicOn = false; }
-                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedMusicVolume; settingsSo.Settings.MusicOn = true; }
+                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedMusicVolume);  settingsSo.Settings.MusicOn = false; }
+                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedMusicVolume;  settingsSo.Settings.MusicOn = true; }
                     break;
                 case MMSoundManagerTracks.Sfx:
                     target = settingsSo.Settings.SfxVolumeParameter;
-                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedSfxVolume); settingsSo.Settings.SfxOn = false; }
-                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedSfxVolume; settingsSo.Settings.SfxOn = true; }
+                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedSfxVolume);  settingsSo.Settings.SfxOn = false; }
+                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedSfxVolume;  settingsSo.Settings.SfxOn = true; }
                     break;
                 case MMSoundManagerTracks.UI:
                     target = settingsSo.Settings.UIVolumeParameter;
-                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedUIVolume); settingsSo.Settings.UIOn = false; }
-                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedUIVolume; settingsSo.Settings.UIOn = true; }
+                    if (trackMode == ControlTrackModes.Mute) { settingsSo.TargetAudioMixer.GetFloat(target, out settingsSo.Settings.MutedUIVolume);  settingsSo.Settings.UIOn = false; }
+                    else if (trackMode == ControlTrackModes.Unmute) { savedVolume = settingsSo.Settings.MutedUIVolume;  settingsSo.Settings.UIOn = true; }
                     break;
             }
 
@@ -636,11 +636,11 @@ namespace MoreMountains.Tools
                 settingsSo.SaveSoundSettings();
             }
         }
-
+        
         #endregion
 
         #region Fades
-
+        
         /// <summary>
         /// Fades an entire track over the specified duration towards the desired finalVolume
         /// </summary>
@@ -653,7 +653,7 @@ namespace MoreMountains.Tools
         {
             StartCoroutine(FadeTrackCoroutine(track, duration, initialVolume, finalVolume, tweenType));
         }
-
+        
         /// <summary>
         /// Fades a target sound towards a final volume over time
         /// </summary>
@@ -718,7 +718,7 @@ namespace MoreMountains.Tools
             }
             source.volume = finalVolume;
         }
-
+        
         #endregion
 
         #region Solo
@@ -733,7 +733,7 @@ namespace MoreMountains.Tools
         {
             StartCoroutine(MuteSoundsOnTrackCoroutine(track, mute, delay));
         }
-
+        
         /// <summary>
         /// Mutes all sounds playing on the MMSoundManager
         /// </summary>
@@ -754,9 +754,9 @@ namespace MoreMountains.Tools
         {
             if (delay > 0)
             {
-                yield return MMCoroutine.WaitForUnscaled(delay);
+                yield return MMCoroutine.WaitForUnscaled(delay);    
             }
-
+            
             foreach (MMSoundManagerSound sound in _sounds)
             {
                 if (sound.Track == track)
@@ -772,16 +772,16 @@ namespace MoreMountains.Tools
         /// <param name="delay"></param>
         /// <param name="mute"></param>
         /// <returns></returns>
-        protected virtual IEnumerator MuteAllSoundsCoroutine(float delay, bool mute = true)
+        protected  virtual IEnumerator MuteAllSoundsCoroutine(float delay, bool mute = true)
         {
             if (delay > 0)
             {
-                yield return MMCoroutine.WaitForUnscaled(delay);
+                yield return MMCoroutine.WaitForUnscaled(delay);    
             }
             foreach (MMSoundManagerSound sound in _sounds)
             {
                 sound.Source.mute = mute;
-            }
+            }   
         }
 
         #endregion
@@ -836,7 +836,7 @@ namespace MoreMountains.Tools
             foreach (MMSoundManagerSound sound in _sounds)
             {
                 sound.Source.Pause();
-            }
+            }    
         }
 
         /// <summary>
@@ -847,7 +847,7 @@ namespace MoreMountains.Tools
             foreach (MMSoundManagerSound sound in _sounds)
             {
                 sound.Source.Play();
-            }
+            }    
         }
 
         /// <summary>
@@ -870,11 +870,11 @@ namespace MoreMountains.Tools
             {
                 if (sound.Source != null)
                 {
-                    FreeSound(sound.Source);
+                    FreeSound(sound.Source);    
                 }
             }
         }
-
+        
         /// <summary>
         /// Stops all sounds except the persistent ones, and returns them to the pool
         /// </summary>
@@ -906,7 +906,7 @@ namespace MoreMountains.Tools
         #endregion
 
         #region Events
-
+        
         /// <summary>
         /// Registered on enable, triggers every time a new scene is loaded
         /// At which point we free all sounds except the persistent ones
@@ -943,7 +943,7 @@ namespace MoreMountains.Tools
                     break;
             }
         }
-
+        
         public virtual void OnMMEvent(MMSoundManagerEvent soundManagerEvent)
         {
             switch (soundManagerEvent.EventType)
@@ -983,12 +983,12 @@ namespace MoreMountains.Tools
         {
             settingsSo.ResetSoundSettings();
         }
-
+        
         public virtual void OnMMEvent(MMSoundManagerSoundControlEvent soundControlEvent)
         {
             if (soundControlEvent.TargetSource == null)
             {
-                _tempAudioSource = FindByID(soundControlEvent.SoundID);
+                _tempAudioSource = FindByID(soundControlEvent.SoundID);    
             }
             else
             {
@@ -1014,12 +1014,12 @@ namespace MoreMountains.Tools
                 }
             }
         }
-
+        
         public virtual void OnMMEvent(MMSoundManagerTrackFadeEvent trackFadeEvent)
         {
             FadeTrack(trackFadeEvent.Track, trackFadeEvent.FadeDuration, settingsSo.GetTrackVolume(trackFadeEvent.Track), trackFadeEvent.FinalVolume, trackFadeEvent.FadeTween);
         }
-
+        
         public virtual void OnMMEvent(MMSoundManagerSoundFadeEvent soundFadeEvent)
         {
             _tempAudioSource = FindByID(soundFadeEvent.SoundID);
@@ -1030,7 +1030,7 @@ namespace MoreMountains.Tools
                     soundFadeEvent.FadeTween);
             }
         }
-
+        
         public virtual void OnMMEvent(MMSoundManagerAllSoundsControlEvent allSoundsControlEvent)
         {
             switch (allSoundsControlEvent.EventType)
@@ -1065,7 +1065,7 @@ namespace MoreMountains.Tools
             options.Pitch = pitch;
             options.MmSoundManagerTrack = MMSoundManagerTracks.Sfx;
             options.Loop = false;
-
+            
             PlaySound(clipToPlay, options);
         }
 
@@ -1073,7 +1073,7 @@ namespace MoreMountains.Tools
         {
             return PlaySound(clip, options);
         }
-
+        
         /// <summary>
         /// On enable we start listening for events
         /// </summary>
@@ -1087,7 +1087,7 @@ namespace MoreMountains.Tools
             this.MMEventStartListening<MMSoundManagerTrackFadeEvent>();
             this.MMEventStartListening<MMSoundManagerSoundFadeEvent>();
             this.MMEventStartListening<MMSoundManagerAllSoundsControlEvent>();
-
+            
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -1106,12 +1106,12 @@ namespace MoreMountains.Tools
                 this.MMEventStopListening<MMSoundManagerTrackFadeEvent>();
                 this.MMEventStopListening<MMSoundManagerSoundFadeEvent>();
                 this.MMEventStopListening<MMSoundManagerAllSoundsControlEvent>();
-
+            
                 SceneManager.sceneLoaded -= OnSceneLoaded;
             }
         }
-
+        
         #endregion
-    }
+    }    
 }
 

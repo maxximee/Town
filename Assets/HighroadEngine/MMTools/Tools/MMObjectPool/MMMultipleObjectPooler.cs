@@ -151,6 +151,10 @@ namespace MoreMountains.Tools
 		/// <param name="typeOfObject">The type of object to add to the pool.</param>
 		protected virtual GameObject AddOneObjectToThePool(GameObject typeOfObject)
 		{
+			if (typeOfObject == null)
+			{
+				return null;
+			}
 			GameObject newGameObject = (GameObject)Instantiate(typeOfObject);
 			SceneManager.MoveGameObjectToScene(newGameObject, this.gameObject.scene);
 			newGameObject.gameObject.SetActive(false);

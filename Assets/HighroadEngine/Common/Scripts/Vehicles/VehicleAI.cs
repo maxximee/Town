@@ -114,7 +114,7 @@ namespace MoreMountains.HighroadEngine
 
 			EvaluateDirection();
 
-			CalculateValues();
+			CalculateValues(); 
 
 			// we update controller inputs
 			_controller.VerticalPosition(_acceleration);
@@ -132,7 +132,7 @@ namespace MoreMountains.HighroadEngine
             {
                 Vector3 heading = _AIWaypoints[i] - _controller.transform.position;
                 float facing = Vector3.Dot(heading, _controller.transform.forward);
-
+ 
                 if (facing > 0)                    
                 {
                     float distance = Vector3.Distance(_AIWaypoints[i], _controller.transform.position);

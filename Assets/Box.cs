@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
-
+using MoreMountains.Feedbacks;
 public class Box : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    [SerializeField] MMF_Player feedbacks;
+    [SerializeField] MeshRenderer mesh;
+    [SerializeField] MeshRenderer meshQMark;
     void Start()
     {
         
@@ -27,7 +29,10 @@ public class Box : MonoBehaviour
         if (other.gameObject.TryGetComponent<MoreMountains.HighroadEngine.AirCarController>(out var controller))
         {
             controller.setCanFire(true);           
-            Destroy(gameObject);
+            mesh.enabled = false;
+            meshQMark.enabled = false;
+            StartCoroutine(DestroyAfter2Sec());
+            feedbacks.PlayFeedbacks();
             if (other.gameObject.name.Equals("Player #1")) {
                 var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
                 Color c = powerUiObject.color;
@@ -39,6 +44,11 @@ public class Box : MonoBehaviour
             }
         }
         
+    }
+
+    IEnumerator  DestroyAfter2Sec() {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject); 
     }
 
     private async Task WaitTwoSecondAsync()

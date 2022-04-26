@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using MoreMountains.Tools;
+
 using MoreMountains.Feedbacks;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -76,10 +77,10 @@ namespace MoreMountains.Tools
         public GameObject LeftStickContainer;
         [MMCondition("UseMobileControls", true)]
         public GameObject RightStickContainer;
-        [MMCondition("UseMobileControls", true)]
-        public MMTouchJoystick LeftStick;
-        [MMCondition("UseMobileControls", true)]
-        public MMTouchJoystick RightStick;
+        //[MMCondition("UseMobileControls", true)]
+        //public MMTouchJoystick LeftStick;
+       // [MMCondition("UseMobileControls", true)]
+       // public MMTouchJoystick RightStick;
 
         protected Vector3 _currentInput;
         protected Vector3 _lerpedInput;
@@ -129,18 +130,18 @@ namespace MoreMountains.Tools
         /// </summary>
         protected virtual void GetInput()
         {
-            if (!UseMobileControls || (LeftStick == null))
-            {
-                _currentInput.x = Input.GetAxis("Horizontal");
-                _currentInput.y = 0f;
-                _currentInput.z = Input.GetAxis("Vertical");
-            }
-            else
-            {
-                _currentInput.x = LeftStick._joystickValue.x;
-                _currentInput.y = 0f;
-                _currentInput.z = LeftStick._joystickValue.y;
-            }
+            // if (!UseMobileControls || (LeftStick == null))
+            // {
+            //     _currentInput.x = Input.GetAxis("Horizontal");
+            //     _currentInput.y = 0f;
+            //     _currentInput.z = Input.GetAxis("Vertical");
+            // }
+            // else
+            // {
+            //     _currentInput.x = LeftStick._joystickValue.x;
+            //     _currentInput.y = 0f;
+            //     _currentInput.z = LeftStick._joystickValue.y;
+            // }
 
             if (Input.GetKey(UpButton))
             {
@@ -237,16 +238,16 @@ namespace MoreMountains.Tools
             }
             _newEulerAngles = this.transform.eulerAngles;
 
-            if (!UseMobileControls || (LeftStick == null))
-            {
-                _newEulerAngles.x += -Input.GetAxis("Mouse Y") * 359f * MouseSensitivity;
-                _newEulerAngles.y += Input.GetAxis("Mouse X") * 359f * MouseSensitivity;
-            }
-            else
-            {
-                _newEulerAngles.x += -RightStick._joystickValue.y * MobileStickSensitivity;
-                _newEulerAngles.y += RightStick._joystickValue.x * MobileStickSensitivity;
-            }                
+            // if (!UseMobileControls || (LeftStick == null))
+            // {
+            //     _newEulerAngles.x += -Input.GetAxis("Mouse Y") * 359f * MouseSensitivity;
+            //     _newEulerAngles.y += Input.GetAxis("Mouse X") * 359f * MouseSensitivity;
+            // }
+            // else
+            // {
+            //     _newEulerAngles.x += -RightStick._joystickValue.y * MobileStickSensitivity;
+            //     _newEulerAngles.y += RightStick._joystickValue.x * MobileStickSensitivity;
+            // }                
 
             _newEulerAngles = Vector3.Lerp(this.transform.eulerAngles, _newEulerAngles, Time.deltaTime * RotationSpeed);
         }

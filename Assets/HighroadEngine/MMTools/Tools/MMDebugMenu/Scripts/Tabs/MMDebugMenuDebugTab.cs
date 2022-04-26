@@ -41,7 +41,7 @@ namespace MoreMountains.Tools
                 if (val != "")
                 {
                     MMDebug.DebugLogCommand(val);
-                }
+                }                
             });
         }
 
@@ -92,7 +92,7 @@ namespace MoreMountains.Tools
             if (this.gameObject.activeInHierarchy)
             {
                 StartCoroutine(ScrollToLogBottomCo());
-            }
+            }            
         }
 
         /// <summary>
