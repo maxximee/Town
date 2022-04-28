@@ -24,6 +24,7 @@ namespace MoreMountains.HighroadEngine
 		[Header("Vehicles configuration")]
 		/// the list of vehicle Prefabs the player can choose from.
 		public GameObject[] AvailableVehiclesPrefabs;
+		public Sprite[] AvailableVehicles2dSprites;
 
 		[Header("Tracks configuration")]
 		/// the list of Track Scenes names. Used to load scene & show scene name in UI

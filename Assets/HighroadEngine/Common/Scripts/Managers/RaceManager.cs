@@ -51,6 +51,12 @@ namespace MoreMountains.HighroadEngine
         public Text ScoreText3;
         public TextMeshProUGUI RewardValue;
 
+        public RectTransform PlayerTagPrefab;
+
+        public RectTransform PlayerTagsPanel;
+
+        public TextMeshProUGUI LapText;
+
         [Header("Playing options")]
         /// If false, last checkpoint is the end of the race like a rally
         public bool ClosedLoopTrack = true;
@@ -106,6 +112,10 @@ namespace MoreMountains.HighroadEngine
         public OnUpdatePlayersListDelegate OnUpdatePlayersList;
 
         private string winner;
+        public string currentPlayer;
+        private int playerTagDist = 45;
+
+        private Dictionary<string, RectTransform> playerNamesToTags = new Dictionary<string, RectTransform>();
 
         /// <summary>
         /// We checks proper initialization of the RaceManager object
@@ -162,6 +172,10 @@ namespace MoreMountains.HighroadEngine
             if (ScoreText3 != null)
             {
                 ScoreText3.text = "";
+            }
+
+            if (LapText != null) {
+                LapText.text = "";
             }
 
             if (RespawnButton != null)
@@ -341,6 +355,7 @@ namespace MoreMountains.HighroadEngine
 
             // start position for current instantiated player
             int _currentStartPosition = 0;
+            int _playerTagYPos = 0;
 
             // we iterate through each lobby player with bots first
             List<ILobbyPlayerInfo> playersAtStart;
@@ -415,8 +430,26 @@ namespace MoreMountains.HighroadEngine
                         cameraHumanTargets.Add(newPlayer.transform);
                     }
 
+                    RectTransform newPlayerTag = Instantiate(PlayerTagPrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 0)),PlayerTagsPanel);
+                    newPlayerTag.anchoredPosition = new Vector2(0,_playerTagYPos);
+                    TextMeshProUGUI playerPos = newPlayerTag.GetComponentInChildren<TextMeshProUGUI>();
+                    playerPos.text = (_currentStartPosition + 1).ToString();
+                    Image playerImage = newPlayerTag.GetChild(0).GetComponent<Image>();                    
+                    playerImage.sprite = LocalLobbyManager.Instance.AvailableVehicles2dSprites[item.VehicleSelectedIndex];
+
+                    if (!item.IsBot) {
+                        currentPlayer = item.Name;
+                        newPlayerTag.anchoredPosition  = new Vector2(20,_playerTagYPos);
+                        playerPos.color =  new Color(1f,0.82f,0.43f,1f);
+                        playerPos.fontSize = 65;
+                    }
+
+                    playerNamesToTags.Add(newPlayer.name, newPlayerTag);
+                    
+                    
                     // we go to next start position
                     _currentStartPosition++;
+                    _playerTagYPos-=playerTagDist;
                 }
             }
 
@@ -526,23 +559,32 @@ namespace MoreMountains.HighroadEngine
                     if (playersRank.Count > 0)
                     {
                         // update score screen
-                        if (ScoreText1 != null && ScoreText2 != null && ScoreText3 != null)
+                        if (ScoreText1 != null && ScoreText2 != null && ScoreText3 != null && LapText !=null)
                         {
-                            string newscore1 = "";
-                            string newscore2 = "";
+                            //string newscore1 = "";
+                            //string newscore2 = "";
                             string newscore3 = "";
 
                             int position = 1;
                             // we show current scores
                             foreach (var p in playersRank)
                             {
-                                newscore1 += position + "\r\n";
-                                newscore2 += string.Format("| {0}\r\n",
-                                    p.name
-                                );
+
+                                var xPos = 0;
+                                if (p.name.Equals(currentPlayer)) {
+                                    xPos = 15;
+                                }
+                                playerNamesToTags[p.name].anchoredPosition = new Vector2(xPos,((position - 1) * playerTagDist * -1));
+                                playerNamesToTags[p.name].GetComponentInChildren<TextMeshProUGUI>().text = position.ToString();
+
 
                                 if (ClosedLoopTrack)
                                 {
+                                    if (p.name.Equals(currentPlayer)) {
+                                        LapText.text = string.Format("lap {0}/{1}\r\n",
+                                            p.CurrentLap >= Laps ? Laps : p.CurrentLap + 1,
+                                            Laps);
+                                    }
                                     newscore3 += string.Format("lap {0}/{1}\r\n",
                                         p.CurrentLap >= Laps ? Laps : p.CurrentLap + 1,
                                         Laps
@@ -551,9 +593,9 @@ namespace MoreMountains.HighroadEngine
                                 position++;
                             }
 
-                            ScoreText1.text = newscore1;
-                            ScoreText2.text = newscore2;
-                            ScoreText3.text = newscore3;
+                            //ScoreText1.text = newscore1;
+                            //ScoreText2.text = newscore2;
+                            // ScoreText3.text = newscore3;
                         }
 
                         if (FirstFinisherEndsRace)
@@ -625,7 +667,11 @@ namespace MoreMountains.HighroadEngine
 
             for (int i = 0; i < playersRank.Count; i++)
             {
-                finalRank += "\r\n" + playersRank[i].name;
+                if (playersRank[i].name.Equals(currentPlayer)) {
+                    finalRank += "\r\n" + "-> " + playersRank[i].name + " <-";
+                } else {
+                    finalRank += "\r\n" + playersRank[i].name;
+                }
             }
             winner = playersRank[0].name;
             OnShowEndGameScreen(finalRank);

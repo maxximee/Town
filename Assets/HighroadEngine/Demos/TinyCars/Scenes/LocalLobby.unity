@@ -762,13 +762,16 @@ MonoBehaviour:
   - {fileID: 1000014190538214, guid: 7a4d6b31630a1a84ea7197306cea8216, type: 3}
   - {fileID: 1000014190538214, guid: 036f455973f92c545ab35656a1aa53b4, type: 3}
   - {fileID: 1000014190538214, guid: 9c7a0d9d40e16ad40bdadc35afee5740, type: 3}
+  AvailableVehicles2dSprites:
+  - {fileID: 21300000, guid: 27504819ce181e7469f7fec732a4a446, type: 3}
+  - {fileID: 21300000, guid: 49b1c966867acb04ba34d1c5b8efb840, type: 3}
+  - {fileID: 21300000, guid: ea54af805a70d154493f6a85d24550d9, type: 3}
+  - {fileID: 21300000, guid: 5cd226dcb66a909458b5227573a8b619, type: 3}
   AvailableTracksSceneName:
-  - Town
-  - Mini
+  - Race1
   - Demo
   AvailableTracksSprite:
-  - {fileID: 21300000, guid: 62dd766d8ee2ed54c94c766382693f86, type: 3}
-  - {fileID: 21300000, guid: 526f571fe0788b24c8b3fa03d5574b0b, type: 3}
+  - {fileID: 21300000, guid: 023f68307f72e46469a854cb71a69061, type: 3}
   - {fileID: 21300000, guid: 2911f575a7ffd16479a301ec64db3e97, type: 3}
 --- !u!4 &734957609
 Transform:

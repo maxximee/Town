@@ -41,14 +41,16 @@
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
      <Compile Include="Assets\cameraOverlaySetter.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
+     <Compile Include="Assets\TailToVolume.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMAnimator.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SkidmarksManager.cs" />
-     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
+     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoBall.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMLayers.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementDisplayer.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
      <Compile Include="Assets\Scripts\LoadMarketItems.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidObstacleParticlesEmitter.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMSwipeZone.cs" />
      <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeTransforms.cs" />
@@ -75,8 +77,8 @@
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\Scripts\LoadBalances.cs" />
-     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
      <Compile Include="Assets\Dragons\Scripts\Camera Scripts\MouseOrbitImproved.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Icons\SceneViewIcon.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\PoolableObject.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\RigidbodyInterface\RigidbodyInterface.cs" />
@@ -108,6 +110,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\PunRaceManager.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Brokers\OnlineLobbySdkBroker.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMControlsTestInputManager.cs" />
+     <Compile Include="Assets\Scripts\ArrayUtil.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DitheringComponent.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectController.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Managers\SoundManager.cs" />
@@ -159,8 +162,11 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementEvent.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementDisplayItem.cs" />
+     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoButton.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+     <Compile Include="Assets\InGameAudioManager.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\VignetteComponent.cs" />
+     <Compile Include="Assets\MenuManager.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\FogModel.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\TaaComponent.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievement.cs" />
@@ -173,6 +179,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyGameUI.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\MatchInfo.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingModel.cs" />
+     <Compile Include="Assets\Scripts\Spin.cs" />
      <Compile Include="Assets\LoginPanelEnabler.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\ButtonNavigation.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
@@ -194,6 +201,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericNetworkLobbyManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Singletons\PersistentSingleton.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\UserLutModel.cs" />
+     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoPackageTester.cs" />
      <Compile Include="Assets\Dragons\Scripts\AnimatorController.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMMaths.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\SaveLoad\SaveLoadManager.cs" />
@@ -223,6 +231,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericLobbyManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Attributes\ReadOnlyAttribute.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoGhost.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\ColorGradingModel.cs" />
@@ -235,6 +244,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchRepositionableJoystick.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementRules.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Photon\PunLobbyPlayer.cs" />
+     <Compile Include="Assets\Scripts\Bridge\ItemDisplayBridge.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Particles\AutoDestroyParticleSystem.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchAxis.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Attributes\InformationAttribute.cs" />
@@ -258,13 +268,9 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoGhost.cs" />
-     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoBall.cs" />
-     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoPackageTester.cs" />
-     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoButton.cs" />
-     <Compile Include="Assets\MenuManager.cs" />
-     <Compile Include="Assets\InGameAudioManager.cs" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
@@ -282,29 +288,38 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Epic Toon FX\Changelog.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\PigmentMapComposite.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\CharaOutline.cginc" />
+     <None Include="Assets\Fantasy Adventure Environment\Changelog.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\LutGen.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Foliage.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
      <None Include="Assets\Skyboxes\Readme.txt" />
      <None Include="Assets\HighroadEngine\Tutorials\readme.txt" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeTrunk.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\Shader\cellShader\Lighting.hlsl" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\TAA.cginc" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_FogSheet.shader" />
      <None Include="Assets\Skyboxes\ReleaseNotes.txt" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Cliff_Coverage.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeBranch.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\_DemoScenes\Source\_These assets are not officially included, only produced for the demo scene.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
      <None Include="Assets\Feel\readme.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
      <None Include="Assets\Dragons\README.txt" />
+     <None Include="Assets\Fantasy Adventure Environment\_DemoScenes\Source\FAE_WaterfallFoam.shader" />
      <None Include="Assets\HighroadEngine\readme.txt" />
      <None Include="Assets\Feel\license.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -319,6 +334,7 @@
      <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Water.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\FXAA.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\CharaMain.cginc" />
@@ -332,6 +348,7 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\readme.txt" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeBillboard.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
@@ -342,11 +359,13 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Bloom.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\URP\FAE.hlsl" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Uber.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\HighroadEngine\PUN Networking Integration Readme.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\TAA.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\PostProcessingAssets\Readme.txt" />
      <None Include="Assets\Shader\OutlinedFromPiggs\Outline.hlsl" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Blit.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Bloom.cginc" />
@@ -354,12 +373,16 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Grass.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Cliff.shader" />
+     <None Include="Assets\Fantasy Adventure Environment\_DemoScenes\Source\FAE_Waterfall.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\link.xml" />
+     <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_SunshaftParticle.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
@@ -1027,6 +1050,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="sc.fae.editor.csproj">
+      <Project>{fd24d7e8-3e72-343f-0d4c-16790decccab}</Project>
+      <Name>sc.fae.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Lofelt.NiceVibrations.Editor.csproj">
+      <Project>{3fb968de-7db5-b96b-a165-70581fddec30}</Project>
+      <Name>Lofelt.NiceVibrations.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonChat.csproj">
       <Project>{9172d5c3-f915-b758-3ef6-79761d4f578b}</Project>
       <Name>PhotonChat</Name>
@@ -1043,41 +1074,17 @@
       <Project>{acb340e7-6713-1a2f-67ce-cd5140426dcf}</Project>
       <Name>Unity.RenderPipelines.Universal.Shaders</Name>
     </ProjectReference>
-    <ProjectReference Include="com.unity.multiplayer-hlapi.Editor.csproj">
-      <Project>{695b3d60-52f2-fef5-0db6-48dadacb424c}</Project>
-      <Name>com.unity.multiplayer-hlapi.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
-      <Project>{14e32ee4-41ca-2cfd-450c-f5055cfa1f9f}</Project>
-      <Name>Unity.RenderPipelines.Universal.Runtime</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{c9227dda-659d-fa66-6a35-60d7a667718b}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{4163b4f7-f8e8-cb62-9942-eebe2871e4e9}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{60d42dee-840a-8797-b37e-31fbf7205fc9}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{a05a62db-8747-16ba-f931-fd4fe520b207}</Project>
-      <Name>Unity.TextMeshPro</Name>
+    <ProjectReference Include="MoreMountains.Feedbacks.csproj">
+      <Project>{ea61995a-2c90-3abb-89a3-9ede8d1072d7}</Project>
+      <Name>MoreMountains.Feedbacks</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Searcher.Editor.csproj">
       <Project>{bcd775e0-c5c5-9df3-74a1-356d21cfbca8}</Project>
       <Name>Unity.Searcher.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{1b653d9e-a6a0-ee10-afc9-d8f702b9d28d}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{f3249fc6-2d31-dbd6-49ea-61401b56a0fe}</Project>
-      <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
       <Project>{e0345a94-a9f3-ccd1-19aa-cc88cd674a33}</Project>
@@ -1087,10 +1094,6 @@
       <Project>{74bafd0c-66c4-57ba-f511-b1d0f2f4c77f}</Project>
       <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
-      <Project>{f355c3f4-9aef-e908-630c-aab930042fe2}</Project>
-      <Name>Unity.Postprocessing.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{698f8718-ac21-aa9e-ef86-e1e4e417b1db}</Project>
       <Name>UnityEditor.UI</Name>
@@ -1099,45 +1102,29 @@
       <Project>{aeb7ae40-c8fd-9894-93af-32b1d7fa7eee}</Project>
       <Name>Unity.InputSystem</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{29bfd6e6-0a62-d394-35c2-dd9d728356c5}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{0e3c0141-e363-8729-331d-f10da427f728}</Project>
-      <Name>PhotonRealtime</Name>
+    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
+      <Project>{eff0a3dd-f657-c9ab-33fe-5d86c8fd5822}</Project>
+      <Name>PunDemos.DemoHubEditor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{3fe65529-08a9-a8cd-f51e-7b92c5165055}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{ad571f0e-f70d-4e9d-7805-431714c6c0db}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
       <Project>{fbcdae66-e926-ab07-e1f7-db0f7302922e}</Project>
       <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{eff0a3dd-f657-c9ab-33fe-5d86c8fd5822}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{ad571f0e-f70d-4e9d-7805-431714c6c0db}</Project>
+      <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="com.unity.multiplayer-weaver.Editor.csproj">
-      <Project>{3db56ebf-e41d-3f5e-81d3-8f9a7528b827}</Project>
-      <Name>com.unity.multiplayer-weaver.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{a5727033-35ee-5937-0c8f-210787d4baae}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
+    <ProjectReference Include="MoreMountains.Feedbacks.PostProcessing.csproj">
+      <Project>{464f20b2-0a40-376d-aa6b-359eef9c1260}</Project>
+      <Name>MoreMountains.Feedbacks.PostProcessing</Name>
     </ProjectReference>
     <ProjectReference Include="com.unity.multiplayer-hlapi.Runtime.csproj">
       <Project>{d00437f7-edd5-56d3-11a2-3cd909658ca4}</Project>
       <Name>com.unity.multiplayer-hlapi.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{189556da-845e-2592-1edf-9ce5dd4d091c}</Project>
-      <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
       <Project>{961f017f-37d3-8a7a-4d68-714647330075}</Project>
@@ -1159,6 +1146,106 @@
       <Project>{4d962eef-a906-def7-267b-bb522bb8e8a3}</Project>
       <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
+    <ProjectReference Include="RuntimeInspector.Runtime.csproj">
+      <Project>{f4c36709-167f-d5df-02a2-973987b3bfa4}</Project>
+      <Name>RuntimeInspector.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
+      <Project>{b9f01f47-8a8f-0a83-8008-1f9407bf39c7}</Project>
+      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{67447fe4-d462-78e5-ae54-187ec58e5e2b}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Lofelt.NiceVibrations.Demo.csproj">
+      <Project>{9c6c3f11-f1e2-edc9-5ced-d3422b412440}</Project>
+      <Name>Lofelt.NiceVibrations.Demo</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Feedbacks.MMTools.csproj">
+      <Project>{6c3fbc31-3de7-7611-b788-3032ef6304ea}</Project>
+      <Name>MoreMountains.Feedbacks.MMTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="sc.fae.runtime.csproj">
+      <Project>{0ea6b50c-1856-6db5-acc4-4e8669e66597}</Project>
+      <Name>sc.fae.runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
+      <Project>{3b53fddf-49d6-d367-dfad-21763f8b69e5}</Project>
+      <Name>PunDemos.DemoSlotcarEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Feedbacks.NiceVibrations.csproj">
+      <Project>{5b458540-ea8d-2729-ba2a-e7ec237bb8e7}</Project>
+      <Name>MoreMountains.Feedbacks.NiceVibrations</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
+      <Project>{abbebd75-f0c9-4ca0-6f3c-cbba1f00f86a}</Project>
+      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.multiplayer-hlapi.Editor.csproj">
+      <Project>{695b3d60-52f2-fef5-0db6-48dadacb424c}</Project>
+      <Name>com.unity.multiplayer-hlapi.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
+      <Project>{14e32ee4-41ca-2cfd-450c-f5055cfa1f9f}</Project>
+      <Name>Unity.RenderPipelines.Universal.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{4163b4f7-f8e8-cb62-9942-eebe2871e4e9}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Feedbacks.TextMeshPro.csproj">
+      <Project>{4337a0f4-8ff9-a4a1-917e-5ae29f70b9b9}</Project>
+      <Name>MoreMountains.Feedbacks.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{60d42dee-840a-8797-b37e-31fbf7205fc9}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{a05a62db-8747-16ba-f931-fd4fe520b207}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{1b653d9e-a6a0-ee10-afc9-d8f702b9d28d}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
+      <Project>{f3249fc6-2d31-dbd6-49ea-61401b56a0fe}</Project>
+      <Name>Unity.RenderPipelines.Core.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Feedbacks.URP.csproj">
+      <Project>{e8650f5b-d50b-41f9-a025-2261594865a3}</Project>
+      <Name>MoreMountains.Feedbacks.URP</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
+      <Project>{f355c3f4-9aef-e908-630c-aab930042fe2}</Project>
+      <Name>Unity.Postprocessing.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.Feedbacks.Editor.csproj">
+      <Project>{cb31868b-e700-d8a2-8906-fc4afe4af3cc}</Project>
+      <Name>MoreMountains.Feedbacks.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
+      <Project>{a5727033-35ee-5937-0c8f-210787d4baae}</Project>
+      <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonRealtime.csproj">
+      <Project>{0e3c0141-e363-8729-331d-f10da427f728}</Project>
+      <Name>PhotonRealtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.multiplayer-weaver.Editor.csproj">
+      <Project>{3db56ebf-e41d-3f5e-81d3-8f9a7528b827}</Project>
+      <Name>com.unity.multiplayer-weaver.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{29bfd6e6-0a62-d394-35c2-dd9d728356c5}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{189556da-845e-2592-1edf-9ce5dd4d091c}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
       <Project>{9cacf371-1eb3-77b1-9bd9-72dd8ce6968d}</Project>
       <Name>Unity.Postprocessing.Runtime</Name>
@@ -1166,10 +1253,6 @@
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
       <Project>{876667e4-5263-fe22-958e-a8e6a02b6efc}</Project>
       <Name>Unity.RenderPipelines.Universal.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="RuntimeInspector.Runtime.csproj">
-      <Project>{f4c36709-167f-d5df-02a2-973987b3bfa4}</Project>
-      <Name>RuntimeInspector.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="MoreMountains.Tools.Feedbacks.csproj">
       <Project>{a252c132-dae2-056d-d8a9-919f98558e0e}</Project>
@@ -1179,10 +1262,6 @@
       <Project>{9922e8f7-e4f6-2bc5-dfa0-e423bed1aa1f}</Project>
       <Name>MoreMountains.Tools.Feedbacks.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
-      <Project>{b9f01f47-8a8f-0a83-8008-1f9407bf39c7}</Project>
-      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
       <Project>{a859b636-112f-6ef2-9c3f-8b65586c3625}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
@@ -1191,21 +1270,25 @@
       <Project>{239b659a-4629-bc6f-8d4c-f416d0c81165}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Lofelt.NiceVibrations.csproj">
+      <Project>{b15894fe-bf21-9a3f-81b5-657d66b16128}</Project>
+      <Name>Lofelt.NiceVibrations</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{7028085e-b48e-fa29-54c8-77ba8904c71b}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{67447fe4-d462-78e5-ae54-187ec58e5e2b}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
+    <ProjectReference Include="MoreMountains.Feel.Demos.URP.csproj">
+      <Project>{fb32e3ac-2910-0906-3884-cf9987f9ad4e}</Project>
+      <Name>MoreMountains.Feel.Demos.URP</Name>
     </ProjectReference>
     <ProjectReference Include="MoreMountains.Tools.Cinemachine.csproj">
       <Project>{03b31f74-3663-093b-7623-da537f4c2e93}</Project>
       <Name>MoreMountains.Tools.Cinemachine</Name>
     </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{3b53fddf-49d6-d367-dfad-21763f8b69e5}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
+    <ProjectReference Include="MoreMountains.Feedbacks.Cinemachine.csproj">
+      <Project>{aae97602-96e8-923d-baaf-f22ae6efe481}</Project>
+      <Name>MoreMountains.Feedbacks.Cinemachine</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
       <Project>{2247dd39-736c-ab11-bf73-4779e234509e}</Project>
@@ -1214,58 +1297,6 @@
     <ProjectReference Include="MoreMountains.Tools.csproj">
       <Project>{cdb08ac4-13c7-8e3d-1054-f1a38a21939a}</Project>
       <Name>MoreMountains.Tools</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{abbebd75-f0c9-4ca0-6f3c-cbba1f00f86a}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Lofelt.NiceVibrations.Editor.csproj">
-      <Project>{3fb968de-7db5-b96b-a165-70581fddec30}</Project>
-      <Name>Lofelt.NiceVibrations.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.PostProcessing.csproj">
-      <Project>{464f20b2-0a40-376d-aa6b-359eef9c1260}</Project>
-      <Name>MoreMountains.Feedbacks.PostProcessing</Name>
-    </ProjectReference>
-    <ProjectReference Include="Lofelt.NiceVibrations.Demo.csproj">
-      <Project>{9c6c3f11-f1e2-edc9-5ced-d3422b412440}</Project>
-      <Name>Lofelt.NiceVibrations.Demo</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.NiceVibrations.csproj">
-      <Project>{5b458540-ea8d-2729-ba2a-e7ec237bb8e7}</Project>
-      <Name>MoreMountains.Feedbacks.NiceVibrations</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.Editor.csproj">
-      <Project>{cb31868b-e700-d8a2-8906-fc4afe4af3cc}</Project>
-      <Name>MoreMountains.Feedbacks.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.Cinemachine.csproj">
-      <Project>{aae97602-96e8-923d-baaf-f22ae6efe481}</Project>
-      <Name>MoreMountains.Feedbacks.Cinemachine</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.csproj">
-      <Project>{ea61995a-2c90-3abb-89a3-9ede8d1072d7}</Project>
-      <Name>MoreMountains.Feedbacks</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.MMTools.csproj">
-      <Project>{6c3fbc31-3de7-7611-b788-3032ef6304ea}</Project>
-      <Name>MoreMountains.Feedbacks.MMTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.URP.csproj">
-      <Project>{e8650f5b-d50b-41f9-a025-2261594865a3}</Project>
-      <Name>MoreMountains.Feedbacks.URP</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feedbacks.TextMeshPro.csproj">
-      <Project>{4337a0f4-8ff9-a4a1-917e-5ae29f70b9b9}</Project>
-      <Name>MoreMountains.Feedbacks.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Lofelt.NiceVibrations.csproj">
-      <Project>{b15894fe-bf21-9a3f-81b5-657d66b16128}</Project>
-      <Name>Lofelt.NiceVibrations</Name>
-    </ProjectReference>
-    <ProjectReference Include="MoreMountains.Feel.Demos.URP.csproj">
-      <Project>{fb32e3ac-2910-0906-3884-cf9987f9ad4e}</Project>
-      <Name>MoreMountains.Feel.Demos.URP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

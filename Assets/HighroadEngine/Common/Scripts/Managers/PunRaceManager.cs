@@ -87,7 +87,7 @@ namespace MoreMountains.HighroadEngine
             RaceManager.OnShowEndGameScreen = ShowEndGameScreen;
             RaceManager.OnUpdatePlayersList = UpdatePlayersList;
 
-            // We register end game backbutton callback
+            // We register end game backbutton callback  
             RaceManager.BackToMenuButton.onClick.RemoveAllListeners();
             RaceManager.BackToMenuButton.onClick.AddListener(ReturnToMenu);
 

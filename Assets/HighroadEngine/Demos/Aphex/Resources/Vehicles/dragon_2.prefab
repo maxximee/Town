@@ -24488,8 +24488,8 @@ MonoBehaviour:
   initPosition: {fileID: 0}
   canFire: 0
   EnginePower: 42000
-  LateralSteeringForce: 150
-  MaxSpeed: 140
+  LateralSteeringForce: 200
+  MaxSpeed: 170
   HoverHeight: 2.5
   HoverGravityForce: 1000
   HoverForce: 100
@@ -24508,11 +24508,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   TimeBeforeStuck: 0
-  MinimalDistanceToNextWaypoint: 6
+  MinimalDistanceToNextWaypoint: 7
   FullThrottle: 0.7
-  SmallThrottle: 0.4
+  SmallThrottle: 0.5
   OverrideSteringSpeed: 1
-  SteeringSpeed: 210
+  SteeringSpeed: 400
 --- !u!114 &114000012370787582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24539,7 +24539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ab163b7717049a2a86fe2e75e70f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mesh: {fileID: 4037569061014936105}
+  Mesh: {fileID: 4037569061014936107}
   MaximumBodyRollAngle: 40
   BodyRollSpeed: 1
   WindEmissionsFullRate: 200
@@ -24724,12 +24724,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2c6c3b2b373714d97664a124baa578, type: 3}
---- !u!4 &4037569061014936105 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2537654427907367255, guid: cb2c6c3b2b373714d97664a124baa578,
-    type: 3}
-  m_PrefabInstance: {fileID: 1963530862687075198}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4037569061014936107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2537654427907367253, guid: cb2c6c3b2b373714d97664a124baa578,

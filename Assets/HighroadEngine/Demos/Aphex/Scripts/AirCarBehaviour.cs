@@ -50,7 +50,7 @@ namespace MoreMountains.HighroadEngine
 
 		/// <summary>
 		/// Initializes references
-		/// </summary>
+		/// </summary> 
 		public virtual void Start() 
 		{
 			_controller = GetComponent<AirCarController>();
@@ -105,7 +105,8 @@ namespace MoreMountains.HighroadEngine
 			{
 				newValue = Mathf.Lerp(0f, WindEmissionsFullRate, _controller.Speed / SpeedFactor);
 			}
-
+			
+			
 			_windLeftEmissions.rateOverTime = newValue;
 			_windRightEmissions.rateOverTime = newValue;
 		}

@@ -6,12 +6,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System;
 using MoreMountains.Feedbacks;
+using MoreMountains.HighroadEngine;
 public class Box : MonoBehaviour
 {
 
     [SerializeField] MMF_Player feedbacks;
     [SerializeField] MeshRenderer mesh;
     [SerializeField] MeshRenderer meshQMark;
+
+    [SerializeField] RaceManager raceManager;
     void Start()
     {
         
@@ -30,10 +33,10 @@ public class Box : MonoBehaviour
         {
             controller.setCanFire(true);           
             mesh.enabled = false;
-            meshQMark.enabled = false;
+            meshQMark.enabled = false; 
             StartCoroutine(DestroyAfter2Sec());
-            feedbacks.PlayFeedbacks();
-            if (other.gameObject.name.Equals("Player #1")) {
+            if (other.gameObject.name.Equals(raceManager.currentPlayer)) {
+                feedbacks.PlayFeedbacks();
                 var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
                 Color c = powerUiObject.color;
                 c.a = 1;
