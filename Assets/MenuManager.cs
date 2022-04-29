@@ -7,6 +7,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private AudioSource music;
 
     private void Awake() {
-        DontDestroyOnLoad(music);     
+        DontDestroyOnLoad(music);
     }
 }

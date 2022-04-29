@@ -30,6 +30,8 @@ public class WalletManager : MonoBehaviour
     [SerializeField] private TMP_InputField importWalletPassword;
     [SerializeField] private TMP_InputField importWalletMnemonic;
 
+    [SerializeField] private TextMeshProUGUI createdWalletMnemonicPhrase;
+
 
     private KeyStoreScryptService keyStoreService;
     private ScryptParams scryptParams;
@@ -50,9 +52,14 @@ public class WalletManager : MonoBehaviour
         walletAddress.text = account2.Address;
         Manager.PlayerAddress = account2.Address;
         Manager.PlayerPK = account2.PrivateKey;
-
+        
+        createdWalletMnemonicPhrase.text = mnemo.ToString();
         // save account to keystore
         SaveAccountToKeyStore(passwordInput.text, account2.PrivateKey, account2.Address);
+        // TODO shouldn't save here
+        PlayerPrefs.SetString("playerPk", account2.PrivateKey);
+        PlayerPrefs.SetString("playerAddress", account2.Address);
+        PlayerPrefs.SetString("playerWords", mnemo.ToString());
 
         updateAmountOfDragons();
     }
@@ -71,6 +78,10 @@ public class WalletManager : MonoBehaviour
 
         // save account to keystore
         SaveAccountToKeyStore(password, recoveredAccount.PrivateKey, recoveredAccount.Address);
+        // TODO shouldn't save here
+        PlayerPrefs.SetString("playerPk", recoveredAccount.PrivateKey);
+        PlayerPrefs.SetString("playerAddress", recoveredAccount.Address);
+        PlayerPrefs.SetString("playerWords", backupSeed);
     }
 
     public void Login(TMP_InputField passwordField) {
@@ -78,7 +89,7 @@ public class WalletManager : MonoBehaviour
             LoadAccountFromKeyStore(passwordField.text);
             // if no account show panel "create wallet"
         } catch (DecryptionException e) {
-            Debug.LogError(e);
+            Debug.LogError(e); 
         }
     }
 
@@ -129,6 +140,11 @@ public class WalletManager : MonoBehaviour
             mnemoPhrase.text =string.Join(" ", userWallet.Words);
             Debug.Log("mnemonic phrase: " + string.Join(" ", userWallet.Words));
         } else {
+            if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+                // TODO should be stored here
+                mnemoPhrase.text = PlayerPrefs.GetString("playerWords");
+                Debug.Log("mnemonic phrase: " + mnemoPhrase.text);
+            }
             Debug.Log("no account");
         }
     }
@@ -146,6 +162,20 @@ public class WalletManager : MonoBehaviour
 
     public void updateAmountOfDragons() {
         amountOfDragons.text = "Amount of Dragons: " + Manager.playerAmountOfDragons;
+    }
+
+    public void resetAccount() {
+        PlayerPrefs.DeleteAll();   
+        Manager.PlayerPK = "";
+        Manager.PlayerAddress = "";
+        Application.Quit();
+    } 
+
+    public void copyTextToClipboard(TextMeshProUGUI UiText) {
+        TextEditor te = new TextEditor();
+        te.text = UiText.text;
+        te.SelectAll();
+        te.Copy();
     }
 
 }

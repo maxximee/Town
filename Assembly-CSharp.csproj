@@ -180,7 +180,6 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\MatchInfo.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingModel.cs" />
      <Compile Include="Assets\Scripts\Spin.cs" />
-     <Compile Include="Assets\LoginPanelEnabler.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\ButtonNavigation.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\UICanvasManager.cs" />
@@ -268,6 +267,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
+     <Compile Include="Assets\NoWalletManager.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />

@@ -206,7 +206,7 @@ namespace MoreMountains.HighroadEngine
 			else 
 			{
 				PlayerNameText.text = "Player #" + (Position + 1);
-				Debug.Log("retrieving selected dragon from manager: " + Manager.getSelectedDragon());
+				Debug.Log("retrieving selected dragon from manager: " + Manager.getSelectedDragon()); 
 				_currentVehicleIndex = int.Parse(Manager.getSelectedDragon());
 				CancelPlayer();
 			}

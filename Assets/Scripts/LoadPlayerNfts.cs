@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,9 @@ using System.Threading.Tasks;
 public class LoadPlayerNfts : MonoBehaviour
 {
     [Header("UI Elements")]
+
+    [SerializeField] private GameObject dragonPanel;
+    [SerializeField] private GameObject selectButton;
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI topSpeedValue;
@@ -74,32 +78,57 @@ public class LoadPlayerNfts : MonoBehaviour
 
     void Start()
     {
-        if (!PlayerPrefs.HasKey("tokenIds"))
-        {
-            LoadInitially();
+        if (PlayerPrefs.HasKey("SelectedDragonTokenId")){
+            SelectDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
+            Manager.setSelectedDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
         }
 
-        allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
-        if (allTokenIds.Length > 0) {
-            LoadDragon(int.Parse(allTokenIds[currentIndex]));
+        indexText.text = "0 of 0";
+        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+            if (!PlayerPrefs.HasKey("tokenIds"))
+            {
+                LoadInitially();
+            }
+
+            if (PlayerPrefs.HasKey("tokenIds")) {
+                allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
+                if (allTokenIds.Length > 0) {
+                    LoadDragon(int.Parse(allTokenIds[currentIndex]));
+                    indexText.text = "1 of " + allTokenIds.Length;
+                }
+
+                BalanceOfPlayer();
+
+                Button but = selectButton.GetComponent<Button>();
+                selectButton.GetComponentInChildren<TextMeshProUGUI>().text = "Select";
+                but.gameObject.SetActive(true);
+            } else {
+                Debug.LogWarning("go buy a dragon");
+            }
         } else {
-            // show buy first dragon
+            Debug.Log("buy a dragon first");
+            dragonPanel.SetActive(false);
+            selectButton.GetComponentInChildren<TextMeshProUGUI>().text = "Market";
+            Button but = selectButton.GetComponent<Button>();
+            but.gameObject.SetActive(false);
+            // TODO back
+            //but.onClick.AddListener();
         }
-
-        BalanceOfPlayer();
     }
 
     public async void BalanceOfPlayer() {
-        var url = Manager.infuraMumbaiEndpointUrl;
-        var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
-        var web3 = new Web3(account, url);
-        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
-        var balanceOfFunction = new BalanceOfFunction();
-        balanceOfFunction.Owner = Manager.PlayerAddress;
-        var balanceOfFunctionReturn = await contractHandler.QueryAsync<BalanceOfFunction, System.Numerics.BigInteger>(balanceOfFunction);
-        Debug.Log("user balance of dragons is: " + balanceOfFunctionReturn.ToString());
-        Manager.playerAmountOfDragons = balanceOfFunctionReturn;
+        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+            var url = Manager.infuraMumbaiEndpointUrl;
+            var privateKey = Manager.PlayerPK;
+            var account = new Account(privateKey);
+            var web3 = new Web3(account, url);
+            var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+            var balanceOfFunction = new BalanceOfFunction();
+            balanceOfFunction.Owner = Manager.PlayerAddress;
+            var balanceOfFunctionReturn = await contractHandler.QueryAsync<BalanceOfFunction, System.Numerics.BigInteger>(balanceOfFunction);
+            Debug.Log("user balance of dragons is: " + balanceOfFunctionReturn.ToString());
+            Manager.playerAmountOfDragons = balanceOfFunctionReturn;
+        }
     }
 
     async void LoadInitially() {
@@ -127,9 +156,9 @@ public class LoadPlayerNfts : MonoBehaviour
     async void LoadDragon(int tokenId)
     {
         var url = Manager.infuraMumbaiEndpointUrl;
-        var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
-        var web3 = new Web3(account, url);
+        // var privateKey = Manager.PlayerPK;
+        // var account = new Account(privateKey);
+        var web3 = new Web3(url);
 
         var tokenURIFunctionMessage = new TokenURIFunction()
         {
@@ -155,6 +184,7 @@ public class LoadPlayerNfts : MonoBehaviour
         accelValue.text = data.acceleration.ToString();
         accelSlider.value = data.acceleration;
 
+        // TODO switch case for all classes
         if (data.race.Equals("fire"))
         {
             raceSprite.sprite = fireRace;
@@ -201,6 +231,11 @@ public class LoadPlayerNfts : MonoBehaviour
 
     public void SelectDragon()
     {
+        SelectDragon(allTokenIds[currentIndex]);
+    }
+
+    public void SelectDragon(string index)
+    {
         foreach (Transform child in dragonInitPost.transform)
         {
             if (child.gameObject.tag.Equals("IntroDragon"))
@@ -208,11 +243,12 @@ public class LoadPlayerNfts : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-        Manager.setSelectedDragon(allTokenIds[currentIndex]);
-        GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(allTokenIds[currentIndex])]);
+        Manager.setSelectedDragon(index);
+        PlayerPrefs.SetString("SelectedDragonTokenId", index);
+        GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(index)]);
         newDragon.transform.parent = dragonInitPost.transform;
         newDragon.transform.localPosition = new Vector3(0, 0, 0);
-        newDragon.transform.localRotation = Quaternion.identity;
+        newDragon.transform.localRotation = Quaternion.identity; 
     }
 
 
@@ -221,7 +257,7 @@ public class LoadPlayerNfts : MonoBehaviour
         public string image;
         public string name;
         public string description;
-        public int topSpeed;
+        public int topSpeed; 
         public int acceleration;
         public string race;
         public string rarity;
