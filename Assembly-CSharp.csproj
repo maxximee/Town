@@ -283,6 +283,7 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\FXAA3.cginc" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+     <None Include="Assets\Suriyun\README.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -301,6 +302,7 @@
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeTrunk.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToonBodyDoubleShadeWithFeather.hlsl" />
      <None Include="Assets\Shader\cellShader\Lighting.hlsl" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\TAA.cginc" />
@@ -311,7 +313,9 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeBranch.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToonBody.hlsl" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToon.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
      <None Include="Assets\Fantasy Adventure Environment\_DemoScenes\Source\_These assets are not officially included, only produced for the demo scene.txt" />
@@ -327,6 +331,7 @@
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToonHead.hlsl" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ACES.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
@@ -337,6 +342,7 @@
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Water.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\FXAA.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToonOutline.hlsl" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\CharaMain.cginc" />
      <None Include="Assets\Epic Toon FX\Upgrade\URP Compatibility.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
@@ -346,6 +352,7 @@
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\Fog.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+     <None Include="Assets\Suriyun\UnityChanToonShaderVer2_Project-urp-2.2.3\Runtime\Shaders\UniversalToonBodyShadingGradeMap.hlsl" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
      <None Include="Assets\Dragons\UnityChanShader\Shader\readme.txt" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_TreeBillboard.shader" />
@@ -1297,6 +1304,10 @@
     <ProjectReference Include="MoreMountains.Tools.csproj">
       <Project>{cdb08ac4-13c7-8e3d-1054-f1a38a21939a}</Project>
       <Name>MoreMountains.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.UniversalToonShader.Urp.Editor.csproj">
+      <Project>{076ccad6-ff7d-fe71-0fd3-e36f03e35a73}</Project>
+      <Name>Unity.UniversalToonShader.Urp.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

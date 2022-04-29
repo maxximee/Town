@@ -139,6 +139,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ShaderGraph.Utilities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lofelt.NiceVibrations.Editor", "Lofelt.NiceVibrations.Editor.csproj", "{3fb968de-7db5-b96b-a165-70581fddec30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.UniversalToonShader.Urp.Editor", "Unity.UniversalToonShader.Urp.Editor.csproj", "{076ccad6-ff7d-fe71-0fd3-e36f03e35a73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -282,6 +284,8 @@ Global
 		{90a85ec3-6d5a-d852-359e-d7f76b0eaba4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3fb968de-7db5-b96b-a165-70581fddec30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3fb968de-7db5-b96b-a165-70581fddec30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{076ccad6-ff7d-fe71-0fd3-e36f03e35a73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{076ccad6-ff7d-fe71-0fd3-e36f03e35a73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
