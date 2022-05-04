@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,11 @@ using Nethereum.Hex.HexTypes;
 using Nethereum.RLP;
 using Nethereum.Util;
 using Nethereum.Signer;
+using ZXing.QrCode;
+using UnityEngine.UI;
 using System;
 using TMPro;
+using ZXing;
 
 public class WalletManager : MonoBehaviour
 {
@@ -32,6 +36,9 @@ public class WalletManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI createdWalletMnemonicPhrase;
 
+    [SerializeField] private RawImage qrCode;
+
+    private Texture2D _encodedTexture;
 
     private KeyStoreScryptService keyStoreService;
     private ScryptParams scryptParams;
@@ -150,9 +157,25 @@ public class WalletManager : MonoBehaviour
     }
 
     void Start() {
+        _encodedTexture = new Texture2D(256,256);
         walletAddress.text = Manager.PlayerAddress;
+        Color32[] qrCodeEncoded = Encode(Manager.PlayerAddress, 256,256);
+        _encodedTexture.SetPixels32(qrCodeEncoded);
+        _encodedTexture.Apply();
+        qrCode.texture = _encodedTexture;
         updateAmountOfDragons();
-        
+    }
+
+    private Color32[] Encode(string text, int width, int height) {
+        BarcodeWriter writer = new BarcodeWriter 
+        {
+           Format = BarcodeFormat.QR_CODE,
+           Options = new QrCodeEncodingOptions{
+               Height = height,
+               Width = width
+           } 
+        };
+        return writer.Write(text);
     }
 
     void Awake() {
@@ -161,7 +184,7 @@ public class WalletManager : MonoBehaviour
     }
 
     public void updateAmountOfDragons() {
-        amountOfDragons.text = "Amount of Dragons: " + Manager.playerAmountOfDragons;
+        amountOfDragons.text = Manager.playerAmountOfDragons.ToString();
     }
 
     public void resetAccount() {

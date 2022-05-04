@@ -18,6 +18,9 @@ public class LoadBalances : MonoBehaviour
     [SerializeField] private TextMeshProUGUI atomBalanceText;
     [SerializeField] private TextMeshProUGUI maticBalanceText;
 
+    [SerializeField] private TextMeshProUGUI atomWalletBalanceText;
+    [SerializeField] private TextMeshProUGUI maticWalletBalanceText;
+
     [Function("balanceOf", "uint256")]
     public class BalanceOfFunction : FunctionMessage
     {
@@ -53,12 +56,14 @@ public class LoadBalances : MonoBehaviour
             float decimals = Manager.TokenDecimal; // 18 decimals
             float atoms = wei / decimals;
             atomBalanceText.text = Convert.ToDecimal(atoms).ToString();
+            atomWalletBalanceText.text = Convert.ToDecimal(atoms).ToString();
 
             var maticBalance = await web3.Eth.GetBalance.SendRequestAsync(Manager.PlayerAddress);
 
             float maticWei = float.Parse(maticBalance.ToString());
             float matic = maticWei / decimals;
             maticBalanceText.text = (Mathf.Round(matic * 1000f) / 1000f).ToString();
+            maticWalletBalanceText.text = (Mathf.Round(matic * 1000f) / 1000f).ToString();
     }
 
 

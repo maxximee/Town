@@ -19,14 +19,14 @@ namespace MoreMountains.HighroadEngine
         public virtual void OnLocalGameClick()
         {
             RemoveBackgroundGame();
-            LoadingSceneManager.LoadScene(LocalGameSceneName);
+            //LoadingSceneManager.LoadScene(LocalGameSceneName);
         }
 
         public virtual void OnPunOnlineGameClick()
         {
                 OnlineSdkBroker.SelectedOnlineSdk = OnlineSdkBroker.OnlineSdks.Pun;
 			    RemoveBackgroundGame();
-                LoadingSceneManager.LoadScene(OnlineGameSceneName);
+                //LoadingSceneManager.LoadScene(OnlineGameSceneName);
         }
 
         protected virtual void RemoveBackgroundGame()
