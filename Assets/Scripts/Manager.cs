@@ -16,8 +16,8 @@ public class Manager : Singleton<Manager>
         public static readonly string Chain = "polygon";
         public static readonly string Network = "mumbai";
         public static readonly BigInteger ChainId = 80001;
-        public static readonly string MarketplaceContractAddress = "0x37A60BE4309FC071ec219C949682cF1A785C2f81";
-        public static readonly string NftContractAddress = "0x87C74192D5b75A85F57C67d71A84c5d41df7Da08";
+        public static readonly string MarketplaceContractAddress = "0xb8F9157453F6eeDD62E5c5A23a6845E320A8C128";
+        public static readonly string NftContractAddress = "0x9523214EC3658931ecEA366033E22e9F2eC4c148";
         public static readonly string TokenContractAddress = "0x0400c0624a90CA9097F8F248F4c04173b8C3f8ea";
         public static readonly float TokenDecimal = 1000000000000000000f; 
         public static readonly BigInteger ListingFee = 25000000000000000;

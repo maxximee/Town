@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.RPC.Eth.DTOs;
@@ -232,5 +233,23 @@ public class LoadMarketItems : MonoBehaviour
         } else {
             Debug.LogWarning("login first");
         }
+    }
+
+    public async void approveForSale(TextMeshProUGUI tokenIdAsString) {
+            BigInteger tokenId = BigInteger.Parse(tokenIdAsString.text);
+            var url = Manager.infuraMumbaiEndpointUrl;
+            var privateKey = Manager.PlayerPK;
+            var account = new Account(privateKey, Manager.ChainId);
+            var web3 = new Web3(account, url);
+
+            var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+
+            //  nft.approve first!
+            var approveFunction = new ApproveFunction();
+            approveFunction.To = Manager.MarketplaceContractAddress;
+            approveFunction.TokenId = tokenId;
+            var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
+
+            Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
     }
 }

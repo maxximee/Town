@@ -14,6 +14,7 @@ using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Contracts;
 using Nethereum.Contracts.Extensions;
 using System.Threading.Tasks;
+using System.Numerics;
 
 public class LoadPlayerNfts : MonoBehaviour
 {
@@ -27,6 +28,15 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private Slider topSpeedSlider;
     [SerializeField] private TextMeshProUGUI accelValue;
     [SerializeField] private Slider accelSlider;
+
+    [SerializeField] private TextMeshProUGUI yieldValue;
+    [SerializeField] private Slider yieldSlider;
+    [SerializeField] private TextMeshProUGUI dietValue;
+    [SerializeField] private Slider dietSlider;
+
+    [SerializeField] private TextMeshProUGUI levelValue;
+
+    [SerializeField] private TextMeshProUGUI rarityValue;
     [SerializeField] private Image raceSprite;
     [SerializeField] private Sprite fireRace;
     [SerializeField] private Sprite waterRace;
@@ -61,7 +71,7 @@ public class LoadPlayerNfts : MonoBehaviour
     public partial class OwnerOfOutputDTO : OwnerOfOutputDTOBase { }
 
     [FunctionOutput]
-    public class OwnerOfOutputDTOBase : IFunctionOutputDTO 
+    public class OwnerOfOutputDTOBase : IFunctionOutputDTO
     {
         [Parameter("address", "", 1)]
         public virtual string ReturnValue1 { get; set; }
@@ -76,23 +86,111 @@ public class LoadPlayerNfts : MonoBehaviour
         public virtual string Owner { get; set; }
     }
 
+    public partial class TokenDetailsFunction : TokenDetailsFunctionBase { }
+
+    [Function("_tokenDetails", typeof(TokenDetailsOutputDTO))]
+    public class TokenDetailsFunctionBase : FunctionMessage
+    {
+        [Parameter("uint256", "", 1)]
+        public virtual BigInteger ReturnValue1 { get; set; }
+    }
+
+    public partial class GetTokenDetailsOutputDTO : GetTokenDetailsOutputDTOBase { }
+
+    [FunctionOutput]
+    public class GetTokenDetailsOutputDTOBase : IFunctionOutputDTO
+    {
+        [Parameter("tuple", "", 1)]
+        public virtual Dragon ReturnValue1 { get; set; }
+    }
+
+    public partial class Dragon : DragonBase { }
+
+    public class DragonBase
+    {
+        [Parameter("uint256", "id", 1)]
+        public virtual BigInteger Id { get; set; }
+        [Parameter("uint256", "bloodType", 2)]
+        public virtual BigInteger BloodType { get; set; }
+        [Parameter("uint256", "topSpeed", 3)]
+        public virtual BigInteger TopSpeed { get; set; }
+        [Parameter("uint256", "acceleration", 4)]
+        public virtual BigInteger Acceleration { get; set; }
+        [Parameter("uint256", "yield", 5)]
+        public virtual BigInteger Yield { get; set; }
+        [Parameter("uint256", "diet", 6)]
+        public virtual BigInteger Diet { get; set; }
+        [Parameter("uint8", "level", 7)]
+        public virtual byte Level { get; set; }
+        [Parameter("string", "rarity", 8)]
+        public virtual string Rarity { get; set; }
+        [Parameter("string", "tokenURI", 9)]
+        public virtual string TokenURI { get; set; }
+    }
+
+    public partial class GetTokenDetailsFunction : GetTokenDetailsFunctionBase { }
+
+    [Function("getTokenDetails", typeof(GetTokenDetailsOutputDTO))]
+    public class GetTokenDetailsFunctionBase : FunctionMessage
+    {
+        [Parameter("uint256", "_id", 1)]
+        public virtual BigInteger Id { get; set; }
+    }
+
+    public partial class TokenDetailsOutputDTO : TokenDetailsOutputDTOBase { }
+
+    [FunctionOutput]
+    public class TokenDetailsOutputDTOBase : IFunctionOutputDTO
+    {
+        [Parameter("uint256", "id", 1)]
+        public virtual BigInteger Id { get; set; }
+        [Parameter("uint256", "bloodType", 2)]
+        public virtual BigInteger BloodType { get; set; }
+        [Parameter("uint256", "topSpeed", 3)]
+        public virtual BigInteger TopSpeed { get; set; }
+        [Parameter("uint256", "acceleration", 4)]
+        public virtual BigInteger Acceleration { get; set; }
+        [Parameter("uint256", "yield", 5)]
+        public virtual BigInteger Yield { get; set; }
+        [Parameter("uint256", "diet", 6)]
+        public virtual BigInteger Diet { get; set; }
+        [Parameter("uint8", "level", 7)]
+        public virtual byte Level { get; set; }
+        [Parameter("string", "rarity", 8)]
+        public virtual string Rarity { get; set; }
+        [Parameter("string", "tokenURI", 9)]
+        public virtual string TokenURI { get; set; }
+    }
+
+    public partial class GetDragonsByOwnerFunction : GetDragonsByOwnerFunctionBase { }
+
+    [Function("getDragonsByOwner", "uint256[]")]
+    public class GetDragonsByOwnerFunctionBase : FunctionMessage
+    {
+        [Parameter("address", "_owner", 1)]
+        public virtual string Owner { get; set; }
+    }
+
+
+
+
     void Start()
     {
-        if (PlayerPrefs.HasKey("SelectedDragonTokenId")){
+        if (PlayerPrefs.HasKey("SelectedDragonTokenId"))
+        {
             SelectDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
             Manager.setSelectedDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
         }
 
         indexText.text = "0 of 0";
-        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
-            if (!PlayerPrefs.HasKey("tokenIds"))
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
+            LoadInitially();
+            if (PlayerPrefs.HasKey("tokenIds"))
             {
-                LoadInitially();
-            }
-
-            if (PlayerPrefs.HasKey("tokenIds")) {
                 allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
-                if (allTokenIds.Length > 0) {
+                if (allTokenIds.Length > 0)
+                {
                     LoadDragon(int.Parse(allTokenIds[currentIndex]));
                     indexText.text = "1 of " + allTokenIds.Length;
                 }
@@ -102,22 +200,18 @@ public class LoadPlayerNfts : MonoBehaviour
                 Button but = selectButton.GetComponent<Button>();
                 selectButton.GetComponentInChildren<TextMeshProUGUI>().text = "Select";
                 but.gameObject.SetActive(true);
-            } else {
+            }
+            else
+            {
                 Debug.LogWarning("go buy a dragon");
             }
-        } else {
-            Debug.Log("buy a dragon first");
-            dragonPanel.SetActive(false);
-            selectButton.GetComponentInChildren<TextMeshProUGUI>().text = "Market";
-            Button but = selectButton.GetComponent<Button>();
-            but.gameObject.SetActive(false);
-            // TODO back
-            //but.onClick.AddListener();
         }
     }
 
-    public async void BalanceOfPlayer() {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+    public async void BalanceOfPlayer()
+    {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
             var account = new Account(privateKey);
@@ -131,24 +225,25 @@ public class LoadPlayerNfts : MonoBehaviour
         }
     }
 
-    async void LoadInitially() {
+    async void LoadInitially()
+    {
         var url = Manager.infuraMumbaiEndpointUrl;
         var privateKey = Manager.PlayerPK;
         var account = new Account(privateKey);
         var web3 = new Web3(account, url);
         var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
         string myDragons = "";
-        // TODO only 4 dragons for now proto
-        for (int i = 0; i<4;i++) {
-            var ownerOfFunction = new OwnerOfFunction();
-            ownerOfFunction.TokenId = i;
-            var ownerOfFunctionReturn = await contractHandler.QueryAsync<OwnerOfFunction, string>(ownerOfFunction);
-            Debug.Log("owner of " + i + " is " + ownerOfFunctionReturn);
-            if (ownerOfFunctionReturn.Equals(Manager.PlayerAddress)) {
-                myDragons += i + ",";
-            }
+
+        var getDragonsByOwnerFunction = new GetDragonsByOwnerFunction();
+        getDragonsByOwnerFunction.Owner = account.Address;
+        var getDragonsByOwnerFunctionReturn = await contractHandler.QueryAsync<GetDragonsByOwnerFunction, List<BigInteger>>(getDragonsByOwnerFunction);
+        foreach (BigInteger tokenId in getDragonsByOwnerFunctionReturn)
+        {
+            myDragons += tokenId + ",";
         }
-        if (myDragons.Length > 1) {
+
+        if (myDragons.Length > 1)
+        {
             PlayerPrefs.SetString("tokenIds", myDragons.Remove(myDragons.Length - 1, 1));
         }
     }
@@ -156,8 +251,6 @@ public class LoadPlayerNfts : MonoBehaviour
     async void LoadDragon(int tokenId)
     {
         var url = Manager.infuraMumbaiEndpointUrl;
-        // var privateKey = Manager.PlayerPK;
-        // var account = new Account(privateKey);
         var web3 = new Web3(url);
 
         var tokenURIFunctionMessage = new TokenURIFunction()
@@ -165,38 +258,50 @@ public class LoadPlayerNfts : MonoBehaviour
             TokenId = tokenId,
         };
 
-        var queryHandler = web3.Eth.GetContractQueryHandler<TokenURIFunction>();
-        string uri = await queryHandler.QueryAsync<string>(Manager.NftContractAddress, tokenURIFunctionMessage);
+        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+        var getTokenDetailsFunction = new GetTokenDetailsFunction();
+        getTokenDetailsFunction.Id = tokenId;
+        var getTokenDetailsOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetTokenDetailsFunction, GetTokenDetailsOutputDTO>(getTokenDetailsFunction);
 
+        Dragon dragon = getTokenDetailsOutputDTO.ReturnValue1;
+        string uri = dragon.TokenURI;
         UnityWebRequest webRequest = UnityWebRequest.Get(uri);
         await webRequest.SendWebRequest();
-        NftResponseData data = JsonUtility.FromJson<NftResponseData>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
+        NftDragonData data = JsonUtility.FromJson<NftDragonData>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
 
-        // parse json to get image uri
+        // parse json to get image uri (even if we won't use it in here)
         string imageUri = data.image;
-        name.text = data.name;
+        name.text = data._id.ToString();
 
         dragTokenId.text = tokenId.ToString();
 
-        topSpeedValue.text = data.topSpeed.ToString();
-        topSpeedSlider.value = data.topSpeed;
+        topSpeedValue.text = (((float)dragon.TopSpeed) / 10).ToString();
+        topSpeedSlider.value = ((float)dragon.TopSpeed) / 10;
 
-        accelValue.text = data.acceleration.ToString();
-        accelSlider.value = data.acceleration;
+        accelValue.text = (((float)dragon.Acceleration) / 10).ToString();
+        accelSlider.value = ((float)dragon.Acceleration) / 10;
 
-        // TODO switch case for all classes
-        if (data.race.Equals("fire"))
+        dietValue.text = (((float)dragon.Diet) / 10).ToString();
+        dietSlider.value = ((float)dragon.Diet) / 10;
+
+        yieldValue.text = (((float)dragon.Yield) / 10).ToString();
+        yieldSlider.value = ((float)dragon.Yield) / 10;
+
+        levelValue.text = dragon.Level.ToString();
+
+        rarityValue.text = dragon.Rarity.ToString();
+
+        if (data.classType.Equals("fire"))
         {
             raceSprite.sprite = fireRace;
             raceSprite.enabled = true;
         }
 
-        description.text = data.description;
-
-        // fetch image and display in game
-        UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(imageUri);
-        await textureRequest.SendWebRequest();
-        dragonSprite.sprite = Sprite.Create(((DownloadHandlerTexture)textureRequest.downloadHandler).texture, new Rect(0, 0, 1233, 1233), new Vector2(0.5f, 1f), 100f);
+        // This is not needed anymore, we don't have to load the image, we load the 3D model!
+        // // fetch image and display in game
+        // UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(imageUri);
+        // await textureRequest.SendWebRequest();
+        // dragonSprite.sprite = Sprite.Create(DownloadHandlerTexture.GetContent(textureRequest), new Rect(0, 0, 1023, 1023), new UnityEngine.Vector2(0.5f, 1f), 100f);
     }
 
     public void LoadNextDragon()
@@ -245,23 +350,20 @@ public class LoadPlayerNfts : MonoBehaviour
         }
         Manager.setSelectedDragon(index);
         PlayerPrefs.SetString("SelectedDragonTokenId", index);
-        GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(index)]);
+        // GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(index)]);
+        string dragonName;
+        if (int.Parse(index) < 10)
+        {
+            dragonName = "DragonSD_0" + index;
+        }
+        else
+        {
+            dragonName = "DragonSD_" + index;
+        }
+        GameObject newDragon = Instantiate(Resources.Load("Dragons_SD/Prefab/" + dragonName) as GameObject);
         newDragon.transform.parent = dragonInitPost.transform;
-        newDragon.transform.localPosition = new Vector3(0, 0, 0);
-        newDragon.transform.localRotation = Quaternion.identity; 
+        newDragon.transform.localPosition = new UnityEngine.Vector3(0, 0, 0);
+        newDragon.transform.localRotation = UnityEngine.Quaternion.identity;
     }
-
-
-    public class NftResponseData
-    {
-        public string image;
-        public string name;
-        public string description;
-        public int topSpeed; 
-        public int acceleration;
-        public string race;
-        public string rarity;
-    }
-
 
 }
