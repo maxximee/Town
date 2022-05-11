@@ -176,10 +176,12 @@ public class LoadPlayerNfts : MonoBehaviour
 
     void Start()
     {
+        string currentSelectedDragonTokenId = "0";
         if (PlayerPrefs.HasKey("SelectedDragonTokenId"))
         {
             SelectDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
             Manager.setSelectedDragon(PlayerPrefs.GetString("SelectedDragonTokenId"));
+            currentSelectedDragonTokenId = PlayerPrefs.GetString("SelectedDragonTokenId");
         }
 
         indexText.text = "0 of 0";
@@ -189,10 +191,12 @@ public class LoadPlayerNfts : MonoBehaviour
             if (PlayerPrefs.HasKey("tokenIds"))
             {
                 allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
+                currentIndex = getIndex(currentSelectedDragonTokenId);
+                Debug.Log("currentIndex is : " + currentIndex + " and dragon token id is " + currentSelectedDragonTokenId + " and loaded drag is" + allTokenIds[currentIndex]);
                 if (allTokenIds.Length > 0)
                 {
                     LoadDragon(int.Parse(allTokenIds[currentIndex]));
-                    indexText.text = "1 of " + allTokenIds.Length;
+                    indexText.text = (currentIndex+1) + " of " + allTokenIds.Length;
                 }
 
                 BalanceOfPlayer();
@@ -206,6 +210,15 @@ public class LoadPlayerNfts : MonoBehaviour
                 Debug.LogWarning("go buy a dragon");
             }
         }
+    }
+
+    private int getIndex(string tokenId) {
+        for (int i = 0; i <= allTokenIds.Length ; i++) {
+            if (allTokenIds[i].Equals(tokenId)){
+                return i;
+            }
+        }
+        return 0;
     }
 
     public async void BalanceOfPlayer()
@@ -246,6 +259,32 @@ public class LoadPlayerNfts : MonoBehaviour
         {
             PlayerPrefs.SetString("tokenIds", myDragons.Remove(myDragons.Length - 1, 1));
         }
+    }
+
+    public async Task<Dragon> LoadDragon(string tokenId) {
+         var url = Manager.infuraMumbaiEndpointUrl;
+        var web3 = new Web3(url);
+
+        var tokenURIFunctionMessage = new TokenURIFunction()
+        {
+            TokenId = int.Parse(tokenId),
+        };
+
+        var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
+        var getTokenDetailsFunction = new GetTokenDetailsFunction();
+        getTokenDetailsFunction.Id = int.Parse(tokenId);
+        var getTokenDetailsOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetTokenDetailsFunction, GetTokenDetailsOutputDTO>(getTokenDetailsFunction);
+
+        Dragon dragon = getTokenDetailsOutputDTO.ReturnValue1;
+        return dragon;
+    }
+
+    public async Task<NftDragonData> LoadDragonData(Dragon dragon) {
+        string uri = dragon.TokenURI;
+        UnityWebRequest webRequest = UnityWebRequest.Get(uri);
+        await webRequest.SendWebRequest();
+        NftDragonData data = JsonUtility.FromJson<NftDragonData>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
+        return data;
     }
 
     async void LoadDragon(int tokenId)
