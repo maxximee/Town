@@ -174,10 +174,11 @@ public class LoadMarketItems : MonoBehaviour
                 NftContract = Manager.NftContractAddress,
                 Id = id
             };
-            createMarketSaleFunction.AmountToSend = price;
+            createMarketSaleFunction.AmountToSend = price * Manager.TokenDecimal;
             var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(Manager.MarketplaceContractAddress, createMarketSaleFunction);
 
             Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash, 2);
         } else {
             Debug.LogWarning("login first");
         }
@@ -197,6 +198,7 @@ public class LoadMarketItems : MonoBehaviour
             var deleteMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(deleteMarketItemFunction);
 
             Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash, 2);
          } else {
             Debug.LogWarning("login first");
         }
@@ -219,17 +221,19 @@ public class LoadMarketItems : MonoBehaviour
             var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
 
             Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("player approved listing " + approveFunctionTxnReceipt.TransactionHash, 2);
 
             var marketContractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
             var createMarketItemFunction = new CreateMarketItemFunction();
             createMarketItemFunction.NftContract = Manager.NftContractAddress;
             createMarketItemFunction.TokenId = tokenId;
-            createMarketItemFunction.Price = price;
+            createMarketItemFunction.Price = price * Manager.TokenDecimal;
             createMarketItemFunction.AmountToSend = Manager.ListingFee;
             var createMarketItemFunctionTxnReceipt = await marketContractHandler.SendRequestAndWaitForReceiptAsync(createMarketItemFunction);
 
             Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash, 2);
         } else {
             Debug.LogWarning("login first");
         }
@@ -251,5 +255,6 @@ public class LoadMarketItems : MonoBehaviour
             var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
 
             Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("player approved listing " + approveFunctionTxnReceipt.TransactionHash, 2);
     }
 }

@@ -192,7 +192,6 @@ public class LoadPlayerNfts : MonoBehaviour
             {
                 allTokenIds = PlayerPrefs.GetString("tokenIds").Split(',');
                 currentIndex = getIndex(currentSelectedDragonTokenId);
-                Debug.Log("currentIndex is : " + currentIndex + " and dragon token id is " + currentSelectedDragonTokenId + " and loaded drag is" + allTokenIds[currentIndex]);
                 if (allTokenIds.Length > 0)
                 {
                     LoadDragon(int.Parse(allTokenIds[currentIndex]));

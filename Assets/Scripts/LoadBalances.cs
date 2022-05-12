@@ -53,7 +53,7 @@ public class LoadBalances : MonoBehaviour
             var balance = await balanceHandler.QueryAsync<BigInteger>(Manager.TokenContractAddress, balanceOfFunctionMessage);
 
             float wei = float.Parse(balance.ToString());
-            float decimals = Manager.TokenDecimal; // 18 decimals
+            float decimals = (float)Manager.TokenDecimal; // 18 decimals
             float atoms = wei / decimals;
             atomBalanceText.text = Convert.ToDecimal(atoms).ToString();
             atomWalletBalanceText.text = Convert.ToDecimal(atoms).ToString();

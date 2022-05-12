@@ -36,7 +36,7 @@ public class DragonLevelManager : MonoBehaviour
     private int PointsPerLevel = 4;
 
     // TODO depends on rarity + level
-    private BigInteger TokensCostToLevelUp = 10000000000000000000;
+    private BigInteger TokensCostToLevelUp = 15;
 
     public partial class LevelUpFunction : LevelUpFunctionBase { }
 
@@ -70,6 +70,10 @@ public class DragonLevelManager : MonoBehaviour
         public virtual BigInteger Amount { get; set; }
     }
 
+    private void Awake() {
+        TokensCostToLevelUp = TokensCostToLevelUp * Manager.TokenDecimal;
+    }
+
     public async void ApproveLevelUp()
     {
         _availablePoints = PointsPerLevel;
@@ -85,6 +89,7 @@ public class DragonLevelManager : MonoBehaviour
         approveFunction.Amount = TokensCostToLevelUp;
         var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
         Debug.Log("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash);
+        Manager.showToast("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash, 2);
 
     }
 
@@ -107,7 +112,7 @@ public class DragonLevelManager : MonoBehaviour
         levelUpFunction.DragonOwner = Manager.PlayerAddress;
         var levelUpFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(levelUpFunction);
         Debug.Log("level up transaction receipt: " + levelUpFunctionTxnReceipt.TransactionHash);
-
+        Manager.showToast("level up transaction receipt: " + levelUpFunctionTxnReceipt.TransactionHash, 2);
     }
 
     public void IncreaseAcceleration()

@@ -2,6 +2,7 @@ using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Numerics;
 using static LoadMarketItems;
 
@@ -19,7 +20,7 @@ public class Manager : Singleton<Manager>
         public static readonly string MarketplaceContractAddress = "0xb8F9157453F6eeDD62E5c5A23a6845E320A8C128";
         public static readonly string NftContractAddress = "0x9523214EC3658931ecEA366033E22e9F2eC4c148";
         public static readonly string TokenContractAddress = "0x0400c0624a90CA9097F8F248F4c04173b8C3f8ea";
-        public static readonly float TokenDecimal = 1000000000000000000f; 
+        public static readonly BigInteger TokenDecimal = 1000000000000000000; 
         public static readonly BigInteger ListingFee = 25000000000000000;
     #endregion
 
@@ -49,7 +50,6 @@ public class Manager : Singleton<Manager>
     public static void setSelectedDragon(string dragonNumber)
     {
         selectedDragon = dragonNumber ;
-        Debug.Log("selected dragon set to : " + selectedDragon);
     }
 
     public static string getSelectedDragon()
@@ -65,6 +65,68 @@ public class Manager : Singleton<Manager>
     public static List<MarketItem> GetMarketItems()
     {
         return marketItems;
+    }
+
+    public Text txt;
+
+    public static void showToast(string text,
+        int duration)
+    {
+        _instance.StartCoroutine(showToastCOR(text, duration));
+    }
+
+    private static IEnumerator showToastCOR(string text,
+        int duration)
+    {
+        Color orginalColor = _instance.txt.color;
+
+        _instance.txt.text = text;
+        _instance.txt.enabled = true;
+
+        //Fade in
+        yield return fadeInAndOut(_instance.txt, true, 0.5f);
+
+        //Wait for the duration
+        float counter = 0;
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            yield return null;
+        }
+
+        //Fade out
+        yield return fadeInAndOut(_instance.txt, false, 0.5f);
+
+        _instance.txt.enabled = false;
+        _instance.txt.color = orginalColor;
+    }
+
+    static IEnumerator fadeInAndOut(Text targetText, bool fadeIn, float duration)
+    {
+        //Set Values depending on if fadeIn or fadeOut
+        float a, b;
+        if (fadeIn)
+        {
+            a = 0f;
+            b = 1f;
+        }
+        else
+        {
+            a = 1f;
+            b = 0f;
+        }
+
+        Color currentColor = Color.clear;
+        float counter = 0f;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            float alpha = Mathf.Lerp(a, b, counter / duration);
+
+            targetText.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+            yield return null;
+        }
     }
 }
 

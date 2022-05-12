@@ -60,5 +60,6 @@ public class Rewards : MonoBehaviour
         Debug.Log("sending atoms...");
         var transferFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(transferFunction);
         Debug.Log("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash);
+        Manager.showToast("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash, 2);
     }
 }
