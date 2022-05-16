@@ -22,6 +22,7 @@ public class Manager : Singleton<Manager>
         public static readonly string TokenContractAddress = "0x0400c0624a90CA9097F8F248F4c04173b8C3f8ea";
         public static readonly BigInteger TokenDecimal = 1000000000000000000; 
         public static readonly BigInteger ListingFee = 25000000000000000;
+        public static readonly string AtomsPrefs = "localAtoms";
     #endregion
 
     #region contract abis

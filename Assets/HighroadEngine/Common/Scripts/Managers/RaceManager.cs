@@ -37,6 +37,8 @@ namespace MoreMountains.HighroadEngine
         public RectTransform EndGamePanel;
         /// Text object for players ranking at the end of the game
         public Text EndGameRanking;
+        public RectTransform EndScreenPlayerTagPrefab;
+        public RectTransform EndScreenPlayerTagsParent;
         /// Back button to return to lobby screen 
         public Button BackButton;
         /// Back button to return to lobby screen when racing is finished
@@ -49,7 +51,6 @@ namespace MoreMountains.HighroadEngine
         public Text ScoreText1;
         public Text ScoreText2;
         public Text ScoreText3;
-        public TextMeshProUGUI RewardValue;
 
         public RectTransform PlayerTagPrefab;
 
@@ -87,8 +88,6 @@ namespace MoreMountains.HighroadEngine
         /// a dictionary of the vehicle's gameobjects, using the player's number as index
         public Dictionary<int, BaseController> Players { get; protected set; }
 
-        [Header("Block chain")]
-        public Rewards rewards;
 
         /// The current race elapsed time. Used in the ranking
         protected float _currentGameTime;
@@ -174,7 +173,8 @@ namespace MoreMountains.HighroadEngine
                 ScoreText3.text = "";
             }
 
-            if (LapText != null) {
+            if (LapText != null)
+            {
                 LapText.text = "";
             }
 
@@ -188,7 +188,7 @@ namespace MoreMountains.HighroadEngine
             {
                 _isNetworkMode = true;
 
-                if (OnlineLobbyProxy.Instance != null) _lobbyManager = OnlineLobbyProxy.Instance; 
+                if (OnlineLobbyProxy.Instance != null) _lobbyManager = OnlineLobbyProxy.Instance;
 
                 // in network, all cameras can be used in single mode
                 _cameraControllersAvailable = CameraControllers;
@@ -430,26 +430,27 @@ namespace MoreMountains.HighroadEngine
                         cameraHumanTargets.Add(newPlayer.transform);
                     }
 
-                    RectTransform newPlayerTag = Instantiate(PlayerTagPrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 0)),PlayerTagsPanel);
-                    newPlayerTag.anchoredPosition = new Vector2(0,_playerTagYPos);
+                    RectTransform newPlayerTag = Instantiate(PlayerTagPrefab, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(0, 0, 0)), PlayerTagsPanel);
+                    newPlayerTag.anchoredPosition = new Vector2(0, _playerTagYPos);
                     TextMeshProUGUI playerPos = newPlayerTag.GetComponentInChildren<TextMeshProUGUI>();
                     playerPos.text = (_currentStartPosition + 1).ToString();
-                    Image playerImage = newPlayerTag.GetChild(0).GetComponent<Image>();                    
+                    Image playerImage = newPlayerTag.GetChild(0).GetComponent<Image>();
                     playerImage.sprite = LocalLobbyManager.Instance.AvailableVehicles2dSprites[item.VehicleSelectedIndex];
 
-                    if (!item.IsBot) {
+                    if (!item.IsBot)
+                    {
                         currentPlayer = item.Name;
-                        newPlayerTag.anchoredPosition  = new Vector2(20,_playerTagYPos);
-                        playerPos.color =  new Color(1f,0.82f,0.43f,1f);
+                        newPlayerTag.anchoredPosition = new Vector2(20, _playerTagYPos);
+                        playerPos.color = new Color(1f, 0.82f, 0.43f, 1f);
                         playerPos.fontSize = 65;
                     }
 
                     playerNamesToTags.Add(newPlayer.name, newPlayerTag);
-                    
-                    
+
+
                     // we go to next start position
                     _currentStartPosition++;
-                    _playerTagYPos-=playerTagDist;
+                    _playerTagYPos -= playerTagDist;
                 }
             }
 
@@ -559,7 +560,7 @@ namespace MoreMountains.HighroadEngine
                     if (playersRank.Count > 0)
                     {
                         // update score screen
-                        if (ScoreText1 != null && ScoreText2 != null && ScoreText3 != null && LapText !=null)
+                        if (ScoreText1 != null && ScoreText2 != null && ScoreText3 != null && LapText != null)
                         {
                             //string newscore1 = "";
                             //string newscore2 = "";
@@ -571,16 +572,18 @@ namespace MoreMountains.HighroadEngine
                             {
 
                                 var xPos = 0;
-                                if (p.name.Equals(currentPlayer)) {
+                                if (p.name.Equals(currentPlayer))
+                                {
                                     xPos = 15;
                                 }
-                                playerNamesToTags[p.name].anchoredPosition = new Vector2(xPos,((position - 1) * playerTagDist * -1));
+                                playerNamesToTags[p.name].anchoredPosition = new Vector2(xPos, ((position - 1) * playerTagDist * -1));
                                 playerNamesToTags[p.name].GetComponentInChildren<TextMeshProUGUI>().text = position.ToString();
 
 
                                 if (ClosedLoopTrack)
                                 {
-                                    if (p.name.Equals(currentPlayer)) {
+                                    if (p.name.Equals(currentPlayer))
+                                    {
                                         LapText.text = string.Format("lap {0}/{1}\r\n",
                                             p.CurrentLap >= Laps ? Laps : p.CurrentLap + 1,
                                             Laps);
@@ -664,17 +667,55 @@ namespace MoreMountains.HighroadEngine
         {
             // Show final ranking & controls to end
             string finalRank = "--- finished in " + System.Math.Round(_currentGameTime, 2) + " secs. ---";
-
+            RectTransform[] allPlayerEndscreenTags = new RectTransform[playersRank.Count];
+            int top = 0;
             for (int i = 0; i < playersRank.Count; i++)
             {
-                if (playersRank[i].name.Equals(currentPlayer)) {
+                RectTransform currentPlayerEnd = Instantiate(EndScreenPlayerTagPrefab, EndScreenPlayerTagsParent);
+                currentPlayerEnd.transform.localPosition = new UnityEngine.Vector2(currentPlayerEnd.transform.localPosition.x, top);
+                top -= 60;
+                Component[] allChildren = currentPlayerEnd.GetComponentsInChildren<Transform>();
+                foreach (Transform child in allChildren)
+                {
+                    switch (child.gameObject.name)
+                    {
+                        case "postitionText":
+                            child.gameObject.GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
+                             if (playersRank[i].name.Equals(currentPlayer)) {
+                                child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
+                            }
+                            break;
+                        case "nameText":
+                            child.gameObject.GetComponent<TextMeshProUGUI>().text = playersRank[i].name;
+                            if (playersRank[i].name.Equals(currentPlayer)) {
+                                child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
+                            }
+                            break;
+                        case "dragonSprite":
+                            break;
+                        case "rewardValue":
+                            // TODO use yield stats to influence value
+                            child.gameObject.GetComponent<TextMeshProUGUI>().text = (15-(5*i)).ToString();
+                             if (playersRank[i].name.Equals(currentPlayer)) {
+                                child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
+                            }
+                            break;
+                    }
+                }
+                
+                allPlayerEndscreenTags[i] = currentPlayerEnd;
+                if (playersRank[i].name.Equals(currentPlayer))
+                {
                     finalRank += "\r\n" + "-> " + playersRank[i].name + " <-";
-                } else {
+                }
+                else
+                {
                     finalRank += "\r\n" + playersRank[i].name;
                 }
             }
             winner = playersRank[0].name;
             OnShowEndGameScreen(finalRank);
+
         }
 
         /// <summary>
@@ -689,14 +730,6 @@ namespace MoreMountains.HighroadEngine
                 return;
             }
 
-            EndGameRanking.text = text;
-            Debug.Log("game ended, positions: "+ text);
-            if (PlayerWon()) { 
-                RewardValue.text = "15";
-            } else
-            {
-                RewardValue.text = "0";
-            }
             EndGamePanel.gameObject.SetActive(true);
         }
 
@@ -721,9 +754,16 @@ namespace MoreMountains.HighroadEngine
                 Debug.LogWarning("In Test Mode, you can't quit current scene.");
                 return;
             }
-            if (PlayerWon()) {
+            if (PlayerWon())
+            {
                 Debug.Log("won, so we're giving rewards");
-                rewards.sendRewardsAsync("15000000000000000000");
+                float currentLocalAtoms = 0f;
+                if (PlayerPrefs.HasKey(Manager.AtomsPrefs)) {
+                     currentLocalAtoms = PlayerPrefs.GetFloat(Manager.AtomsPrefs);
+                }
+                // TODO better logic here!
+                currentLocalAtoms += 15f;
+                PlayerPrefs.SetFloat(Manager.AtomsPrefs, currentLocalAtoms);
             }
             _lobbyManager.ReturnToLobby();
         }

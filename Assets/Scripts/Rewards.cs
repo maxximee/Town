@@ -50,7 +50,7 @@ public class Rewards : MonoBehaviour
         web3 = new Web3(account, url);
     }
 
-    public async void sendRewardsAsync(string value)
+    public async Task<BigInteger> sendRewardsAsync(string value)
     {
         var transferFunction = new TransferFunction();
         transferFunction.To = Manager.PlayerAddress;
@@ -61,5 +61,6 @@ public class Rewards : MonoBehaviour
         var transferFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(transferFunction);
         Debug.Log("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash);
         Manager.showToast("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash, 2);
+        return transferFunctionTxnReceipt.Status.Value;
     }
 }
