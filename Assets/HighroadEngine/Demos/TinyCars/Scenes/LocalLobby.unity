@@ -770,9 +770,11 @@ MonoBehaviour:
   AvailableTracksSceneName:
   - Race1
   - Demo
+  - FarmTrack
   AvailableTracksSprite:
   - {fileID: 21300000, guid: 023f68307f72e46469a854cb71a69061, type: 3}
   - {fileID: 21300000, guid: 2911f575a7ffd16479a301ec64db3e97, type: 3}
+  - {fileID: 21300000, guid: a28e4a9d47188da4e9724aeaad3d8b27, type: 3}
 --- !u!4 &734957609
 Transform:
   m_ObjectHideFlags: 0

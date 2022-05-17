@@ -167,6 +167,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -185,7 +186,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.CompanyOfBros.MetaDragons
-    Standalone: unity.More Moutains.HighroadEngine
+    Standalone: com.CompanyOfBros.MetaDragons
     Tizen: com.moremountains.highroadengine
     iPhone: com.moremountains.highroadengine
     tvOS: com.moremountains.highroadengine

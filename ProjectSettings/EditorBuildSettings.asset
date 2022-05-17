@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HighroadEngine/MMTools/Tools/MMSceneLoading/LoadingScreens/MMAdditiveLoadingScreenFastFade.unity
     guid: 8101c376367d6e44f84e602722e5ac10
+  - enabled: 1
+    path: Assets/PolygonFarm/Demo/FarmTrack.unity
+    guid: 28ac9a59020c6bc459f797acd217859a
   m_configObjects: {}
