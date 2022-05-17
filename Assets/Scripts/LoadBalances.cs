@@ -37,7 +37,7 @@ public class LoadBalances : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        if (!String.IsNullOrEmpty(Manager.PlayerAddress))
         {
             loadBalances();
         }
@@ -46,13 +46,11 @@ public class LoadBalances : MonoBehaviour
     async void loadBalances()
     {
         var url = Manager.infuraMumbaiEndpointUrl;
-        var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
-        var web3 = new Web3(account, url);
+        var web3 = new Web3(url);
 
         var balanceOfFunctionMessage = new BalanceOfFunction()
         {
-            Owner = account.Address,
+            Owner = Manager.PlayerAddress,
         };
 
         var balanceHandler = web3.Eth.GetContractQueryHandler<BalanceOfFunction>();

@@ -117,7 +117,7 @@ public class Manager : Singleton<Manager>
             b = 0f;
         }
 
-        Color currentColor = Color.clear;
+        Color currentColor = Color.white;
         float counter = 0f;
 
         while (counter < duration)

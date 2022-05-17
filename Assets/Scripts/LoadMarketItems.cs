@@ -16,6 +16,7 @@ using static LoadPlayerNfts;
 public class LoadMarketItems : MonoBehaviour
 {
 
+    [SerializeField] private GameObject loginPanel;
 
     public UnityEvent marketLoadedEvent;
 
@@ -180,7 +181,7 @@ public class LoadMarketItems : MonoBehaviour
             Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash);
             Manager.showToast("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash, 2);
         } else {
-            Debug.LogWarning("login first");
+            loginPanel.SetActive(true);
         }
     }
 
@@ -200,7 +201,7 @@ public class LoadMarketItems : MonoBehaviour
             Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash);
             Manager.showToast("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash, 2);
          } else {
-            Debug.LogWarning("login first");
+            loginPanel.SetActive(true);
         }
     }
 
@@ -235,11 +236,12 @@ public class LoadMarketItems : MonoBehaviour
             Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash);
             Manager.showToast("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash, 2);
         } else {
-            Debug.LogWarning("login first");
+            loginPanel.SetActive(true);
         }
     }
 
     public async void approveForSale(TextMeshProUGUI tokenIdAsString) {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
             BigInteger tokenId = BigInteger.Parse(tokenIdAsString.text);
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
@@ -256,5 +258,8 @@ public class LoadMarketItems : MonoBehaviour
 
             Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
             Manager.showToast("player approved listing " + approveFunctionTxnReceipt.TransactionHash, 2);
+        } else {
+            loginPanel.SetActive(true);
+        }
     }
 }

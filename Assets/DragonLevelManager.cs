@@ -25,6 +25,8 @@ public class DragonLevelManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI dragonIdText;
 
+    [SerializeField] private GameObject loginPanel;
+
     private int _accel = 0;
     private int _topSpeed = 0;
     private int _diet = 0;
@@ -70,26 +72,35 @@ public class DragonLevelManager : MonoBehaviour
         public virtual BigInteger Amount { get; set; }
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         TokensCostToLevelUp = TokensCostToLevelUp * Manager.TokenDecimal;
     }
 
     public async void ApproveLevelUp()
     {
-        _availablePoints = PointsPerLevel;
-        availablePoints.text = _availablePoints.ToString();
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
 
-        var url = Manager.infuraMumbaiEndpointUrl;
-        var account = new Account(Manager.PlayerPK, Manager.ChainId);
-        var web3 = new Web3(account, url);
-        var contractHandler = web3.Eth.GetContractHandler(Manager.TokenContractAddress);
+            _availablePoints = PointsPerLevel;
+            availablePoints.text = _availablePoints.ToString();
 
-        var approveFunction = new ApproveFunction();
-        approveFunction.Spender = Manager.NftContractAddress;
-        approveFunction.Amount = TokensCostToLevelUp;
-        var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
-        Debug.Log("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash);
-        Manager.showToast("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash, 2);
+            var url = Manager.infuraMumbaiEndpointUrl;
+            var account = new Account(Manager.PlayerPK, Manager.ChainId);
+            var web3 = new Web3(account, url);
+            var contractHandler = web3.Eth.GetContractHandler(Manager.TokenContractAddress);
+
+            var approveFunction = new ApproveFunction();
+            approveFunction.Spender = Manager.NftContractAddress;
+            approveFunction.Amount = TokensCostToLevelUp;
+            var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
+            Debug.Log("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash);
+            Manager.showToast("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash, 2);
+        }
+        else
+        {
+            loginPanel.SetActive(true);
+        }
 
     }
 

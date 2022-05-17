@@ -45,7 +45,6 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dragTokenId;
 
     [Header("3D Elements")]
-    [SerializeField] private GameObject[] dragonPrefabs;
     [SerializeField] private GameObject dragonInitPost;
 
     private string[] allTokenIds;
@@ -185,7 +184,7 @@ public class LoadPlayerNfts : MonoBehaviour
         }
 
         indexText.text = "0 of 0";
-        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        if (!String.IsNullOrEmpty(Manager.PlayerAddress))
         {
             LoadInitially();
             if (PlayerPrefs.HasKey("tokenIds"))
@@ -222,12 +221,10 @@ public class LoadPlayerNfts : MonoBehaviour
 
     public async void BalanceOfPlayer()
     {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        if (!String.IsNullOrEmpty(Manager.PlayerAddress))
         {
             var url = Manager.infuraMumbaiEndpointUrl;
-            var privateKey = Manager.PlayerPK;
-            var account = new Account(privateKey);
-            var web3 = new Web3(account, url);
+            var web3 = new Web3(url);
             var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
             var balanceOfFunction = new BalanceOfFunction();
             balanceOfFunction.Owner = Manager.PlayerAddress;
@@ -240,14 +237,12 @@ public class LoadPlayerNfts : MonoBehaviour
     async void LoadInitially()
     {
         var url = Manager.infuraMumbaiEndpointUrl;
-        var privateKey = Manager.PlayerPK;
-        var account = new Account(privateKey);
-        var web3 = new Web3(account, url);
+        var web3 = new Web3(url);
         var contractHandler = web3.Eth.GetContractHandler(Manager.NftContractAddress);
         string myDragons = "";
 
         var getDragonsByOwnerFunction = new GetDragonsByOwnerFunction();
-        getDragonsByOwnerFunction.Owner = account.Address;
+        getDragonsByOwnerFunction.Owner = Manager.PlayerAddress;
         var getDragonsByOwnerFunctionReturn = await contractHandler.QueryAsync<GetDragonsByOwnerFunction, List<BigInteger>>(getDragonsByOwnerFunction);
         foreach (BigInteger tokenId in getDragonsByOwnerFunctionReturn)
         {

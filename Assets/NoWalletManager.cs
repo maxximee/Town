@@ -7,13 +7,11 @@ public class NoWalletManager : MonoBehaviour
 {
     [SerializeField] private GameObject NoWalletPanel;
     void Awake() {
-        // TODO should be replaced with pincode UI
-        if (PlayerPrefs.HasKey("playerPk")) {
-            Manager.PlayerPK = PlayerPrefs.GetString("playerPk");
+        if (PlayerPrefs.HasKey("playerAddress")) {
             Manager.PlayerAddress = PlayerPrefs.GetString("playerAddress");
         }
 
-        if (String.IsNullOrEmpty(Manager.PlayerPK)) {
+        if (String.IsNullOrEmpty(Manager.PlayerAddress)) {
             NoWalletPanel.SetActive(true);
         }   else {
             NoWalletPanel.SetActive(false); 
