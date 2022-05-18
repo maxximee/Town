@@ -12,9 +12,13 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 using static LoadPlayerNfts;
+using ToastForUnity.Resources.ToastSettings.Stylish;
+using ToastForUnity.Script.Core;
+using ToastForUnity.Script.Enum;
 
 public class LoadMarketItems : MonoBehaviour
 {
+    public ParentController ParentController;
 
     [SerializeField] private GameObject loginPanel;
 
@@ -165,29 +169,60 @@ public class LoadMarketItems : MonoBehaviour
 
     public async void buyItem(BigInteger id, BigInteger price)
     {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
             var account = new Account(privateKey, Manager.ChainId);
             var web3 = new Web3(account, url);
             var contractHandler = web3.Eth.GetContractTransactionHandler<CreateMarketSaleFunction>();
-            var createMarketSaleFunction = new CreateMarketSaleFunction() {
+            var createMarketSaleFunction = new CreateMarketSaleFunction()
+            {
                 NftContract = Manager.NftContractAddress,
                 Id = id
             };
             createMarketSaleFunction.AmountToSend = price * Manager.TokenDecimal;
-            var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(Manager.MarketplaceContractAddress, createMarketSaleFunction);
+            try
+            {
+                var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(Manager.MarketplaceContractAddress, createMarketSaleFunction);
 
-            Debug.Log("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("item bought! " + createMarketSaleFunctionTxnReceipt.TransactionHash, 2);
-        } else {
+                if (createMarketSaleFunctionTxnReceipt.Status.Value == 1)
+                {
+                    StylishPop("StylishToast-Success", new StylistToastModel()
+                    {
+                        Title = "Success",
+                        Content = "dragon bought successfully!"
+                    });
+                }
+                else
+                {
+                    StylishPop("StylishToast-Warning", new StylistToastModel()
+                    {
+                        Title = "Warning",
+                        Content = "Transaction timed out or failed, please try again!"
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("couldn't buy: " + e.Message);
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Transaction timed out or failed, please try again!"
+                });
+            }
+        }
+        else
+        {
             loginPanel.SetActive(true);
         }
     }
 
     public async void removeItem(BigInteger itemId)
     {
-         if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
             var account = new Account(privateKey, Manager.ChainId);
@@ -198,16 +233,33 @@ public class LoadMarketItems : MonoBehaviour
             deleteMarketItemFunction.ItemId = itemId;
             var deleteMarketItemFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(deleteMarketItemFunction);
 
-            Debug.Log("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("item removed from market! " + deleteMarketItemFunctionTxnReceipt.TransactionHash, 2);
-         } else {
+            if (deleteMarketItemFunctionTxnReceipt.Status.Value == 1)
+            {
+                StylishPop("StylishToast-Success", new StylistToastModel()
+                {
+                    Title = "Success",
+                    Content = "dragon removed from listing successfully!"
+                });
+            }
+            else
+            {
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Transaction timed out or failed, please try again!"
+                });
+            }
+        }
+        else
+        {
             loginPanel.SetActive(true);
         }
     }
 
     public async void listItemForSale(BigInteger tokenId, BigInteger price)
     {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
             var account = new Account(privateKey, Manager.ChainId);
@@ -221,8 +273,22 @@ public class LoadMarketItems : MonoBehaviour
             approveFunction.TokenId = tokenId;
             var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
 
-            Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("player approved listing " + approveFunctionTxnReceipt.TransactionHash, 2);
+            if (approveFunctionTxnReceipt.Status.Value == 1)
+            {
+                StylishPop("StylishToast-Success", new StylistToastModel()
+                {
+                    Title = "Success",
+                    Content = "Dragon approved for sale successfully!"
+                });
+            }
+            else
+            {
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Transaction timed out or failed, please try again!"
+                });
+            }
 
             var marketContractHandler = web3.Eth.GetContractHandler(Manager.MarketplaceContractAddress);
 
@@ -233,15 +299,33 @@ public class LoadMarketItems : MonoBehaviour
             createMarketItemFunction.AmountToSend = Manager.ListingFee;
             var createMarketItemFunctionTxnReceipt = await marketContractHandler.SendRequestAndWaitForReceiptAsync(createMarketItemFunction);
 
-            Debug.Log("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("item listed! " + createMarketItemFunctionTxnReceipt.TransactionHash, 2);
-        } else {
+            if (createMarketItemFunctionTxnReceipt.Status.Value == 1)
+            {
+                StylishPop("StylishToast-Success", new StylistToastModel()
+                {
+                    Title = "Success",
+                    Content = "Dragon listed for sale successfully!"
+                });
+            }
+            else
+            {
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Transaction timed out or failed, please try again!"
+                });
+            }
+        }
+        else
+        {
             loginPanel.SetActive(true);
         }
     }
 
-    public async void approveForSale(TextMeshProUGUI tokenIdAsString) {
-        if (!String.IsNullOrEmpty(Manager.PlayerPK)) {
+    public async void approveForSale(TextMeshProUGUI tokenIdAsString)
+    {
+        if (!String.IsNullOrEmpty(Manager.PlayerPK))
+        {
             BigInteger tokenId = BigInteger.Parse(tokenIdAsString.text);
             var url = Manager.infuraMumbaiEndpointUrl;
             var privateKey = Manager.PlayerPK;
@@ -256,10 +340,32 @@ public class LoadMarketItems : MonoBehaviour
             approveFunction.TokenId = tokenId;
             var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
 
-            Debug.Log("player approved listing " + approveFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("player approved listing " + approveFunctionTxnReceipt.TransactionHash, 2);
-        } else {
+            if (approveFunctionTxnReceipt.Status.Value == 1)
+            {
+                StylishPop("StylishToast-Success", new StylistToastModel()
+                {
+                    Title = "Success",
+                    Content = "Dragon approved for sale successfully!"
+                });
+            }
+            else
+            {
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Transaction timed out or failed, please try again!"
+                });
+            }
+        }
+        else
+        {
             loginPanel.SetActive(true);
         }
+    }
+
+    private void StylishPop(string stylishName, StylistToastModel toastModel)
+    {
+        Toast.PopOut<StylistToastView>(stylishName, toastModel,
+            ParentController.GetParent(ToastPosition.BottomCenter));
     }
 }

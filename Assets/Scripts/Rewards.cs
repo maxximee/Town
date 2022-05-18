@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using ToastForUnity.Resources.ToastSettings.Stylish;
+using ToastForUnity.Script.Core;
+using ToastForUnity.Script.Enum;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.ABI.Model;
 using Nethereum.Contracts;
@@ -25,6 +28,8 @@ using UnityEngine.UI;
 
 public class Rewards : MonoBehaviour
 {
+
+    public ParentController ParentController;
 
 
     public partial class TransferFunction : TransferFunctionBase { }
@@ -57,10 +62,31 @@ public class Rewards : MonoBehaviour
         transferFunction.Amount = BigInteger.Parse(value);
 
         var contractHandler = web3.Eth.GetContractHandler(Manager.TokenContractAddress);
-        Debug.Log("sending atoms...");
         var transferFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(transferFunction);
-        Debug.Log("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash);
-        Manager.showToast("transfered " + value + " to player. Transaction hash: " + transferFunctionTxnReceipt.TransactionHash, 2);
+
+        if (transferFunctionTxnReceipt.Status.Value == 1)
+        {
+            StylishPop("StylishToast-Success", new StylistToastModel()
+            {
+                Title = "Success",
+                Content = "Tokens stored successfully!"
+            });
+        }
+        else
+        {
+            StylishPop("StylishToast-Warning", new StylistToastModel()
+            {
+                Title = "Warning",
+                Content = "Tokens transfer transaction timed out or failed, please try again!"
+            });
+        }
+
         return transferFunctionTxnReceipt.Status.Value;
+    }
+
+    private void StylishPop(string stylishName, StylistToastModel toastModel)
+    {
+        Toast.PopOut<StylistToastView>(stylishName, toastModel,
+            ParentController.GetParent(ToastPosition.BottomCenter));
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using ToastForUnity.Resources.ToastSettings.Stylish;
+using ToastForUnity.Script.Core;
+using ToastForUnity.Script.Enum;
 using Nethereum.Web3;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts.CQS;
@@ -24,6 +27,8 @@ public class LoadBalances : MonoBehaviour
 
     [SerializeField] private GameObject storeButton;
     [SerializeField] private Rewards rewardManager;
+
+    public ParentController ParentController;
 
     [Function("balanceOf", "uint256")]
     public class BalanceOfFunction : FunctionMessage
@@ -76,10 +81,17 @@ public class LoadBalances : MonoBehaviour
                     var status = await rewardManager.sendRewardsAsync(new BigInteger(result).ToString());
                     PlayerPrefs.SetFloat(Manager.AtomsPrefs, 0f);
                     // TODO 1) add fee for transfering
-                    if (status == 1) {
+                    if (status == 1)
+                    {
                         loadBalances();
-                    } else {
-                        Manager.showToast("transaction failed, try again...", 3);
+                    }
+                    else
+                    {
+                        StylishPop("StylishToast-Warning", new StylistToastModel()
+                        {
+                            Title = "Warning",
+                            Content = "Loading balances failed, check you connection..."
+                        });
                         Debug.LogWarning("transaction failed, try again...");
                     }
                 }
@@ -102,5 +114,9 @@ public class LoadBalances : MonoBehaviour
         maticWalletBalanceText.text = (Mathf.Round(matic * 1000f) / 1000f).ToString();
     }
 
-
+    private void StylishPop(string stylishName, StylistToastModel toastModel)
+    {
+        Toast.PopOut<StylistToastView>(stylishName, toastModel,
+            ParentController.GetParent(ToastPosition.BottomCenter));
+    }
 }

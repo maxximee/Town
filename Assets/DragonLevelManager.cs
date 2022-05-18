@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using ToastForUnity.Resources.ToastSettings.Stylish;
+using ToastForUnity.Script.Core;
+using ToastForUnity.Script.Enum;
 using Nethereum.Web3;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts.CQS;
@@ -26,6 +29,8 @@ public class DragonLevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dragonIdText;
 
     [SerializeField] private GameObject loginPanel;
+
+    public ParentController ParentController;
 
     private int _accel = 0;
     private int _topSpeed = 0;
@@ -95,7 +100,22 @@ public class DragonLevelManager : MonoBehaviour
             approveFunction.Amount = TokensCostToLevelUp;
             var approveFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(approveFunction);
             Debug.Log("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash);
-            Manager.showToast("approve transaction receipt: " + approveFunctionTxnReceipt.TransactionHash, 2);
+            if (approveFunctionTxnReceipt.Status.Value == 1)
+            {
+                StylishPop("StylishToast-Success", new StylistToastModel()
+                {
+                    Title = "Success",
+                    Content = "Level up approve transaction success!"
+                });
+            }
+            else
+            {
+                StylishPop("StylishToast-Warning", new StylistToastModel()
+                {
+                    Title = "Warning",
+                    Content = "Level up approve transaction timed out or failed, please try again."
+                });
+            }
         }
         else
         {
@@ -123,7 +143,23 @@ public class DragonLevelManager : MonoBehaviour
         levelUpFunction.DragonOwner = Manager.PlayerAddress;
         var levelUpFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(levelUpFunction);
         Debug.Log("level up transaction receipt: " + levelUpFunctionTxnReceipt.TransactionHash);
-        Manager.showToast("level up transaction receipt: " + levelUpFunctionTxnReceipt.TransactionHash, 2);
+        Debug.Log("value of trans: " + levelUpFunctionTxnReceipt.Status.Value);
+        if (levelUpFunctionTxnReceipt.Status.Value == 1)
+        {
+            StylishPop("StylishToast-Success", new StylistToastModel()
+            {
+                Title = "Success",
+                Content = "Level up transaction success!"
+            });
+        }
+        else
+        {
+            StylishPop("StylishToast-Warning", new StylistToastModel()
+            {
+                Title = "Warning",
+                Content = "Level up transaction timed out or failed, please try again."
+            });
+        }
     }
 
     public void IncreaseAcceleration()
@@ -212,6 +248,12 @@ public class DragonLevelManager : MonoBehaviour
             Mathf.Min(PointsPerLevel, _availablePoints++);
             availablePoints.text = _availablePoints.ToString();
         }
+    }
+
+    private void StylishPop(string stylishName, StylistToastModel toastModel)
+    {
+        Toast.PopOut<StylistToastView>(stylishName, toastModel,
+            ParentController.GetParent(ToastPosition.BottomCenter));
     }
 }
 

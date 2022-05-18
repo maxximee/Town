@@ -4871,22 +4871,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e15be7e2fd9e4bd7b563fb243115d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoostForce: 100
+  BoostForce: 60
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 150
+  SteeringSpeed: 100
   AutoForward: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
   speed: 1200
   reach: 50
   initPosition: {fileID: 3779710588868921505}
   canFire: 0
-  EnginePower: 32000
+  EnginePower: 35000
   LateralSteeringForce: 100
-  MaxSpeed: 70
+  MaxSpeed: 200
   HoverHeight: 2.5
   HoverGravityForce: 1000
-  HoverForce: 100
-  OrientationGroundSpeed: 10
+  HoverForce: 7
+  OrientationGroundSpeed: 1
 --- !u!114 &720366736248946465
 MonoBehaviour:
   m_ObjectHideFlags: 0

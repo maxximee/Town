@@ -24481,20 +24481,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoostForce: 100
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 400
+  SteeringSpeed: 100
   AutoForward: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
-  speed: 1000
+  speed: 1500
   reach: 100
   initPosition: {fileID: 881599710310747737}
   canFire: 0
   EnginePower: 45000
-  LateralSteeringForce: 300
-  MaxSpeed: 170
+  OffroadFactor: 1.5
+  LateralSteeringForce: 130
+  MaxSpeed: 300
   HoverHeight: 2.5
   HoverGravityForce: 1000
-  HoverForce: 100
-  OrientationGroundSpeed: 10
+  HoverForce: 7
+  OrientationGroundSpeed: 1
 --- !u!114 &114000011393672104
 MonoBehaviour:
   m_ObjectHideFlags: 0

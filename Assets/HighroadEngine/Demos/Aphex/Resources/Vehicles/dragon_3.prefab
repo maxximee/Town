@@ -24491,10 +24491,10 @@ MonoBehaviour:
   EnginePower: 40000
   LateralSteeringForce: 300
   MaxSpeed: 170
-  HoverHeight: 2.5
+  HoverHeight: 2
   HoverGravityForce: 1000
-  HoverForce: 100
-  OrientationGroundSpeed: 10
+  HoverForce: 7
+  OrientationGroundSpeed: 1
 --- !u!114 &114000011393672104
 MonoBehaviour:
   m_ObjectHideFlags: 0
