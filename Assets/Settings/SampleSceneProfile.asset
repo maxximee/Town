@@ -53,7 +53,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.9
     min: 0
   intensity:
     m_OverrideState: 1
@@ -83,11 +83,11 @@ MonoBehaviour:
     min: 0
     max: 16
   dirtTexture:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 7a051dbda2d7bc447bee412427cd311e, type: 3}
   dirtIntensity:
-    m_OverrideState: 0
-    m_Value: 3.3
+    m_OverrideState: 1
+    m_Value: 5
     min: 0
 --- !u!114 &-7011558710299706105
 MonoBehaviour:
@@ -114,12 +114,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.209
+    m_Value: 0.167
     min: 0
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.98
+    m_Value: 0.597
     min: 0.01
     max: 1
   rounded:
@@ -187,6 +187,76 @@ MonoBehaviour:
     m_Value: 0
     min: -180
     max: 180
+--- !u!114 &-1569927799987872622
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.19105254, g: 0.22750013, b: 0.3773585, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.6981132, g: 0.543416, b: 0.36661917, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  balance:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -100
+    max: 100
+--- !u!114 &-831049053082948137
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.96072286, y: 0.9758643, z: 1, w: 0.034602076}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 0.98695123, y: 1, z: 0.96638405, w: -0.0432526}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.99055856, z: 0.9569292, w: -0.06920416}
+  shadowsStart:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  shadowsEnd:
+    m_OverrideState: 0
+    m_Value: 0.3
+    min: 0
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.55
+    min: 0
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +276,8 @@ MonoBehaviour:
   - {fileID: -6131508813026003190}
   - {fileID: 5912829204008710130}
   - {fileID: -9100551570894770271}
+  - {fileID: -1569927799987872622}
+  - {fileID: -831049053082948137}
 --- !u!114 &504193743857338294
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -222,7 +294,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
 --- !u!114 &5912829204008710130
 MonoBehaviour:
   m_ObjectHideFlags: 3

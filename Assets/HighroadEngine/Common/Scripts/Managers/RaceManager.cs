@@ -112,7 +112,7 @@ namespace MoreMountains.HighroadEngine
 
         private string winner;
         public string currentPlayer;
-        private int playerTagDist = 45;
+        private int playerTagDist = 50; 
 
         private Dictionary<string, RectTransform> playerNamesToTags = new Dictionary<string, RectTransform>();
 
@@ -121,7 +121,7 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
         public virtual void Awake()
         {
-            if (Checkpoints.Length == 0)
+            if (Checkpoints.Length == 0) 
             {
                 Debug.LogWarning("List of checkpoints should be initialized in RaceManager gameobject inspector.");
             }
@@ -389,23 +389,33 @@ namespace MoreMountains.HighroadEngine
                 {
                     GameObject prefab;
 
-                    if (item.VehicleSelectedIndex >= 0)
-                    {
-                        prefab = LocalLobbyManager.Instance.AvailableVehiclesPrefabs[item.VehicleSelectedIndex];
-                    }
-                    else
-                    {
-                        // test mode, we find the prefab with a resources load
-                        prefab = Resources.Load("vehicles/" + item.VehicleName) as GameObject;
-                    }
 
+                    GameObject dragonWithoutController = LocalLobbyManager.Instance.AvailableVehiclesPrefabs[item.VehicleSelectedIndex];
+                    GameObject initPrefab = Instantiate(
+                                           dragonWithoutController,
+                                           new Vector3(0, 0, 0),
+                                           Quaternion.Euler(new Vector3(0, 0, 0))
+                                       ) as GameObject;
+
+                    prefab = Resources.Load<GameObject>("VehicleController/DragonVehiclePrefab");
                     // we first instantiate car for this player. 
                     // the car name value is used to load the prefab from Resources/Vehicles folder.
                     GameObject newPlayer = Instantiate(
-                                               prefab,
+                                               prefab, 
                                                StartPositions[_currentStartPosition],
                                                Quaternion.Euler(new Vector3(0, StartAngleDegree, 0))
                                            ) as GameObject;
+
+                    initPrefab.transform.parent = newPlayer.transform;
+                    
+                    initPrefab.transform.localPosition = new Vector3(0,-0.6f,0);
+                    initPrefab.transform.localScale = new Vector3(1,1,1);
+                    initPrefab.transform.localRotation = Quaternion.identity;  
+
+                    var minimapIcon = newPlayer.transform.Find("MinimapIcon").gameObject.GetComponent<SpriteRenderer>();
+                    if (item.IsBot) {
+                        minimapIcon.color = Color.green;
+                    }  
 
                     // we add this new object to the list of players
                     BaseController car = newPlayer.GetComponent<BaseController>();
@@ -681,13 +691,15 @@ namespace MoreMountains.HighroadEngine
                     {
                         case "postitionText":
                             child.gameObject.GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
-                             if (playersRank[i].name.Equals(currentPlayer)) {
+                            if (playersRank[i].name.Equals(currentPlayer))
+                            {
                                 child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
                             }
                             break;
                         case "nameText":
                             child.gameObject.GetComponent<TextMeshProUGUI>().text = playersRank[i].name;
-                            if (playersRank[i].name.Equals(currentPlayer)) {
+                            if (playersRank[i].name.Equals(currentPlayer))
+                            {
                                 child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
                             }
                             break;
@@ -695,14 +707,15 @@ namespace MoreMountains.HighroadEngine
                             break;
                         case "rewardValue":
                             // TODO use yield stats to influence value
-                            child.gameObject.GetComponent<TextMeshProUGUI>().text = (15-(5*i)).ToString();
-                             if (playersRank[i].name.Equals(currentPlayer)) {
+                            child.gameObject.GetComponent<TextMeshProUGUI>().text = (15 - (5 * i)).ToString();
+                            if (playersRank[i].name.Equals(currentPlayer))
+                            {
                                 child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
                             }
                             break;
                     }
                 }
-                
+
                 allPlayerEndscreenTags[i] = currentPlayerEnd;
                 if (playersRank[i].name.Equals(currentPlayer))
                 {
@@ -758,8 +771,9 @@ namespace MoreMountains.HighroadEngine
             {
                 Debug.Log("won, so we're giving rewards");
                 float currentLocalAtoms = 0f;
-                if (PlayerPrefs.HasKey(Manager.AtomsPrefs)) {
-                     currentLocalAtoms = PlayerPrefs.GetFloat(Manager.AtomsPrefs);
+                if (PlayerPrefs.HasKey(Manager.AtomsPrefs))
+                {
+                    currentLocalAtoms = PlayerPrefs.GetFloat(Manager.AtomsPrefs);
                 }
                 // TODO better logic here!
                 currentLocalAtoms += 15f;
