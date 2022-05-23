@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Runtime.CompilerServices;
+using System.Linq;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -80,30 +81,25 @@ namespace MoreMountains.HighroadEngine
         public virtual void Start()
         {
             TrackSelected = 0;
+        }
 
+        override protected void Awake()
+        {
             // override all prefabs and sprites
             // 1) load all sprites
             AvailableVehicles2dSprites = Resources.LoadAll<Sprite>("Dragons_2D");
             Array.Sort(AvailableVehicles2dSprites, delegate (Sprite x, Sprite y) { return GetDragonSpriteNumber(x.name).CompareTo(GetDragonSpriteNumber(y.name)); });
             // 2) load all vehicle prefabs
             AvailableVehiclesPrefabs = LoadAndCreateVehiclePrefabs();
+            base.Awake();
         }
 
         private GameObject[] LoadAndCreateVehiclePrefabs()
         {
             var allDragonsLoaded = Resources.LoadAll<GameObject>("Dragons_SD/Prefab/");
             Array.Sort(allDragonsLoaded, delegate (GameObject x, GameObject y) { return GetDragonSpriteNumber(x.name).CompareTo(GetDragonSpriteNumber(y.name)); });
-			return allDragonsLoaded;
-			// var controller = Resources.Load<GameObject>("VehicleController/DragonController");
+            return allDragonsLoaded;
 
-			// for (int i = 0; i < allDragonsLoaded.Count(); i++) 
-            // {
-			// 	var newController = GameObject.Instantiate(controller);
-			// 	allDragonsLoaded[i].transform.SetParent(newController.transform);
-			// 	newController.name = "vehicle_" + i;
-			// 	allDragonsLoaded[i] = newController;
-            // }
-            // return allDragonsLoaded; 
         }
 
         private int GetDragonSpriteNumber(string dragonName)

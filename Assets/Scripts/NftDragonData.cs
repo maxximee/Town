@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
         public override bool Equals(object obj)
         {
-            return obj is NftDragonData data &&
+            return obj is NftDragonData data && 
                    _id == data._id &&
                    _bloodType == data._bloodType &&
                    _rarity == data._rarity &&

@@ -4851,7 +4851,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606242481460900207}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 50
   m_Drag: 0.5
   m_AngularDrag: 0.1
   m_UseGravity: 0
@@ -4876,17 +4876,17 @@ MonoBehaviour:
   SteeringSpeed: 100
   AutoForward: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
-  speed: 1200
+  speed: 1300
   reach: 50
   initPosition: {fileID: 3779710588868921505}
   canFire: 0
-  EnginePower: 45000
+  EnginePower: 25000
   OffroadFactor: 2
-  LateralSteeringForce: 100
+  LateralSteeringForce: 50
   MaxSpeed: 200
   HoverHeight: 2.5
   HoverGravityForce: 1000
-  HoverForce: 6
+  HoverForce: 10
   OrientationGroundSpeed: 1
 --- !u!114 &720366736248946465
 MonoBehaviour:
@@ -4901,12 +4901,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 1
-  TimeBeforeStuck: 0
+  TimeBeforeStuck: 2
   MinimalDistanceToNextWaypoint: 7
   FullThrottle: 0.7
   SmallThrottle: 0.4
   OverrideSteringSpeed: 1
-  SteeringSpeed: 200
+  SteeringSpeed: 400
 --- !u!114 &720366735078891639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4936,10 +4936,10 @@ MonoBehaviour:
   Mesh: {fileID: 2454597125480828374}
   MaximumBodyRollAngle: 40
   BodyRollSpeed: 1
-  WindEmissionsFullRate: 150
-  ReactorFullScale: 0.2
+  WindEmissionsFullRate: 100
+  ReactorFullScale: 0
   TailMinSize: 0.01
-  TailMaxSize: 0.2
+  TailMaxSize: 0.4
   TailNormalColor: {r: 1, g: 1, b: 1, a: 1}
   TailBoostColor: {r: 0.9019608, g: 0.8666667, b: 0.1254902, a: 1}
   ParticlesActivationMinimumSpeed: 5

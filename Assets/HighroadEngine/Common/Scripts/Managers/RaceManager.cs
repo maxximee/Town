@@ -560,7 +560,7 @@ namespace MoreMountains.HighroadEngine
                 if (EndGamePanel != null)
                 {
                     // we sort the players list with their score & their distance to the next checkpoint
-                    var playersRank = OnUpdatePlayersList()
+                    var playersRank = OnUpdatePlayersList() 
                         .OrderBy(p => p.FinalRank == 0) // First the finishers
                         .ThenBy(p => p.FinalRank) // Ordered by final rank position
                         .ThenByDescending(p => p.Score) // Then laters
