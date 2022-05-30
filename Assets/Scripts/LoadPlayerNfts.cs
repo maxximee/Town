@@ -23,17 +23,12 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private GameObject dragonPanel;
     [SerializeField] private GameObject selectButton;
     [SerializeField] private TextMeshProUGUI name;
-    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private Slider expSlider;
+    [SerializeField] private TextMeshProUGUI bloodTypeText;
     [SerializeField] private TextMeshProUGUI topSpeedValue;
-    [SerializeField] private Slider topSpeedSlider;
     [SerializeField] private TextMeshProUGUI accelValue;
-    [SerializeField] private Slider accelSlider;
-
     [SerializeField] private TextMeshProUGUI yieldValue;
-    [SerializeField] private Slider yieldSlider;
     [SerializeField] private TextMeshProUGUI dietValue;
-    [SerializeField] private Slider dietSlider;
-
     [SerializeField] private TextMeshProUGUI levelValue;
 
     [SerializeField] private TextMeshProUGUI rarityValue;
@@ -43,6 +38,13 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private Image dragonSprite;
     [SerializeField] private TextMeshProUGUI indexText;
     [SerializeField] private TextMeshProUGUI dragTokenId;
+
+    [SerializeField] private Sprite commonFrame;
+    [SerializeField] private Sprite uncommonFrame;
+    [SerializeField] private Sprite rareFrame;
+    [SerializeField] private Sprite epicFrame;
+
+    [SerializeField] private Image rarityFrame;
 
     [Header("3D Elements")]
     [SerializeField] private GameObject dragonInitPost;
@@ -194,7 +196,7 @@ public class LoadPlayerNfts : MonoBehaviour
                 if (allTokenIds.Length > 0)
                 {
                     LoadDragon(int.Parse(allTokenIds[currentIndex]));
-                    indexText.text = (currentIndex+1) + " of " + allTokenIds.Length;
+                    indexText.text = (currentIndex + 1) + " of " + allTokenIds.Length;
                 }
 
                 BalanceOfPlayer();
@@ -210,9 +212,12 @@ public class LoadPlayerNfts : MonoBehaviour
         }
     }
 
-    private int getIndex(string tokenId) {
-        for (int i = 0; i <= allTokenIds.Length ; i++) {
-            if (allTokenIds[i].Equals(tokenId)){
+    private int getIndex(string tokenId)
+    {
+        for (int i = 0; i <= allTokenIds.Length; i++)
+        {
+            if (allTokenIds[i].Equals(tokenId))
+            {
                 return i;
             }
         }
@@ -255,8 +260,9 @@ public class LoadPlayerNfts : MonoBehaviour
         }
     }
 
-    public async Task<Dragon> LoadDragon(string tokenId) {
-         var url = Manager.infuraMumbaiEndpointUrl;
+    public async Task<Dragon> LoadDragon(string tokenId)
+    {
+        var url = Manager.infuraMumbaiEndpointUrl;
         var web3 = new Web3(url);
 
         var tokenURIFunctionMessage = new TokenURIFunction()
@@ -273,7 +279,8 @@ public class LoadPlayerNfts : MonoBehaviour
         return dragon;
     }
 
-    public async Task<NftDragonData> LoadDragonData(Dragon dragon) {
+    public async Task<NftDragonData> LoadDragonData(Dragon dragon)
+    {
         string uri = dragon.TokenURI;
         UnityWebRequest webRequest = UnityWebRequest.Get(uri);
         await webRequest.SendWebRequest();
@@ -302,27 +309,46 @@ public class LoadPlayerNfts : MonoBehaviour
         await webRequest.SendWebRequest();
         NftDragonData data = JsonUtility.FromJson<NftDragonData>(System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data));
 
-        // parse json to get image uri (even if we won't use it in here)
-        string imageUri = data.image;
-        name.text = data._id.ToString();
+        name.text = "DRAGON #0" + data._id.ToString();
 
         dragTokenId.text = tokenId.ToString();
 
         topSpeedValue.text = (((float)dragon.TopSpeed) / 10).ToString();
-        topSpeedSlider.value = ((float)dragon.TopSpeed) / 10;
 
         accelValue.text = (((float)dragon.Acceleration) / 10).ToString();
-        accelSlider.value = ((float)dragon.Acceleration) / 10;
 
         dietValue.text = (((float)dragon.Diet) / 10).ToString();
-        dietSlider.value = ((float)dragon.Diet) / 10;
 
         yieldValue.text = (((float)dragon.Yield) / 10).ToString();
-        yieldSlider.value = ((float)dragon.Yield) / 10;
 
         levelValue.text = dragon.Level.ToString();
 
-        rarityValue.text = dragon.Rarity.ToString();
+        string rarityString = dragon.Rarity.ToString().ToUpper();
+        rarityValue.text = rarityString;
+
+        switch (rarityString)
+        {
+            case "COMMON":
+                rarityFrame.sprite = commonFrame;
+                break;
+            case "UNCOMMON":
+                rarityFrame.sprite = uncommonFrame;
+                break;
+            case "RARE":
+                rarityFrame.sprite = rareFrame;
+                break;
+            case "EPIC":
+                rarityFrame.sprite = epicFrame;
+                break;
+            default:
+                rarityFrame.sprite = commonFrame;
+                break;
+        }
+
+        bloodTypeText.text = "Blood type " + dragon.BloodType.ToString();
+
+        expSlider.value = 29;
+
 
         if (data.classType.Equals("fire"))
         {
@@ -330,11 +356,21 @@ public class LoadPlayerNfts : MonoBehaviour
             raceSprite.enabled = true;
         }
 
-        // This is not needed anymore, we don't have to load the image, we load the 3D model!
+        // This is not needed anymore, we don't have to load the image from web, it's too slow //
+        // string imageUri = data.image;
         // // fetch image and display in game
         // UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(imageUri);
         // await textureRequest.SendWebRequest();
         // dragonSprite.sprite = Sprite.Create(DownloadHandlerTexture.GetContent(textureRequest), new Rect(0, 0, 1023, 1023), new UnityEngine.Vector2(0.5f, 1f), 100f);
+
+        // TODO tokenId won't work once we have more tokens than unique dragon. Should be bloodType
+        string spriteNamePrefix = "DragonSD_";
+        if (tokenId < 10)
+        {
+            spriteNamePrefix = spriteNamePrefix + "0";
+        }
+        Sprite sp = Resources.Load<Sprite>("Dragons_Sprites/" + spriteNamePrefix + tokenId.ToString());
+        dragonSprite.sprite = sp;
     }
 
     public void LoadNextDragon()
