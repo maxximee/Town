@@ -36,6 +36,8 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private Sprite fireRace;
     [SerializeField] private Sprite waterRace;
     [SerializeField] private Image dragonSprite;
+
+    [SerializeField] private Transform dragonLoadPoint;
     [SerializeField] private TextMeshProUGUI indexText;
     [SerializeField] private TextMeshProUGUI dragTokenId;
 
@@ -363,14 +365,53 @@ public class LoadPlayerNfts : MonoBehaviour
         // await textureRequest.SendWebRequest();
         // dragonSprite.sprite = Sprite.Create(DownloadHandlerTexture.GetContent(textureRequest), new Rect(0, 0, 1023, 1023), new UnityEngine.Vector2(0.5f, 1f), 100f);
 
+        // replaced with 3d dragon
+        // string spriteNamePrefix = "DragonSD_";
+        // if (tokenId < 10)
+        // {
+        //     spriteNamePrefix = spriteNamePrefix + "0";
+        // }
+        // Sprite sp = Resources.Load<Sprite>("Dragons_Sprites/" + spriteNamePrefix + tokenId.ToString());
+        // dragonSprite.sprite = sp;
+
+        foreach (Transform child in dragonLoadPoint.GetComponentInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+
         // TODO tokenId won't work once we have more tokens than unique dragon. Should be bloodType
         string spriteNamePrefix = "DragonSD_";
         if (tokenId < 10)
         {
             spriteNamePrefix = spriteNamePrefix + "0";
         }
-        Sprite sp = Resources.Load<Sprite>("Dragons_Sprites/" + spriteNamePrefix + tokenId.ToString());
-        dragonSprite.sprite = sp;
+        GameObject DragonUI3d = Instantiate(Resources.Load("Dragons_SD/Prefab/" + spriteNamePrefix + tokenId.ToString()) as GameObject);
+        // set UI layer
+        SetLayerRecursively(DragonUI3d, 5);
+        DragonUI3d.transform.parent = dragonLoadPoint;
+        DragonUI3d.transform.localRotation = UnityEngine.Quaternion.identity;
+        DragonUI3d.transform.localPosition = new UnityEngine.Vector3(0, 0, 0);
+        DragonUI3d.transform.localScale = new UnityEngine.Vector3(1, 1, 1);
+
+    }
+
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (null == obj)
+        {
+            return;
+        }
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
     }
 
     public void LoadNextDragon()

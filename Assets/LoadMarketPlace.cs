@@ -36,7 +36,7 @@ public class LoadMarketPlace : MonoBehaviour
                 switch (child.gameObject.name)
                 {
                     case "DragonTokenId":
-                        child.gameObject.GetComponent<TextMeshProUGUI>().text = item.TokenId.ToString();
+                        child.gameObject.GetComponent<TextMeshProUGUI>().text = "Dragon #0" + item.TokenId.ToString();
                         break;
                     case "DragonPrice":
                         child.gameObject.GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(item.Price / Manager.TokenDecimal) * 1000f) / 1000f).ToString() + " MATIC";
@@ -51,17 +51,20 @@ public class LoadMarketPlace : MonoBehaviour
                         Sprite sp = Resources.Load<Sprite>("Dragons_2D/" + spriteNamePrefix + item.TokenId.ToString());
                         child.gameObject.GetComponent<Image>().sprite = sp;
                         break;
-                    case "DetailsButton":
+                    case "DragonSlot":
                         child.gameObject.SetActive(true);
-                        Button DetailsButton = child.gameObject.GetComponent<Button>();
-                        DetailsButton.onClick.AddListener(() => LoadDragonMarketItem(item));
+                        Button ShowDetailsButton = child.gameObject.GetComponent<Button>();
+                        ShowDetailsButton.onClick.AddListener(() => LoadDragonMarketItem(item));
                         break;
                     default:
                         break;
 
                 }
-
             }
+            Button DetailsButton = panel.gameObject.GetComponent<Button>();
+            DetailsButton.onClick.AddListener(() => LoadDragonMarketItem(item));
+            Image Frame = panel.gameObject.GetComponent<Image>();
+            
         }
     }
 
@@ -128,7 +131,7 @@ public class LoadMarketPlace : MonoBehaviour
                     {
                         spriteNamePrefix = spriteNamePrefix + "0";
                     }
-                    Sprite sp = Resources.Load<Sprite>("Dragons_2D/" + spriteNamePrefix + dragonData._bloodType.ToString());
+                    Sprite sp = Resources.Load<Sprite>("Dragons_Sprites/" + spriteNamePrefix + dragonData._bloodType.ToString());
                     child.gameObject.GetComponent<Image>().sprite = sp;
                     break;
                 case "BUY":
