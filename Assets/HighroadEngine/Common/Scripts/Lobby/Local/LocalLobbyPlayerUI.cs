@@ -449,6 +449,8 @@ namespace MoreMountains.HighroadEngine
         public virtual void MainActionReleased() { }
         public virtual void LeftPressed() { }
         public virtual void RightPressed() { }
+
+        public virtual void GyroAngled(float tiltedAmount) {}
         public virtual void UpPressed() { }
         public virtual void DownPressed() { }
         public void AltActionPressed() { }

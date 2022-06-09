@@ -306,6 +306,12 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
+     <Compile Include="Assets\PowerRoulette.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\Ability.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\FireballAbility.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\AbilityEnums.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\DashAbility.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\SwapAbility.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Resources\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />

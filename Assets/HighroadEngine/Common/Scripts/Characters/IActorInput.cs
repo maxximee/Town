@@ -40,6 +40,12 @@ namespace MoreMountains.HighroadEngine
 		void AltActionReleased();
 
 		/// <summary>
+		/// Tilt device
+		/// </summary>
+		/// <param name="tiltedAmount"></param>
+		void GyroAngled(float tiltedAmount);
+
+		/// <summary>
 		/// Button Respawn Action is being pressed
 		/// </summary>
 		void RespawnActionPressed();

@@ -15,6 +15,8 @@ public class Box : MonoBehaviour
     [SerializeField] MeshRenderer meshQMark;
 
     [SerializeField] RaceManager raceManager;
+
+    [SerializeField] PowerRoulette powerRoulette;
     void Start()
     {
         
@@ -34,16 +36,18 @@ public class Box : MonoBehaviour
             controller.setCanFire(true);           
             mesh.enabled = false;
             meshQMark.enabled = false; 
+            GetComponent<Collider>().enabled = false;
             StartCoroutine(DestroyAfter2Sec());
             if (other.gameObject.name.Equals(raceManager.currentPlayer)) {
                 feedbacks.PlayFeedbacks();
-                var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
-                Color c = powerUiObject.color;
-                c.a = 1;
-                powerUiObject.color = c;
-                await WaitTwoSecondAsync();
-                c.a = 0;
-                powerUiObject.color = c;
+                powerRoulette.StartRoulette();
+                // var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
+                // Color c = powerUiObject.color;
+                // c.a = 1;
+                // powerUiObject.color = c;
+                // await WaitTwoSecondAsync();
+                // c.a = 0;
+                // powerUiObject.color = c;
             }
         }
         

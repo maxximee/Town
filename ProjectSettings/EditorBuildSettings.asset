@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PolygonFarm/Demo/FarmTrack.unity
     guid: 28ac9a59020c6bc459f797acd217859a
+  - enabled: 1
+    path: Assets/Scenes/CanyonLevel.unity
+    guid: 22465bed09803c242806d7ab5b7a47f9
   m_configObjects: {}

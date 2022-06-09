@@ -34,7 +34,10 @@ public class LoadPlayerNfts : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rarityValue;
     [SerializeField] private Image raceSprite;
     [SerializeField] private Sprite fireRace;
-    [SerializeField] private Sprite waterRace;
+    [SerializeField] private Sprite frostRace;
+
+    [SerializeField] private Sprite mysticRace;
+    [SerializeField] private Sprite exoticRace;
     [SerializeField] private Image dragonSprite;
 
     [SerializeField] private Transform dragonLoadPoint;
@@ -351,11 +354,20 @@ public class LoadPlayerNfts : MonoBehaviour
 
         expSlider.value = 29;
 
-
-        if (data.classType.Equals("fire"))
+        switch (data.classType)
         {
-            raceSprite.sprite = fireRace;
-            raceSprite.enabled = true;
+            case "fire":
+                raceSprite.sprite = fireRace;
+                break;
+            case "frost":
+                raceSprite.sprite = frostRace;
+                break;
+            case "mystic":
+                raceSprite.sprite = mysticRace;
+                break;
+            case "exotic":
+                raceSprite.sprite = exoticRace;
+                break;
         }
 
         // This is not needed anymore, we don't have to load the image from web, it's too slow //
