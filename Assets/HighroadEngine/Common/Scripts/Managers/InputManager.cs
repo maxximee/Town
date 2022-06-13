@@ -106,7 +106,9 @@ namespace MoreMountains.HighroadEngine
             }
             else
             {
+#if !UNITY_EDITOR
                 AccelerometerMove();
+#endif
             }
         }
 

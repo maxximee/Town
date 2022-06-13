@@ -23,7 +23,7 @@ namespace MoreMountains.HighroadEngine
 
         [Information("Engine Power force.\n", InformationAttribute.InformationType.Info, false)]
         /// the engine's power
-        public int EnginePower = 100;
+        public int DefaultEnginePower = 80000;
 
         [Range(1, 10)]
         /// the penalty applied when going offroad
@@ -32,7 +32,7 @@ namespace MoreMountains.HighroadEngine
         /// Lateral force applied when steering
         public float LateralSteeringForce = 1f;
         /// the maximum speed
-        public int MaxSpeed = 100;
+        public int DefaultMaxSpeed = 130;
 
         [Header("Hover management")]
         [Information("Hover height.\n", InformationAttribute.InformationType.Info, false)]
@@ -55,6 +55,9 @@ namespace MoreMountains.HighroadEngine
 
         protected Vector3 _startPosition;
         protected Quaternion _startRotation;
+
+        public int MaxSpeed;
+        public int EnginePower;
 
 
         public UnityAction OnRespawn;
@@ -162,6 +165,9 @@ namespace MoreMountains.HighroadEngine
         override protected void Start()
         {
             base.Start();
+            DragonDataModel dragonStats = Manager.GetSelectedDragonDataModel();
+            MaxSpeed = DefaultMaxSpeed + (int)dragonStats.maxSpeed;
+            EnginePower = DefaultEnginePower + ((int)dragonStats.acceleration * 100);
             currentMaxSpeed = MaxSpeed;
             _startPosition = transform.position;
             _startRotation = transform.rotation;

@@ -4883,7 +4883,7 @@ MonoBehaviour:
   EnginePower: 80000
   OffroadFactor: 2
   LateralSteeringForce: 1200
-  MaxSpeed: 200
+  MaxSpeed: 120
   HoverHeight: 4
   HoverGravityForce: 1000
   HoverForce: 100

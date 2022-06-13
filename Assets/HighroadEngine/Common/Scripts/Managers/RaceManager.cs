@@ -112,7 +112,7 @@ namespace MoreMountains.HighroadEngine
 
         private string winner;
         public string currentPlayer;
-        private int playerTagDist = 50; 
+        private int playerTagDist = 50;
 
         private Dictionary<string, RectTransform> playerNamesToTags = new Dictionary<string, RectTransform>();
 
@@ -121,7 +121,7 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
         public virtual void Awake()
         {
-            if (Checkpoints.Length == 0) 
+            if (Checkpoints.Length == 0)
             {
                 Debug.LogWarning("List of checkpoints should be initialized in RaceManager gameobject inspector.");
             }
@@ -401,21 +401,22 @@ namespace MoreMountains.HighroadEngine
                     // we first instantiate car for this player. 
                     // the car name value is used to load the prefab from Resources/Vehicles folder.
                     GameObject newPlayer = Instantiate(
-                                               prefab, 
+                                               prefab,
                                                StartPositions[_currentStartPosition],
                                                Quaternion.Euler(new Vector3(0, StartAngleDegree, 0))
                                            ) as GameObject;
 
                     initPrefab.transform.parent = newPlayer.transform;
-                    
-                    initPrefab.transform.localPosition = new Vector3(0,-0.6f,0);
-                    initPrefab.transform.localScale = new Vector3(1,1,1);
-                    initPrefab.transform.localRotation = Quaternion.identity;  
+
+                    initPrefab.transform.localPosition = new Vector3(0, -0.6f, 0);
+                    initPrefab.transform.localScale = new Vector3(1, 1, 1);
+                    initPrefab.transform.localRotation = Quaternion.identity;
 
                     var minimapIcon = newPlayer.transform.Find("MinimapIcon").gameObject.GetComponent<SpriteRenderer>();
-                    if (item.IsBot) {
+                    if (item.IsBot)
+                    {
                         minimapIcon.color = Color.green;
-                    }  
+                    }
 
                     // we add this new object to the list of players
                     BaseController car = newPlayer.GetComponent<BaseController>();
@@ -560,7 +561,7 @@ namespace MoreMountains.HighroadEngine
                 if (EndGamePanel != null)
                 {
                     // we sort the players list with their score & their distance to the next checkpoint
-                    var playersRank = OnUpdatePlayersList() 
+                    var playersRank = OnUpdatePlayersList()
                         .OrderBy(p => p.FinalRank == 0) // First the finishers
                         .ThenBy(p => p.FinalRank) // Ordered by final rank position
                         .ThenByDescending(p => p.Score) // Then laters
@@ -776,7 +777,8 @@ namespace MoreMountains.HighroadEngine
                     currentLocalAtoms = PlayerPrefs.GetFloat(Manager.AtomsPrefs);
                 }
                 // TODO better logic here!
-                currentLocalAtoms += 15f;
+                double gains = (double)Manager.GetSelectedDragonDataModel().yield;
+                currentLocalAtoms += (float)gains + Manager.defaultReward;
                 PlayerPrefs.SetFloat(Manager.AtomsPrefs, currentLocalAtoms);
             }
             _lobbyManager.ReturnToLobby();

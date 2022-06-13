@@ -328,6 +328,8 @@ public class LoadPlayerNfts : MonoBehaviour
 
         levelValue.text = dragon.Level.ToString();
 
+        Manager.addDragon(new DragonDataModel(dragon.TopSpeed, dragon.Acceleration, dragon.Yield, dragon.Diet), (currentIndex + 1).ToString());
+
         string rarityString = dragon.Rarity.ToString().ToUpper();
         rarityValue.text = rarityString;
 
@@ -472,7 +474,7 @@ public class LoadPlayerNfts : MonoBehaviour
         }
         Manager.setSelectedDragon(index);
         PlayerPrefs.SetString("SelectedDragonTokenId", index);
-        // GameObject newDragon = Instantiate(dragonPrefabs[int.Parse(index)]);
+
         string dragonName;
         if (int.Parse(index) < 10)
         {

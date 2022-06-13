@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
      <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
+     <Compile Include="Assets\PowerRoulette.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
      <Compile Include="Assets\cameraOverlaySetter.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\GUI\GetFocusOnEnable.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\SwapAbility.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMString.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\ParticleEffectsLibrary.cs" />
@@ -83,6 +85,7 @@
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingContext.cs" />
      <Compile Include="Assets\HighroadEngine\Demos\TinyCars\Scripts\CarBehaviour.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\MotionBlurComponent.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\AbilityEnums.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXTarget.cs" />
      <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WaterVolumeBase.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -176,6 +179,7 @@
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Brokers\OnlineSdkBroker.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\DashAbility.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\MultipleObjectPooler.cs" />
@@ -273,6 +277,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Local\LocalLobbyManager.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
      <Compile Include="Assets\ToastForUnity\Script\Utility\DestroyObjWhenClicked.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\FireballAbility.cs" />
      <Compile Include="Assets\ToastForUnity\DemoScene\Scripts\Panel\WindowPanel.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMMovement.cs" />
@@ -289,6 +294,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Automation\AutoOrderInLayer.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\ParallelCamera.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
+     <Compile Include="Assets\Prefabs\ScriptableObjects\Ability.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidSoundBehaviour.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FogComponent.cs" />
      <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
@@ -306,12 +312,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\PowerRoulette.cs" />
-     <Compile Include="Assets\Prefabs\ScriptableObjects\Ability.cs" />
-     <Compile Include="Assets\Prefabs\ScriptableObjects\FireballAbility.cs" />
-     <Compile Include="Assets\Prefabs\ScriptableObjects\AbilityEnums.cs" />
-     <Compile Include="Assets\Prefabs\ScriptableObjects\DashAbility.cs" />
-     <Compile Include="Assets\Prefabs\ScriptableObjects\SwapAbility.cs" />
+     <Compile Include="Assets\Scripts\DragonDataModel.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Resources\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />
