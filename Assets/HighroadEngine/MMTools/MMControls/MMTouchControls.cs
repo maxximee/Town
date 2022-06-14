@@ -10,6 +10,10 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Controls/MMTouchControls")]
     public class MMTouchControls : MonoBehaviour 
 	{
+
+		[SerializeField] private GameObject leftButton;
+		[SerializeField] private GameObject rightButton;
+
 		public enum InputForcedMode { None, Mobile, Desktop }
 		[MMInformation("If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS. You can also force mobile or desktop (keyboard, gamepad) controls using the dropdown below.\nNote that if you don't need mobile controls and/or GUI this component can also work on its own, just put it on an empty GameObject instead.", MMInformationAttribute.InformationType.Info,false)]
 		/// If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS. 
@@ -33,6 +37,7 @@ namespace MoreMountains.Tools
 			_initialMobileControlsAlpha = _canvasGroup.alpha;
 			SetMobileControlsActive(false);
 			IsMobile=false;
+
 			if (AutoMobileDetection)
 			{
 				#if UNITY_ANDROID || UNITY_IPHONE
@@ -40,6 +45,14 @@ namespace MoreMountains.Tools
 					IsMobile = true;
 				 #endif
 			}
+			if (Manager.isGyroControls() && IsMobile) {
+				leftButton.SetActive(false);
+				rightButton.SetActive(false);
+			} else {
+				leftButton.SetActive(true);
+				rightButton.SetActive(true);
+			}
+
 			if (ForcedMode==InputForcedMode.Mobile)
 			{
 				SetMobileControlsActive(true);
@@ -50,6 +63,7 @@ namespace MoreMountains.Tools
 				SetMobileControlsActive(false);
 				IsMobile = false;		
 			}
+
 		}
 		
 		public virtual void SetMobileControlsActive(bool state)

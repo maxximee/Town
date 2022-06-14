@@ -4876,18 +4876,21 @@ MonoBehaviour:
   SteeringSpeed: 110
   AutoForward: 1
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
+  swapRay: {fileID: 128572, guid: d912eeaae09494a4db744907e8948f4f, type: 3}
   speed: 2500
   reach: 90
   initPosition: {fileID: 3779710588868921505}
   canFire: 0
-  EnginePower: 80000
+  DefaultEnginePower: 80000
   OffroadFactor: 2
   LateralSteeringForce: 1200
-  MaxSpeed: 120
+  DefaultMaxSpeed: 130
   HoverHeight: 4
   HoverGravityForce: 1000
   HoverForce: 100
   OrientationGroundSpeed: 1
+  MaxSpeed: 120
+  EnginePower: 80000
 --- !u!114 &720366736248946465
 MonoBehaviour:
   m_ObjectHideFlags: 0

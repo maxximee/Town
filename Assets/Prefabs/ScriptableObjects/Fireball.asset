@@ -17,7 +17,7 @@ MonoBehaviour:
   activeTime: 0
   amount: 10
   type: 0
-  abilityIcon: {fileID: 21300000, guid: d2a09b60e352f67498d8de670d659713, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 01388e084f08a42709215c4650bd004b, type: 3}
   probability: 0
   state: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}

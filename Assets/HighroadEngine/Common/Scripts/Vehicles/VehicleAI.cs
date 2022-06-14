@@ -219,7 +219,7 @@ namespace MoreMountains.HighroadEngine
 
         private async void WaitForSomeTime()
         {
-            await Task.Delay(2000);
+            await Task.Delay(1200);
             waitedSomeTime = true;
         }
 

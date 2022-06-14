@@ -16,6 +16,7 @@ namespace MoreMountains.HighroadEngine
     {
         [Header("Alt Actions")]
         public GameObject fireball;
+        public GameObject swapRay;
         public float speed = 1000f;
         public float reach = 100f;
         public Transform initPosition;
@@ -58,6 +59,8 @@ namespace MoreMountains.HighroadEngine
 
         public int MaxSpeed;
         public int EnginePower;
+
+        private Ability currentAbility;
 
 
         public UnityAction OnRespawn;
@@ -132,23 +135,54 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
         public override void AltAction()
         {
-            if (canFire)
+            if (currentAbility != null)
             {
                 Vector3 fwd = transform.TransformDirection(Vector3.forward);
-                if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                switch (currentAbility.name)
                 {
-                    GameObject projectile = Instantiate(fireball, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                    projectile.tag = "Projectile";
-                    projectile.name = name + "-Projectile";
-                    projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                    projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+                    case "Fireball":
+                        if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                        {
+                            GameObject projectile = Instantiate(fireball, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                            projectile.tag = "Projectile";
+                            projectile.name = name + "-Projectile";
+                            projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+                        }
+                        break;
+                    case "Dash":
+                        _rigidbody.AddForce(transform.forward * BoostForce, ForceMode.Impulse);
+                        IsOnSpeedBoost = true;
+                        StartCoroutine(SpeedBoostLast3Sec());
+                        break;
+                    case "Swap":
+                        if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                        {
+                            GameObject projectile = Instantiate(swapRay, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                            projectile.tag = "SwapMissile";
+                            projectile.name = name + "-Projectile";
+                            projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed * 2); //Set the speed of the projectile by applying force to the rigidbody
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }
 
-        public void setCanFire(bool canFire)
+        IEnumerator SpeedBoostLast3Sec()
         {
-            this.canFire = canFire;
+            yield return new WaitForSeconds(3);
+            IsOnSpeedBoost = false;
+            // TODO handle this differently, now can use once
+            currentAbility = null;
+        }
+
+        public void setAbility(Ability abi)
+        {
+            currentAbility = abi;
+            // TODO do stuff like set ammo, timeouts...
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -159,6 +193,16 @@ namespace MoreMountains.HighroadEngine
                 _rigidbody.AddForce(Vector3.back);
                 changeSpeed();
             }
+
+            if (collision.gameObject.tag == "SwapMissile" && !collision.gameObject.name.StartsWith(name))
+            {
+               string shooter = collision.gameObject.name.Split(new String[] {"-Projectile"},StringSplitOptions.None)[0];
+
+               // this position = find "shooter" . position
+               // find shooter position swith with this position
+               Debug.Log("swap with shooter: " + shooter);
+            }
+
         }
 
         private int currentMaxSpeed;

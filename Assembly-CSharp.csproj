@@ -201,6 +201,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievement.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
      <Compile Include="Assets\Scripts\CharacterHandler\CharacterHandler.cs" />
+     <Compile Include="Assets\Scripts\DragonDataModel.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\VignetteModel.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\ObjectPooler.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\GrainModel.cs" />
@@ -312,7 +313,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\Scripts\DragonDataModel.cs" />
+     <Compile Include="Assets\Settings.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Resources\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />

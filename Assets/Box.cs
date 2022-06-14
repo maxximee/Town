@@ -17,37 +17,21 @@ public class Box : MonoBehaviour
     [SerializeField] RaceManager raceManager;
 
     [SerializeField] PowerRoulette powerRoulette;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private async void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("box collected by " + other.gameObject.name);
         if (other.gameObject.TryGetComponent<MoreMountains.HighroadEngine.AirCarController>(out var controller))
-        {
-            controller.setCanFire(true);           
+        {      
             mesh.enabled = false;
             meshQMark.enabled = false; 
             GetComponent<Collider>().enabled = false;
+            // TODO doing this so the AI can shoot as soon as they hit a box
+            controller.canFire = true;
             StartCoroutine(DestroyAfter2Sec());
             if (other.gameObject.name.Equals(raceManager.currentPlayer)) {
                 feedbacks.PlayFeedbacks();
-                powerRoulette.StartRoulette();
-                // var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
-                // Color c = powerUiObject.color;
-                // c.a = 1;
-                // powerUiObject.color = c;
-                // await WaitTwoSecondAsync();
-                // c.a = 0;
-                // powerUiObject.color = c;
+                Ability ability = powerRoulette.StartRoulette();
+                controller.setAbility(ability);
             }
         }
         
@@ -58,9 +42,4 @@ public class Box : MonoBehaviour
         Destroy(gameObject); 
     }
 
-    private async Task WaitTwoSecondAsync()
-    {
-        await Task.Delay(TimeSpan.FromSeconds(2));
-        Debug.Log("Finished waiting.");
-    }
 }

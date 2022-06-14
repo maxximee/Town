@@ -58,6 +58,8 @@ namespace MoreMountains.HighroadEngine
         protected Dictionary<int, IActorInput> _players;
         protected MMTouchControls _mmTouchControls;
 
+        private bool isGyro = false;
+
         /// <summary>
         /// initialization of the active players list and type of input
         /// </summary>
@@ -70,6 +72,7 @@ namespace MoreMountains.HighroadEngine
                 // In game scenes, we use the same parameter as MobileTouchControls component
                 _mmTouchControls = MobileTouchControls.GetComponent<MMTouchControls>();
             }
+            isGyro = Manager.isGyroControls();
         }
 
         /// <summary>
@@ -107,7 +110,9 @@ namespace MoreMountains.HighroadEngine
             else
             {
 #if !UNITY_EDITOR
+            if (isGyro) {
                 AccelerometerMove();
+                }
 #endif
             }
         }

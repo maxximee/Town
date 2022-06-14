@@ -1,3 +1,4 @@
+using System;
 using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,17 +39,21 @@ public class Manager : Singleton<Manager>
 
     public static string PlayerSafeAddress;
     public static string PlayerSafePK;
-
     #endregion
 
+    #region game settings
     public static float defaultReward = 10f;
-
     private static string selectedDragon = "0";
     private static List<MarketItem> marketItems = new List<MarketItem>();
+    #endregion
+
+    #region user settings
 
     public static BigInteger playerAmountOfDragons = 0;
-
     private static Dictionary<string, DragonDataModel> dragons = new Dictionary<string, DragonDataModel>();
+    private static Boolean gyroControls = false;
+    public readonly static string GYRO_PLAYER_PREF = "gyroControls";
+    #endregion
 
     public static void addDragon(DragonDataModel dragon, string dragonIndex)
     {
@@ -85,5 +90,31 @@ public class Manager : Singleton<Manager>
     {
         return marketItems;
     }
+
+    public static void SetGyroControls(Boolean isGyro)
+    {
+        gyroControls = isGyro;
+        PlayerPrefs.SetInt(GYRO_PLAYER_PREF, isGyro ? 1 : 0);
+    }
+
+    public static Boolean isGyroControls()
+    {
+        if (PlayerPrefs.HasKey(GYRO_PLAYER_PREF))
+        {
+            return (PlayerPrefs.GetInt(GYRO_PLAYER_PREF) == 1 ? true : false);
+        }
+        return gyroControls;
+    }
+
+    public static bool ToggleGyroControls() {
+        if (isGyroControls()) {
+            SetGyroControls(false);
+            return false;
+        } else {
+            SetGyroControls(true);
+            return true;
+        }
+    }
+
 }
 

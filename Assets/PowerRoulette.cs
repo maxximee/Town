@@ -2,6 +2,8 @@ using System;
 using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,9 +26,19 @@ public class PowerRoulette : MonoBehaviour
         }
     }
 
-    public void StartRoulette()
+    public Ability StartRoulette()
     {
-        GetRandomAbility();
+        Ability ability = GetRandomAbility();
+        Debug.Log("got ability: " + ability.name);
+        // TODO UI roulette stuff
+        var powerUiObject = GameObject.FindGameObjectWithTag("Power").GetComponent<Image>();
+        powerUiObject.sprite = ability.abilityIcon;
+        ButtonOverlayImage.sprite = ability.abilityIcon;
+        Color c = powerUiObject.color;
+        c.a = 1;
+        powerUiObject.color = c;
+        StartCoroutine(Wait2Sec(powerUiObject, c));
+        return ability;
     }
 
     private Ability GetRandomAbility()
@@ -48,4 +60,10 @@ public class PowerRoulette : MonoBehaviour
     }
 
 
+    IEnumerator Wait2Sec(Image powerUiObject, Color c)
+    {
+        yield return new WaitForSeconds(2);
+        c.a = 0;
+        powerUiObject.color = c;
+    }
 }
