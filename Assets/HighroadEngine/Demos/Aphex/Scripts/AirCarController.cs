@@ -196,11 +196,16 @@ namespace MoreMountains.HighroadEngine
 
             if (collision.gameObject.tag == "SwapMissile" && !collision.gameObject.name.StartsWith(name))
             {
-               string shooter = collision.gameObject.name.Split(new String[] {"-Projectile"},StringSplitOptions.None)[0];
+                string shooter = collision.gameObject.name.Split(new String[] { "-Projectile" }, StringSplitOptions.None)[0];
 
-               // this position = find "shooter" . position
-               // find shooter position swith with this position
-               Debug.Log("swap with shooter: " + shooter);
+                Transform shooterTransform = GameObject.Find(shooter).GetComponent<Transform>();
+                Transform myTransform = this.GetComponent<Transform>();
+
+                Vector3 shooterPos = shooterTransform.position;
+                Quaternion shooterRot = shooterTransform.rotation;
+
+                shooterTransform.SetPositionAndRotation(myTransform.position, myTransform.rotation);
+                myTransform.SetPositionAndRotation(shooterPos, shooterRot);
             }
 
         }
@@ -219,7 +224,8 @@ namespace MoreMountains.HighroadEngine
 
         private async void changeSpeed()
         {
-            Debug.Log("I can't move, I've been hit");
+            Animator anim = GetComponentInChildren<Animator>();
+            anim.SetTrigger("die");
             MaxSpeed = 0;
             await Task.Delay(TimeSpan.FromSeconds(2));
             MaxSpeed = currentMaxSpeed;
