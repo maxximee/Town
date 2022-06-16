@@ -6,10 +6,12 @@ using UnityEngine;
 public class FireballAbility : Ability
 {
     public GameObject fireball;
-    public float fireballSize = 1f;
-    public float fireballSpeed = 1500f;
+    public float fireballSize = 5f;
+    public float fireballSpeed = 2500f;
     public float fireballReach = 100f;
     public Transform initPosition;
+
+    public int amount = 10;
 
 
     protected RaycastHit hit;

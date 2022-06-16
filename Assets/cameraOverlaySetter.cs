@@ -20,7 +20,6 @@ public class cameraOverlaySetter : MonoBehaviour
 void Update()
 {
     if (!cameraData.renderType.Equals(CameraRenderType.Overlay)) {
-        Debug.Log("camera set to: " + cameraData.renderType);
         cameraData.renderType = CameraRenderType.Overlay;
     }
 }

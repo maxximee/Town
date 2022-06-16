@@ -33,6 +33,7 @@ namespace MoreMountains.HighroadEngine
         protected int _currentWaypoint = 0;
         protected int _lastWaypointCrossed = -1;
         protected float _defaultDrag;
+
         protected int _controllerId = -1;
         /// Ẁhen > 0, vehicle has finished the race. This is it final rank
         protected int _finisherPosition = 0;

@@ -61,9 +61,13 @@ namespace MoreMountains.HighroadEngine
         public int EnginePower;
 
         private Ability currentAbility;
+        private bool hasAbility = false;
 
+        public static event Action OnAbilityDoneEvent;
 
+        public static event Action<int> AbilityRemaningEvent;
         public UnityAction OnRespawn;
+
 
         /// <summary>
         /// Gets or sets the ground game object.
@@ -89,6 +93,21 @@ namespace MoreMountains.HighroadEngine
             Hover();
 
             OrientationToGround();
+        }
+
+        bool coolingDown = false;
+        float cooldownCounter = 1;
+        private void Update()
+        {
+            if (coolingDown)
+            {
+                cooldownCounter -= Time.deltaTime;
+                if (cooldownCounter <= 0)
+                {
+                    coolingDown = false;
+                    cooldownCounter = 1;
+                }
+            } 
         }
 
         /// <summary>
@@ -130,24 +149,41 @@ namespace MoreMountains.HighroadEngine
             }
         }
 
+
+        private void reduceAmmo()
+        {
+            fireAmmo--;
+            AbilityRemaningEvent?.Invoke(fireAmmo);
+            coolingDown = true;
+            if (fireAmmo == 0)
+            {
+                abilityDone();
+            }
+        }
+
         /// <summary>
         /// This method triggers the action button
         /// </summary>
         public override void AltAction()
         {
-            if (currentAbility != null)
+            if (hasAbility && currentAbility != null)
             {
                 Vector3 fwd = transform.TransformDirection(Vector3.forward);
                 switch (currentAbility.name)
                 {
                     case "Fireball":
-                        if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                        if (!coolingDown)
                         {
-                            GameObject projectile = Instantiate(fireball, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                            projectile.tag = "Projectile";
-                            projectile.name = name + "-Projectile";
-                            projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed); //Set the speed of the projectile by applying force to the rigidbody
+                            if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                            {
+                                FireballAbility fire = (FireballAbility)currentAbility;
+                                GameObject projectile = Instantiate(fireball, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                                projectile.tag = "Projectile";
+                                projectile.name = name + "-Projectile";
+                                projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * fire.fireballSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                            }
+                            reduceAmmo();
                         }
                         break;
                     case "Dash":
@@ -156,13 +192,18 @@ namespace MoreMountains.HighroadEngine
                         StartCoroutine(SpeedBoostLast3Sec());
                         break;
                     case "Swap":
-                        if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                        if (!coolingDown)
                         {
-                            GameObject projectile = Instantiate(swapRay, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
-                            projectile.tag = "SwapMissile";
-                            projectile.name = name + "-Projectile";
-                            projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * speed * 2); //Set the speed of the projectile by applying force to the rigidbody
+                            if (Physics.Raycast(transform.position, fwd, out hit, reach)) //Finds the point where you click with the mouse
+                            {
+                                SwapAbility swap = (SwapAbility)currentAbility;
+                                GameObject projectile = Instantiate(swapRay, initPosition.position, Quaternion.identity) as GameObject; //Spawns the selected projectile
+                                projectile.tag = "SwapMissile";
+                                projectile.name = name + "-Projectile";
+                                projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
+                                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * swap.swapRaySpeed); //Set the speed of the projectile by applying force to the rigidbody
+                            }
+                            reduceAmmo();
                         }
                         break;
                     default:
@@ -176,13 +217,40 @@ namespace MoreMountains.HighroadEngine
             yield return new WaitForSeconds(3);
             IsOnSpeedBoost = false;
             // TODO handle this differently, now can use once
-            currentAbility = null;
+            abilityDone();
         }
+        private void abilityDone()
+        {
+            currentAbility = null;
+            hasAbility = false;
+            OnAbilityDoneEvent?.Invoke();
+        }
+
+        private int fireAmmo = 10;
+        private float channellingCharge = 3f;
 
         public void setAbility(Ability abi)
         {
             currentAbility = abi;
+            hasAbility = true;
             // TODO do stuff like set ammo, timeouts...
+            switch (currentAbility.name)
+            {
+                case "Fireball":
+                    FireballAbility fire = (FireballAbility)currentAbility;
+                    fireAmmo = fire.amount;
+                    AbilityRemaningEvent?.Invoke(fireAmmo);
+                    break;
+                case "Swap":
+                    SwapAbility swap = (SwapAbility)currentAbility;
+                    fireAmmo = swap.amount;
+                    AbilityRemaningEvent?.Invoke(fireAmmo);
+                    break;
+                case "Dash":
+                    DashAbility dash = (DashAbility)currentAbility;
+                    channellingCharge = dash.activeTime;
+                    break;
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -229,6 +297,7 @@ namespace MoreMountains.HighroadEngine
             MaxSpeed = 0;
             await Task.Delay(TimeSpan.FromSeconds(2));
             MaxSpeed = currentMaxSpeed;
+            AutoForward = true;
             Accelerate();
         }
 

@@ -204,7 +204,6 @@ namespace MoreMountains.HighroadEngine
                 {
                     if (_shootTarget.transform.gameObject.layer == LayerMask.NameToLayer("Actors"))
                     {
-						Debug.Log("shooting target forward: " + LayerMask.LayerToName(_shootTarget.transform.gameObject.layer));
                         GameObject projectile = Instantiate(_controller.fireball, transform.position, Quaternion.identity) as GameObject;
                         projectile.tag = "Projectile";
                         projectile.name = name + "-Projectile";

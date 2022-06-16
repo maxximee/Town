@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Swap
   cooldownTime: 5
   activeTime: 0
-  amount: 1
   type: 0
   abilityIcon: {fileID: 21300000, guid: 0daf4da7abc044e2b9b26b6438bee49a, type: 3}
-  probability: 2
+  probability: 0
   state: 0
+  swapRaySpeed: 2500
+  amount: 20

@@ -92,8 +92,8 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\Scripts\LoadBalances.cs" />
      <Compile Include="Assets\Resources\Scripts\Camera Scripts\MouseOrbitImproved.cs" />
-     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
      <Compile Include="Assets\ToastForUnity\Script\Core\ToastGeneralFacade.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Icons\SceneViewIcon.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\PoolableObject.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\RigidbodyInterface\RigidbodyInterface.cs" />
@@ -141,8 +141,8 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\GUI\StartScreen.cs" />
      <Compile Include="Assets\ToastForUnity\Script\Core\ToastSetup.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
-     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\AutoDestroy\TimedAutoDestroy.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
      <Compile Include="Assets\ToastForUnity\DemoScene\Scripts\Panel\ProgressPanel.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMGeometry.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\ObjectPool\SimpleObjectPooler.cs" />
@@ -160,8 +160,8 @@
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMCoroutine.cs" />
      <Compile Include="Assets\HighroadEngine\Demos\TinyCars\Scripts\CarController.cs" />
      <Compile Include="Assets\ToastForUnity\Script\Enum\ToastStatus.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchControls.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchControls.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FxaaComponent.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\VehicleAI.cs" />
      <Compile Include="Assets\Scripts\Rewards.cs" />
@@ -222,6 +222,7 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidWheelBehaviour.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\GrainComponent.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\MMAchievementManager.cs" />
+     <Compile Include="Assets\Settings.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectControllerPooled.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMColors.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Automation\Wiggle.cs" />
@@ -233,8 +234,8 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\IGenericNetworkLobbyManager.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Singletons\PersistentSingleton.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\UserLutModel.cs" />
-     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoPackageTester.cs" />
      <Compile Include="Assets\Resources\Scripts\AnimatorController.cs" />
+     <Compile Include="Assets\Feel\MMFeedbacks\Demos\MMFeedbacksDemo\Scripts\DemoPackageTester.cs" />
      <Compile Include="Assets\GUI PRO Kit - Casual Game\Extensions\UIParticle\UIParticleSystem.cs" />
      <Compile Include="Assets\ToastForUnity\Resources\ToastSettings\General\DefaultToast\DefaultToast.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\MMHelpers\MMMaths.cs" />
@@ -290,12 +291,12 @@
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Lobby\Photon\PunLobbyPlayer.cs" />
      <Compile Include="Assets\Scripts\Bridge\ItemDisplayBridge.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Particles\AutoDestroyParticleSystem.cs" />
-     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchAxis.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Attributes\InformationAttribute.cs" />
      <Compile Include="Assets\HighroadEngine\MMTools\Automation\AutoOrderInLayer.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Camera\ParallelCamera.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Prefabs\ScriptableObjects\Ability.cs" />
+     <Compile Include="Assets\HighroadEngine\MMTools\MMControls\MMTouchAxis.cs" />
      <Compile Include="Assets\HighroadEngine\Common\Scripts\Vehicles\Solid\SolidSoundBehaviour.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Components\FogComponent.cs" />
      <Compile Include="Assets\StylisedWater\URP\Scripts\Bitgem\VFX\StylisedWater\WateverVolumeFloater.cs" />
@@ -313,10 +314,11 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\Settings.cs" />
+     <Compile Include="Assets\RandomRouletteAnimResources.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Resources\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />
+     <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />
      <None Include="Assets\HighroadEngine\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
@@ -1315,6 +1317,10 @@
       <Project>{189556da-845e-2592-1edf-9ce5dd4d091c}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.TerrainTools.csproj">
+      <Project>{eadc3f3c-db0f-40ef-f084-77d1173b21cd}</Project>
+      <Name>Unity.TerrainTools</Name>
+    </ProjectReference>
     <ProjectReference Include="Dreamteck.Splines.Editor.csproj">
       <Project>{fcfa7e64-fdd5-69ed-4d9e-8d056f66b18b}</Project>
       <Name>Dreamteck.Splines.Editor</Name>
@@ -1326,6 +1332,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
       <Project>{876667e4-5263-fe22-958e-a8e6a02b6efc}</Project>
       <Name>Unity.RenderPipelines.Universal.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TerrainTools.Editor.csproj">
+      <Project>{6c733602-4863-7600-0e27-9793eb98779f}</Project>
+      <Name>Unity.TerrainTools.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="MoreMountains.Tools.Feedbacks.csproj">
       <Project>{a252c132-dae2-056d-d8a9-919f98558e0e}</Project>
