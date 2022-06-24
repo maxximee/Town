@@ -290,14 +290,21 @@ namespace MoreMountains.HighroadEngine
             _startRotation = transform.rotation;
         }
 
+        private Boolean isAlreadyHit = false;
         private async void changeSpeed()
         {
+            if (isAlreadyHit) {
+                return;
+            }
+            isAlreadyHit = true;
             Animator anim = GetComponentInChildren<Animator>();
             anim.SetTrigger("die");
             MaxSpeed = 0;
+            Debug.Log("Hit, max speed set to:" + MaxSpeed);
             await Task.Delay(TimeSpan.FromSeconds(2));
             MaxSpeed = currentMaxSpeed;
-            AutoForward = true;
+            Debug.Log("Resetting original max speed to:" + MaxSpeed);
+            isAlreadyHit = false;
             Accelerate();
         }
 

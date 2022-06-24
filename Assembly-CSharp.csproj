@@ -73,6 +73,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Extension\ExtensionMethods.cs" />
      <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
      <Compile Include="Assets\ToastForUnity\DemoScene\Scripts\ToastDemoScript.cs" />
+     <Compile Include="Assets\RandomRouletteAnimResources.cs" />
      <Compile Include="Assets\GUI PRO Kit - Casual Game\Scripts\PanelCasualGame.cs" />
      <Compile Include="Assets\ToastForUnity\Resources\ToastSettings\Stylish\StylistToastView.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\PostProcessingProfile.cs" />
@@ -314,7 +315,7 @@
      <Compile Include="Assets\HighroadEngine\MMTools\Achievements\Scripts\SerializedMMAchievementManager.cs" />
      <Compile Include="Assets\Scripts\UnityWebRequestAwaiter.cs" />
      <Compile Include="Assets\HighroadEngine\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\RandomRouletteAnimResources.cs" />
+     <Compile Include="Assets\Scripts\RadialBtnTimer.cs" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\VS_InstancedIndirect.cginc" />
      <None Include="Assets\Resources\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Fantasy Adventure Environment\Shaders\FAE_Sunshaft.shader" />

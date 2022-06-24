@@ -181,7 +181,7 @@ public class LoadMarketItems : MonoBehaviour
                 NftContract = Manager.NftContractAddress,
                 Id = id
             };
-            createMarketSaleFunction.AmountToSend = price * Manager.TokenDecimal;
+            createMarketSaleFunction.AmountToSend = price; // * Manager.TokenDecimal;
             try
             {
                 var createMarketSaleFunctionTxnReceipt = await contractHandler.SendRequestAndWaitForReceiptAsync(Manager.MarketplaceContractAddress, createMarketSaleFunction);

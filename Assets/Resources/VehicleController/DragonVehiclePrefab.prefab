@@ -4813,7 +4813,7 @@ Transform:
   m_GameObject: {fileID: 606242481460900207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 604738190516351479}
   - {fileID: 604738190675197223}
@@ -4851,7 +4851,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606242481460900207}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 75
   m_Drag: 0.5
   m_AngularDrag: 0.1
   m_UseGravity: 0
@@ -4873,7 +4873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoostForce: 100
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 110
+  SteeringSpeed: 150
   AutoForward: 1
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
   swapRay: {fileID: 128572, guid: d912eeaae09494a4db744907e8948f4f, type: 3}
@@ -4883,14 +4883,14 @@ MonoBehaviour:
   canFire: 0
   DefaultEnginePower: 80000
   OffroadFactor: 2
-  LateralSteeringForce: 1200
+  LateralSteeringForce: 500
   DefaultMaxSpeed: 130
   HoverHeight: 4
   HoverGravityForce: 1000
   HoverForce: 100
   OrientationGroundSpeed: 1
-  MaxSpeed: 120
-  EnginePower: 80000
+  MaxSpeed: 100
+  EnginePower: 75000
 --- !u!114 &720366736248946465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24905,7 +24905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350648418192990584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.013000488, z: 1.5800017}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 604738194365975517}

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 namespace MoreMountains.HighroadEngine
 {
@@ -37,6 +39,15 @@ namespace MoreMountains.HighroadEngine
 
         protected Dictionary<int, ILobbyPlayerInfo> _players = new Dictionary<int, ILobbyPlayerInfo>(); // Key is player position number.
         protected Dictionary<int, int> _registeredLobbyPlayers = new Dictionary<int, int>(); // registered lobby players not ready. 
+
+        public Slider lapsSlider;
+        public TextMeshProUGUI lapsText;
+        public int Laps = 2;
+
+        private float yield;
+        public Slider betSlider;
+        public TextMeshProUGUI betValue;
+        public TextMeshProUGUI betRewardValue;
 
         /// <summary>
         /// Stores currently selected track index.
@@ -81,17 +92,46 @@ namespace MoreMountains.HighroadEngine
         public virtual void Start()
         {
             TrackSelected = 0;
+            lapsSlider.onValueChanged.AddListener(delegate { LapsValueChange(); });
+            betSlider.onValueChanged.AddListener(delegate { BetValueChange(); });
+            setPlayerReward();
         }
 
         override protected void Awake()
         {
             // override all prefabs and sprites
             // 1) load all sprites
-            AvailableVehicles2dSprites = Resources.LoadAll<Sprite>("Dragons_2D");
+            AvailableVehicles2dSprites = Resources.LoadAll<Sprite>("Dragons_Sprites");
             Array.Sort(AvailableVehicles2dSprites, delegate (Sprite x, Sprite y) { return GetDragonSpriteNumber(x.name).CompareTo(GetDragonSpriteNumber(y.name)); });
             // 2) load all vehicle prefabs
             AvailableVehiclesPrefabs = LoadAndCreateVehiclePrefabs();
+            yield = (float)((double)Manager.GetSelectedDragonDataModel().yield) / 10;
             base.Awake();
+        }
+
+        private void LapsValueChange()
+        {
+            // can cast to int since we set whole numbers on the slider;
+            Laps = (int)lapsSlider.value;
+            lapsText.text = Laps.ToString();
+        }
+
+        private void BetValueChange()
+        {
+            setPlayerReward(betSlider.value);
+        }
+
+        private void setPlayerReward()
+        {
+            setPlayerReward(0f);
+        }
+        private void setPlayerReward(float bet)
+        {
+            float value = yield + Manager.defaultReward + bet;
+            Manager.setPlayerReward(value);
+            betRewardValue.text = value.ToString("n2");
+
+            betValue.text = bet.ToString("n2");
         }
 
         private GameObject[] LoadAndCreateVehiclePrefabs()

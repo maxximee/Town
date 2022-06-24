@@ -219,7 +219,7 @@ public class LoadPlayerNfts : MonoBehaviour
 
     private int getIndex(string tokenId)
     {
-        for (int i = 0; i <= allTokenIds.Length; i++)
+        for (int i = 0; i < allTokenIds.Length; i++)
         {
             if (allTokenIds[i].Equals(tokenId))
             {
@@ -328,7 +328,7 @@ public class LoadPlayerNfts : MonoBehaviour
 
         levelValue.text = dragon.Level.ToString();
 
-        Manager.addDragon(new DragonDataModel(dragon.TopSpeed, dragon.Acceleration, dragon.Yield, dragon.Diet), (currentIndex + 1).ToString());
+        Manager.addDragon(new DragonDataModel(dragon.TopSpeed, dragon.Acceleration, dragon.Yield, dragon.Diet), dragTokenId.text);
 
         string rarityString = dragon.Rarity.ToString().ToUpper();
         rarityValue.text = rarityString;

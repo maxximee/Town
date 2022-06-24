@@ -6,6 +6,7 @@ using System.Linq;
 using MoreMountains.Tools;
 using UnityEngine.Events;
 using TMPro;
+using MoreMountains.Feedbacks;
 
 namespace MoreMountains.HighroadEngine
 {
@@ -32,7 +33,9 @@ namespace MoreMountains.HighroadEngine
 
         [Header("UI")]
         /// Text object where start countdown is shown
-        public Text StartGameCountdown;
+        public TextMeshProUGUI StartGameCountdown;
+        public MMF_Player CountdownFeedbacks;
+
         /// Panel shown when game has ended
         public RectTransform EndGamePanel;
         /// Text object for players ranking at the end of the game
@@ -146,6 +149,8 @@ namespace MoreMountains.HighroadEngine
         public virtual void Start()
         {
             _isPlaying = false;
+
+            Laps = LocalLobbyManager.Instance.Laps;
 
             if (EndGamePanel != null)
             {
@@ -445,7 +450,7 @@ namespace MoreMountains.HighroadEngine
                     newPlayerTag.anchoredPosition = new Vector2(0, _playerTagYPos);
                     TextMeshProUGUI playerPos = newPlayerTag.GetComponentInChildren<TextMeshProUGUI>();
                     playerPos.text = (_currentStartPosition + 1).ToString();
-                    Image playerImage = newPlayerTag.GetChild(0).GetComponent<Image>();
+                    Image playerImage = newPlayerTag.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
                     playerImage.sprite = LocalLobbyManager.Instance.AvailableVehicles2dSprites[item.VehicleSelectedIndex];
 
                     if (!item.IsBot)
@@ -707,8 +712,16 @@ namespace MoreMountains.HighroadEngine
                         case "dragonSprite":
                             break;
                         case "rewardValue":
-                            // TODO use yield stats to influence value
-                            child.gameObject.GetComponent<TextMeshProUGUI>().text = (15 - (5 * i)).ToString();
+                            // TODO find better way to select winner
+                            if (i == 0)
+                            {
+                                child.gameObject.GetComponent<TextMeshProUGUI>().text = Manager.getPlayerReward().ToString("n1");
+                            }
+                            else
+                            {
+                                child.gameObject.GetComponent<TextMeshProUGUI>().text = "0";
+                            }
+
                             if (playersRank[i].name.Equals(currentPlayer))
                             {
                                 child.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(1f, 0.82f, 0.43f, 1f);
@@ -776,9 +789,7 @@ namespace MoreMountains.HighroadEngine
                 {
                     currentLocalAtoms = PlayerPrefs.GetFloat(Manager.AtomsPrefs);
                 }
-                // TODO better logic here!
-                double gains = (double)Manager.GetSelectedDragonDataModel().yield;
-                currentLocalAtoms += (float)gains + Manager.defaultReward;
+                currentLocalAtoms += Manager.getPlayerReward();
                 PlayerPrefs.SetFloat(Manager.AtomsPrefs, currentLocalAtoms);
             }
             _lobbyManager.ReturnToLobby();
@@ -811,7 +822,7 @@ namespace MoreMountains.HighroadEngine
                     remainingCountDown -= Time.deltaTime;
                     // new remaining time is int value 
                     int newFloorTime = Mathf.FloorToInt(remainingCountDown);
-                    OnUpdateCountdownText("Start in " + newFloorTime);
+                    OnUpdateCountdownText(newFloorTime.ToString());
                 }
             }
 
@@ -859,7 +870,11 @@ namespace MoreMountains.HighroadEngine
             }
             else
             {
-                StartGameCountdown.text = text;
+                if (text != StartGameCountdown.text)
+                {
+                    StartGameCountdown.text = text;
+                    CountdownFeedbacks.PlayFeedbacks();
+                }
             }
         }
 

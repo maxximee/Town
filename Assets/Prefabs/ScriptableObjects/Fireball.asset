@@ -21,7 +21,7 @@ MonoBehaviour:
   state: 0
   fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
   fireballSize: 1
-  fireballSpeed: 1800
+  fireballSpeed: 2600
   fireballReach: 60
   initPosition: {fileID: 0}
   amount: 40

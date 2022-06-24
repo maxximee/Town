@@ -44,6 +44,8 @@ public class Manager : Singleton<Manager>
     #region game settings
     public static float defaultReward = 10f;
     private static string selectedDragon = "0";
+
+    private static float playerReward = 0;
     private static List<MarketItem> marketItems = new List<MarketItem>();
     #endregion
 
@@ -53,26 +55,31 @@ public class Manager : Singleton<Manager>
     private static Dictionary<string, DragonDataModel> dragons = new Dictionary<string, DragonDataModel>();
     private static Boolean gyroControls = false;
     public readonly static string GYRO_PLAYER_PREF = "gyroControls";
+
     #endregion
 
-    public static void addDragon(DragonDataModel dragon, string dragonIndex)
+    public static void addDragon(DragonDataModel dragon, string dragonNumber)
     {
-        dragons[dragonIndex] = dragon;
+        Debug.Log("add dragon " + dragonNumber);
+        dragons[dragonNumber] = dragon;
     }
 
-    public static DragonDataModel GetDragonDataModel(string index)
+    public static DragonDataModel GetDragonDataModel(string dragonNumber)
     {
-        return dragons[index];
+        Debug.Log("get dragon datamodel " + dragonNumber);
+        return dragons[dragonNumber];
     }
 
     public static DragonDataModel GetSelectedDragonDataModel()
     {
+        Debug.Log("get dragon " + selectedDragon);
         return dragons[selectedDragon];
     }
 
 
     public static void setSelectedDragon(string dragonNumber)
     {
+        Debug.Log("set selected dragon " + dragonNumber);
         selectedDragon = dragonNumber;
     }
 
@@ -106,14 +113,28 @@ public class Manager : Singleton<Manager>
         return gyroControls;
     }
 
-    public static bool ToggleGyroControls() {
-        if (isGyroControls()) {
+    public static bool ToggleGyroControls()
+    {
+        if (isGyroControls())
+        {
             SetGyroControls(false);
             return false;
-        } else {
+        }
+        else
+        {
             SetGyroControls(true);
             return true;
         }
+    }
+
+    public static float getPlayerReward()
+    {
+        return playerReward;
+    }
+
+    public static void setPlayerReward(float reward)
+    {
+        playerReward = reward;
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MoreMountains.HighroadEngine
 {
@@ -20,11 +21,10 @@ namespace MoreMountains.HighroadEngine
 
         [Header("GUI Elements")]
         // UI player name zone
-        public Text PlayerNameText;
+        public TextMeshProUGUI PlayerNameText;
 
         // UI new player zone
         public RectTransform AddPlayerZone;
-        public Button NewPlayerButton;
         public Button NewBotButton;
 
         // UI choose vehicle zone
@@ -32,12 +32,8 @@ namespace MoreMountains.HighroadEngine
         public Button RemovePlayerButton;
         public Button LeftButton;
         public Button RightButton;
-        public Text VehicleText;
+        private string VehicleText;
         public Image VehicleImage;
-        public Button ReadyButton;
-
-        public Sprite ReadyButtonSprite;
-        public Sprite CancelReadyButtonSprite;
 
         protected LocalLobbyManager _localLobbyManager;
         protected bool _ready; // Value indicating if player is ready to play or still choosing vehicle
@@ -51,7 +47,6 @@ namespace MoreMountains.HighroadEngine
         {
             InitManagers();
 
-            // We register this player into the input manager.
             InputManager.Instance.SetPlayer(Position, this);
 
             InitUI();
@@ -73,13 +68,7 @@ namespace MoreMountains.HighroadEngine
         /// </summary>
         protected virtual void InitUI()
         {
-            // Init buttons actions
-            NewPlayerButton.onClick.AddListener(OnAddPlayerButton);
-            NewBotButton.onClick.AddListener(OnAddBotButton);
-            RemovePlayerButton.onClick.AddListener(OnRemovePlayer);
-            LeftButton.onClick.AddListener(OnLeft);
-            RightButton.onClick.AddListener(OnRight);
-            ReadyButton.onClick.AddListener(delegate { OnReady(true); });
+            OnReady(true);
         }
 
         /// <summary>
@@ -90,13 +79,7 @@ namespace MoreMountains.HighroadEngine
             // we set the player name with its position
             PlayerNameText.text = "Player #" + (Position + 1);
 
-            // the player join text is populated with the Text value from inspector. Make sure Unity Input config is setup
-            // with the same value.
-            NewPlayerButton.GetComponentInChildren<Text>().text = "Press\n" + JoinActionInputName + "\nto join";
-
-            _ready = false;
-            ChooseVehicleZone.gameObject.SetActive(false);
-            AddPlayerZone.gameObject.SetActive(true);
+            _ready = true;
 
             // if the player already exists, when coming back from the track to menu for instance, we load the data back and show its state
             if (_localLobbyManager.ContainsPlayer(Position))
@@ -104,16 +87,16 @@ namespace MoreMountains.HighroadEngine
                 ILobbyPlayerInfo player = _localLobbyManager.GetPlayer(Position);
                 _currentVehicleIndex = player.VehicleSelectedIndex;
 
-                if (player.IsBot)
+                if (Position == 0)
                 {
-                    OnAddBotButton();
+                    OnAddPlayerButton();
                 }
                 else
                 {
-                    OnAddPlayerButton();
-                    // the player needs to be ready again
-                    _localLobbyManager.RemovePlayer(Position);
+                    OnAddBotButton();
                 }
+
+
             }
 
             // in mobile mode, at start, player 1 has already joined the game 
@@ -122,14 +105,11 @@ namespace MoreMountains.HighroadEngine
             {
                 if (Position == 0)
                 {
-                    if (AddPlayerZone.gameObject.activeSelf)
-                    {
-                        OnAddPlayerButton();
-                    }
+                    OnAddPlayerButton();
                 }
                 else
                 {
-                    NewPlayerButton.gameObject.SetActive(false);
+                    OnAddBotButton();
                 }
             }
 
@@ -146,13 +126,13 @@ namespace MoreMountains.HighroadEngine
                 VehicleInformation info = _localLobbyManager.AvailableVehiclesPrefabs[_currentVehicleIndex].GetComponent<VehicleInformation>();
                 if (info == null)
                 {
-					VehicleText.text = "Dragon " + _currentVehicleIndex;
-					VehicleImage.sprite = _localLobbyManager.AvailableVehicles2dSprites[_currentVehicleIndex];
+                    VehicleText = "Dragon " + _currentVehicleIndex;
+                    VehicleImage.sprite = _localLobbyManager.AvailableVehicles2dSprites[_currentVehicleIndex];
                 }
                 else
                 {
-					// TODO still in here for the PUN online lobby
-                    VehicleText.text = info.LobbyName;
+                    // TODO still in here for the PUN online lobby
+                    VehicleText = info.LobbyName;
                     VehicleImage.sprite = info.lobbySprite;
                 }
                 _localLobbyManager.registerLobbyPlayer(Position, _currentVehicleIndex);
@@ -169,7 +149,7 @@ namespace MoreMountains.HighroadEngine
             // In mobile mode, we hide the remove player button
             if (InputManager.Instance.MobileDevice)
             {
-                RemovePlayerButton.gameObject.SetActive(false);
+                // RemovePlayerButton.gameObject.SetActive(false);
             }
         }
 
@@ -198,14 +178,12 @@ namespace MoreMountains.HighroadEngine
 
             ShowSelectedVehicle();
 
-            ChooseVehicleZone.gameObject.SetActive(true);
-            AddPlayerZone.gameObject.SetActive(false);
 
             if (_isBot)
             {
                 PlayerNameText.text = "Bot #" + (Position + 1);
                 // we hide the ready action
-                ReadyButton.gameObject.SetActive(false);
+                // ReadyButton.gameObject.SetActive(false);
 
                 // bot is always in ready state, we add it
                 AddLocalPlayerToLobby();
@@ -213,9 +191,8 @@ namespace MoreMountains.HighroadEngine
             else
             {
                 PlayerNameText.text = "Player #" + (Position + 1);
-                Debug.Log("retrieving selected dragon from manager: " + Manager.getSelectedDragon());
                 _currentVehicleIndex = int.Parse(Manager.getSelectedDragon());
-                CancelPlayer();
+                AddLocalPlayerToLobby();
             }
         }
 
@@ -303,13 +280,13 @@ namespace MoreMountains.HighroadEngine
             if (!_ready)
             {
                 // Player goes to ready state
-                LeftButton.gameObject.SetActive(false);
-                RightButton.gameObject.SetActive(false);
-                RemovePlayerButton.gameObject.SetActive(false);
+                // LeftButton.gameObject.SetActive(false);
+                // RightButton.gameObject.SetActive(false);
+                // RemovePlayerButton.gameObject.SetActive(false);
                 _ready = true;
 
-                ReadyButton.transform.Find("Text").GetComponent<Text>().text = "- ready -";
-                ReadyButton.image.sprite = CancelReadyButtonSprite;
+                //  ReadyButton.transform.Find("Text").GetComponent<Text>().text = "- ready -";
+                //  ReadyButton.image.sprite = CancelReadyButtonSprite;
 
                 AddLocalPlayerToLobby();
             }
@@ -336,8 +313,8 @@ namespace MoreMountains.HighroadEngine
             LocalLobbyPlayer p = new LocalLobbyPlayer
             {
                 Position = Position,
-                Name = _isBot ? VehicleText.text : PlayerNameText.text,
-                VehicleName = VehicleText.text,
+                Name = _isBot ? VehicleText : PlayerNameText.text,
+                VehicleName = VehicleText,
                 VehicleSelectedIndex = _currentVehicleIndex,
                 IsBot = _isBot
             };
@@ -352,8 +329,8 @@ namespace MoreMountains.HighroadEngine
             // Player cancels ready state
             //LeftButton.gameObject.SetActive(true);
             //RightButton.gameObject.SetActive(true);
-            RemovePlayerButton.gameObject.SetActive(true);
-            ReadyButton.gameObject.SetActive(true);
+            // RemovePlayerButton.gameObject.SetActive(true);
+            //  ReadyButton.gameObject.SetActive(true);
 
             _ready = false;
             string buttonText = "";
@@ -366,9 +343,9 @@ namespace MoreMountains.HighroadEngine
             {
                 buttonText = "Ready?";
             }
-            ReadyButton.transform.Find("Text").GetComponent<Text>().text = buttonText;
+            // ReadyButton.transform.Find("Text").GetComponent<Text>().text = buttonText;
 
-            ReadyButton.image.sprite = ReadyButtonSprite;
+            //  ReadyButton.image.sprite = ReadyButtonSprite;
             _localLobbyManager.RemovePlayer(Position);
         }
 
@@ -450,7 +427,7 @@ namespace MoreMountains.HighroadEngine
         public virtual void LeftPressed() { }
         public virtual void RightPressed() { }
 
-        public virtual void GyroAngled(float tiltedAmount) {}
+        public virtual void GyroAngled(float tiltedAmount) { }
         public virtual void UpPressed() { }
         public virtual void DownPressed() { }
         public void AltActionPressed() { }
