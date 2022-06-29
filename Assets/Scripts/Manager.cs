@@ -60,26 +60,22 @@ public class Manager : Singleton<Manager>
 
     public static void addDragon(DragonDataModel dragon, string dragonNumber)
     {
-        Debug.Log("add dragon " + dragonNumber);
         dragons[dragonNumber] = dragon;
     }
 
     public static DragonDataModel GetDragonDataModel(string dragonNumber)
     {
-        Debug.Log("get dragon datamodel " + dragonNumber);
         return dragons[dragonNumber];
     }
 
     public static DragonDataModel GetSelectedDragonDataModel()
     {
-        Debug.Log("get dragon " + selectedDragon);
         return dragons[selectedDragon];
     }
 
 
     public static void setSelectedDragon(string dragonNumber)
     {
-        Debug.Log("set selected dragon " + dragonNumber);
         selectedDragon = dragonNumber;
     }
 

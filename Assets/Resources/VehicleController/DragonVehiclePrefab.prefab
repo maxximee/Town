@@ -4905,7 +4905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   TimeBeforeStuck: 2
-  MinimalDistanceToNextWaypoint: 25
+  MinimalDistanceToNextWaypoint: 35
   FullThrottle: 0.8
   SmallThrottle: 0.6
   OverrideSteringAndMaxSpeed: 1

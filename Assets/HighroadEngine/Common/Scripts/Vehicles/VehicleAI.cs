@@ -96,6 +96,7 @@ namespace MoreMountains.HighroadEngine
             _controller.OnRespawn += ResetAIWaypointToClosest;
         }
 
+
         /// <summary>
         /// At LateUpdate, we apply ou AI logic
         /// </summary>
@@ -111,8 +112,17 @@ namespace MoreMountains.HighroadEngine
             if (OverrideSteringAndMaxSpeed)
             {
                 _controller.SteeringSpeed = SteeringSpeed;
-                _controller.MaxSpeed = MaxSpeed;
-                _controller.EnginePower = EnginePower;
+            }
+
+            if (_raceManager.isInFrontOfPlayer(_controller))
+            {
+                _controller.MaxSpeed = MaxSpeed - 30;
+                _controller.EnginePower = EnginePower - 5000;
+            }
+            else
+            {
+                _controller.MaxSpeed = MaxSpeed + 60;
+                _controller.EnginePower = EnginePower + 10000;
             }
 
             if (IsStuck())
@@ -197,20 +207,25 @@ namespace MoreMountains.HighroadEngine
         /// shoot item at enemy if in range
         /// </summary>
         protected virtual void ShootItems()
-        { 
+        {
             if (_controller.canFire && waitedSomeTime)
             {
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out _shootTarget, _controller.reach))
                 {
                     if (_shootTarget.transform.gameObject.layer == LayerMask.NameToLayer("Actors"))
                     {
-                        GameObject projectile = Instantiate(_controller.fireball, transform.position, Quaternion.identity) as GameObject;
-                        projectile.tag = "Projectile";
-                        projectile.name = name + "-Projectile";
-                        projectile.transform.LookAt(_shootTarget.point);
-                        projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * _controller.speed);
-                        waitedSomeTime = false;
-                        WaitForSomeTime();
+                        // if bots are shooting bots, give them 10% chance of shooting. Always shoot at player
+                        int shootChance = UnityEngine.Random.Range(1,11);
+                        if (_shootTarget.transform.gameObject.name == _raceManager.GetPlayerName() || shootChance > 9)
+                        {
+                            GameObject projectile = Instantiate(_controller.fireball, transform.position, Quaternion.identity) as GameObject;
+                            projectile.tag = "Projectile";
+                            projectile.name = name + "-Projectile";
+                            projectile.transform.LookAt(_shootTarget.point);
+                            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * _controller.speed);
+                            waitedSomeTime = false;
+                            WaitForSomeTime();
+                        }
                     }
                 }
             }

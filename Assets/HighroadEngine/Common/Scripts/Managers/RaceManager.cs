@@ -115,6 +115,7 @@ namespace MoreMountains.HighroadEngine
 
         private string winner;
         public string currentPlayer;
+        public BaseController playerController;
         private int playerTagDist = 50;
 
         private Dictionary<string, RectTransform> playerNamesToTags = new Dictionary<string, RectTransform>();
@@ -459,6 +460,7 @@ namespace MoreMountains.HighroadEngine
                         newPlayerTag.anchoredPosition = new Vector2(20, _playerTagYPos);
                         playerPos.color = new Color(1f, 0.82f, 0.43f, 1f);
                         playerPos.fontSize = 65;
+                        playerController = car;
                     }
 
                     playerNamesToTags.Add(newPlayer.name, newPlayerTag);
@@ -550,6 +552,20 @@ namespace MoreMountains.HighroadEngine
                     RespawnButton.gameObject.SetActive(true);
                 }
             }
+        }
+
+        /// <summary>
+        ///  used by AI to adapt its speed and power if it's in front or behind player
+        /// </summary>
+        /// <param name="_controller"></param>
+        /// <returns></returns>
+        public bool isInFrontOfPlayer(BaseController _controller)
+        {
+            return (_controller.Score >= playerController.Score && _controller.DistanceToNextWaypoint < playerController.DistanceToNextWaypoint);
+        }
+
+        public string GetPlayerName() {
+            return currentPlayer;
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 21300000, guid: 01388e084f08a42709215c4650bd004b, type: 3}
   probability: 0
   state: 0
-  fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
+  fireball: {fileID: 128572, guid: 0fe27cfd7508f574da1d47fb6b5032e2, type: 3}
   fireballSize: 1
   fireballSpeed: 2600
   fireballReach: 60
