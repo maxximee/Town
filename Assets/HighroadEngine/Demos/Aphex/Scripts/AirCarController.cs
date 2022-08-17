@@ -68,6 +68,8 @@ namespace MoreMountains.HighroadEngine
         public static event Action<int> AbilityRemaningEvent;
         public UnityAction OnRespawn;
 
+        private Animator anim;
+
 
         /// <summary>
         /// Gets or sets the ground game object.
@@ -181,7 +183,7 @@ namespace MoreMountains.HighroadEngine
                                 projectile.tag = "Projectile";
                                 projectile.name = name + "-Projectile";
                                 projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * fire.fireballSpeed); //Set the speed of the projectile by applying force to the rigidbody
+                                projectile.GetComponent<Rigidbody>().AddForce(transform.forward * ((_rigidbody.velocity.magnitude * 15) + fire.fireballSpeed)); //Set the speed of the projectile by applying force to the rigidbody
                             }
                             reduceAmmo();
                         }
@@ -201,7 +203,7 @@ namespace MoreMountains.HighroadEngine
                                 projectile.tag = "SwapMissile";
                                 projectile.name = name + "-Projectile";
                                 projectile.transform.LookAt(hit.point); //Sets the projectiles rotation to look at the point clicked
-                                projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * swap.swapRaySpeed); //Set the speed of the projectile by applying force to the rigidbody
+                                projectile.GetComponent<Rigidbody>().AddForce(transform.forward *  ((_rigidbody.velocity.magnitude * 15) + swap.swapRaySpeed)); //Set the speed of the projectile by applying force to the rigidbody
                             }
                             reduceAmmo();
                         }
@@ -239,11 +241,13 @@ namespace MoreMountains.HighroadEngine
                 case "Fireball":
                     FireballAbility fire = (FireballAbility)currentAbility;
                     fireAmmo = fire.amount;
+                    // TODO should wait until roulette is done
                     AbilityRemaningEvent?.Invoke(fireAmmo);
                     break;
                 case "Swap":
                     SwapAbility swap = (SwapAbility)currentAbility;
                     fireAmmo = swap.amount;
+                    // TODO should wait until roulette is done
                     AbilityRemaningEvent?.Invoke(fireAmmo);
                     break;
                 case "Dash":
@@ -288,6 +292,7 @@ namespace MoreMountains.HighroadEngine
             currentMaxSpeed = MaxSpeed;
             _startPosition = transform.position;
             _startRotation = transform.rotation;
+            anim = GetComponentInChildren<Animator>();
         }
 
         private Boolean isAlreadyHit = false;
@@ -297,7 +302,7 @@ namespace MoreMountains.HighroadEngine
                 return;
             }
             isAlreadyHit = true;
-            Animator anim = GetComponentInChildren<Animator>();
+
             anim.SetTrigger("die");
             MaxSpeed = 0;
             Debug.Log("Hit, max speed set to:" + MaxSpeed);

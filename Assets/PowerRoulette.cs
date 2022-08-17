@@ -71,12 +71,13 @@ public class PowerRoulette : MonoBehaviour
         // TOOD just for testing, giving all abilities same probability
         amountOfAbilities = abilityProbabilities[AbilityProbability.often].Count;
         return abilities[abilityProbabilities[AbilityProbability.often][UnityEngine.Random.Range(0, amountOfAbilities)]];
+        // also check if we have any abilities in that category at all, ex: if we don't have "often" ability, move to next rarity
         // switch (rand)
         // {
-        //     case int n when (n <= 70):
+        //     case int n when (n <= 60):
         //         amountOfAbilities = abilityProbabilities[AbilityProbability.often].Count;
         //         return abilities[abilityProbabilities[AbilityProbability.often][UnityEngine.Random.Range(0, amountOfAbilities)]];
-        //     case int n when (n < 90):
+        //     case int n when (n < 80):
         //         amountOfAbilities = abilityProbabilities[AbilityProbability.rare].Count;
         //         return abilities[abilityProbabilities[AbilityProbability.rare][UnityEngine.Random.Range(0, amountOfAbilities)]];
         //     default:

@@ -4873,21 +4873,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoostForce: 100
   RigidBodyDragInLoop: 1
-  SteeringSpeed: 150
+  SteeringSpeed: 110
   AutoForward: 1
-  fireball: {fileID: 128572, guid: 86cfa77856730b3489ce8720fde62745, type: 3}
+  fireball: {fileID: 128572, guid: 0fe27cfd7508f574da1d47fb6b5032e2, type: 3}
   swapRay: {fileID: 128572, guid: d912eeaae09494a4db744907e8948f4f, type: 3}
-  speed: 2500
+  speed: 500
   reach: 90
   initPosition: {fileID: 3779710588868921505}
   canFire: 0
-  DefaultEnginePower: 80000
+  DefaultEnginePower: 70000
   OffroadFactor: 2
-  LateralSteeringForce: 500
-  DefaultMaxSpeed: 130
+  LateralSteeringForce: 900
+  DefaultMaxSpeed: 100
   HoverHeight: 4
   HoverGravityForce: 1000
-  HoverForce: 100
+  HoverForce: 500
   OrientationGroundSpeed: 1
   MaxSpeed: 100
   EnginePower: 75000
@@ -4911,7 +4911,7 @@ MonoBehaviour:
   OverrideSteringAndMaxSpeed: 1
   SteeringSpeed: 200
   MaxSpeed: 210
-  EnginePower: 100000
+  EnginePower: 90000
 --- !u!114 &720366735078891639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4939,8 +4939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mesh: {fileID: 2454597125480828374}
-  MaximumBodyRollAngle: 40
-  BodyRollSpeed: 1
+  MaximumBodyRollAngle: 60
+  BodyRollSpeed: 2
   WindEmissionsFullRate: 75
   ReactorFullScale: 0
   TailMinSize: 0.01
@@ -24905,7 +24905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350648418192990584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 604738194365975517}

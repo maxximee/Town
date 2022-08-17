@@ -121,8 +121,8 @@ namespace MoreMountains.HighroadEngine
             }
             else
             {
-                _controller.MaxSpeed = MaxSpeed + 60;
-                _controller.EnginePower = EnginePower + 10000;
+                _controller.MaxSpeed = MaxSpeed + 100;
+                _controller.EnginePower = EnginePower + 20000;
             }
 
             if (IsStuck())

@@ -7,7 +7,7 @@ public class FireballAbility : Ability
 {
     public GameObject fireball;
     public float fireballSize = 5f;
-    public float fireballSpeed = 2500f;
+    public float fireballSpeed = 2000f;
     public float fireballReach = 100f;
     public Transform initPosition;
 

@@ -48,7 +48,7 @@ namespace MoreMountains.HighroadEngine
         protected ParticleSystem.EmissionModule _rearLeftEmissions;
         protected ParticleSystem.EmissionModule _rearRightEmissions;
         protected ParticleSystem.EmissionModule _tailEmissions;
-
+        private Animator anim;
         /// <summary>
         /// Initializes references
         /// </summary> 
@@ -60,6 +60,7 @@ namespace MoreMountains.HighroadEngine
             _rearLeftEmissions = RearParticlesLeft.emission;
             _rearRightEmissions = RearParticlesRight.emission;
             _tailEmissions = Tail.emission;
+            anim = GetComponentInChildren<Animator>();
         }
 
         /// <summary>
@@ -139,12 +140,13 @@ namespace MoreMountains.HighroadEngine
                 mainModule.startSize = 0f;
                 _rearLeftEmissions.enabled = false;
                 _rearRightEmissions.enabled = false;
+                anim.SetInteger("animation",1);
             }
             else
             {
                 _rearLeftEmissions.enabled = true;
                 _rearRightEmissions.enabled = true;
-
+                anim.SetInteger("animation",17);
                 mainModule.startSize = Mathf.Lerp(TailMinSize, TailMaxSize, _controller.Speed / SpeedFactor);
             }
 

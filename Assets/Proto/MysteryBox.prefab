@@ -131,6 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbacks: {fileID: 2050176115353478947}
+  mesh: {fileID: 0}
+  meshQMark: {fileID: 0}
+  raceManager: {fileID: 0}
+  powerRoulette: {fileID: 0}
 --- !u!82 &6277313690968079352
 AudioSource:
   m_ObjectHideFlags: 0
